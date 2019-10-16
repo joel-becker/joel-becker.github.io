@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Paul Goldsmith-Pinkham by paulgp</title>
+    <title>Joel Becker by joel-becker</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -16,7 +16,7 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
+
       ga('create', 'UA-65546321-1', 'auto');
       ga('send', 'pageview');
     </script>
@@ -24,12 +24,12 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Paul Goldsmith-Pinkham</h1>
-        <p>Research Economist</p>
-        <h3><p class="view"><a href="https://paulgp.github.io/">Home</a></p></h3>
+        <h1>Joel Becker</h1>
+        <p>Predoctoral Fellow</p>
+        <!--h3><p class="view"><a href="https://paulgp.github.io/">Home</a></p></h3>
         <h3><p class="view"><a href="https://paulgp.github.io/papers.html">Papers</a></p></h3>
 	<h3><p class="view"><a href="https://paulgp.github.io/blog.html">Blog</a></p></h3>
-	<h3><p class="view"><a href="https://paulgp.github.io/papers/cv.pdf">CV</a></p></h3>
+	<h3><p class="view"><a href="https://paulgp.github.io/papers/cv.pdf">CV</a></p></h3-->
 	<p class="view"><img src="hbs_portrait2_circle.png" width=270 height=270></p>
 	<p>I currently work as a research economist at the Federal Reserve Bank of New York. If you need to reach me, please email me at paulgp at gmail dot com. </p>
       </header>
@@ -37,7 +37,7 @@
         <h3><a id="updates" class="anchor" href="#updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updates:</h3>
 
 	<p> I have two papers being presented this summer at the NBER Summer Institute: <a style="margin:0; font-size:100%; font-weight:bold">Bartik Instruments: What, When, Why and How</a> in Labor Studies and <a style="margin:0; font-size:100%; font-weight:bold"> Macroeconomic Effects of Debt Relief: Consumer Bankruptcy Protections in the Great Recession</a> in Impulse and Propogation Mechanisms and Consumption: Micro to Macro.   </p>
-	
+
 	<p> I have created a <a href="https://paulgp.github.io/blog.html">blog section</a> for the page for my discussions on data visualization and coding. I recently wrote a post comparing R and Stata regressions. </p>
 
 	<h3><a id="recent-papers-updated" class="anchor" href="#recent-papers-updated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recent Papers Updated:</h3>
@@ -46,7 +46,7 @@
 	<p><a href="http://ssrn.com/abstract=2844316">Bad Credit, No Problem? Credit and Labor Market Consequences of Bad Credit Reports</a> with Will Dobbie, Neale Mahoney and Jae Song has been updated.</p>
 	<p><a href="http://www.nber.org/papers/w21032">Consumer Bankruptcy and Financial Health</a><br> with Will Dobbie and Crystal Yang is now forthcoming in the Review of Economics and Statistics.</p>
       </section>
-  
+
     </div>
     <script src="javascripts/scale.fix.js"></script>
   </body>
