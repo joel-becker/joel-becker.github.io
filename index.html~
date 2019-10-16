@@ -31,8 +31,8 @@
 	<h3><p class="view"><a href="https://paulgp.github.io/blog.html">Blog</a></p></h3>
 	<h3><p class="view"><a href="https://paulgp.github.io/papers/cv.pdf">CV</a></p></h3-->
 	<p class="view"><img src="hbs_portrait2_circle.png" width=270 height=270></p>
-	<p>I currently work as a research economist at the Federal Reserve Bank of New York. If you need to reach me, please email me at paulgp at gmail dot com. </p>
-      </header>
+	<p>I am a Predoctoral Fellow working for Professors David Laibson, Daniel Benjamin and David Cesarini at Harvard University and NBER.</p>
+      <!--/header>
       <section>
         <h3><a id="updates" class="anchor" href="#updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updates:</h3>
 
@@ -45,7 +45,7 @@
 	<p>Abstract added for <a href="https://paulgp.github.io/papers.html">Bartik Instruments: What, When, Why and How</a> with Isaac Sorkin and Henry Swift has been added. Email me for a copy of the draft. </p>
 	<p><a href="http://ssrn.com/abstract=2844316">Bad Credit, No Problem? Credit and Labor Market Consequences of Bad Credit Reports</a> with Will Dobbie, Neale Mahoney and Jae Song has been updated.</p>
 	<p><a href="http://www.nber.org/papers/w21032">Consumer Bankruptcy and Financial Health</a><br> with Will Dobbie and Crystal Yang is now forthcoming in the Review of Economics and Statistics.</p>
-      </section>
+</section-->
 
     </div>
     <script src="javascripts/scale.fix.js"></script>
