@@ -1,2 +1,2 @@
 # joel-becker-github.io
-My website.
+Repo for my professional website, based (with permission) off of [paulgp's](https://github.com/paulgp/paulgp.github.io).
