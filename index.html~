@@ -32,20 +32,18 @@
 	<h3><p class="view"><a href="https://paulgp.github.io/papers/cv.pdf">CV</a></p></h3-->
 	<p class="view"><img src="hbs_portrait2_circle.png" width=270 height=270></p>
 	<p>I am a Predoctoral Fellow working for Professors David Laibson, Daniel Benjamin and David Cesarini at Harvard University and NBER.</p>
-      <!--/header>
+      </header>
       <section>
         <h3><a id="updates" class="anchor" href="#updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updates:</h3>
-
-	<p> I have two papers being presented this summer at the NBER Summer Institute: <a style="margin:0; font-size:100%; font-weight:bold">Bartik Instruments: What, When, Why and How</a> in Labor Studies and <a style="margin:0; font-size:100%; font-weight:bold"> Macroeconomic Effects of Debt Relief: Consumer Bankruptcy Protections in the Great Recession</a> in Impulse and Propogation Mechanisms and Consumption: Micro to Macro.   </p>
-
-	<p> I have created a <a href="https://paulgp.github.io/blog.html">blog section</a> for the page for my discussions on data visualization and coding. I recently wrote a post comparing R and Stata regressions. </p>
+	<!--p> I have two papers being presented this summer at the NBER Summer Institute: <a style="margin:0; font-size:100%; font-weight:bold">Bartik Instruments: What, When, Why and How</a> in Labor Studies and <a style="margin:0; font-size:100%; font-weight:bold"> Macroeconomic Effects of Debt Relief: Consumer Bankruptcy Protections in the Great Recession</a> in Impulse and Propogation Mechanisms and Consumption: Micro to Macro.   </p>
+	<p> I have created a <a href="https://paulgp.github.io/blog.html">blog section</a> for the page for my discussions on data visualization and coding. I recently wrote a post comparing R and Stata regressions. </p-->
 
 	<h3><a id="recent-papers-updated" class="anchor" href="#recent-papers-updated" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recent Papers Updated:</h3>
-	<p><a href="https://paulgp.github.io/ADRCombined_Draft_20170518.pdf">Opting Out of Good Governance</a> with Fritz Foley, Jonathan Greenstein and Eric Zwick has a new draft with updated results.</p>
+	<!--p><a href="https://paulgp.github.io/ADRCombined_Draft_20170518.pdf">Opting Out of Good Governance</a> with Fritz Foley, Jonathan Greenstein and Eric Zwick has a new draft with updated results.</p>
 	<p>Abstract added for <a href="https://paulgp.github.io/papers.html">Bartik Instruments: What, When, Why and How</a> with Isaac Sorkin and Henry Swift has been added. Email me for a copy of the draft. </p>
 	<p><a href="http://ssrn.com/abstract=2844316">Bad Credit, No Problem? Credit and Labor Market Consequences of Bad Credit Reports</a> with Will Dobbie, Neale Mahoney and Jae Song has been updated.</p>
-	<p><a href="http://www.nber.org/papers/w21032">Consumer Bankruptcy and Financial Health</a><br> with Will Dobbie and Crystal Yang is now forthcoming in the Review of Economics and Statistics.</p>
-</section-->
+	<p><a href="http://www.nber.org/papers/w21032">Consumer Bankruptcy and Financial Health</a><br> with Will Dobbie and Crystal Yang is now forthcoming in the Review of Economics and Statistics.</p-->
+</section>
 
     </div>
     <script src="javascripts/scale.fix.js"></script>
