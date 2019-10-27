@@ -1,0 +1,10 @@
+relativeURLs = true
+title = "Joel Becker"
+theme = "academimal"
+sectionPagesMenu = "main"
+defaultContentLanguage = "en"
+ignorefiles = [ "hugo_travis_ci", ".travis.yml" ]
+
+[params]
+    shortbio = "Predoctoral Fellow, Harvard University"
+    logo = "grad_photo.png"
