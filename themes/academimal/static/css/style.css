@@ -237,9 +237,9 @@
 
 body {
   background-color: #fff;
-  padding: 50px;
+  margin: 0;
   font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #727272;
+  color: #5e5e5e;
   font-weight: 400; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -272,6 +272,7 @@ h1, h2, h3 {
   line-height: 1.1; }
 
 h1 {
+  color: #fff;
   font-size: 28px; }
 
 h2 {
@@ -279,6 +280,26 @@ h2 {
 
 h3, h4, h5, h6 {
   color: #494949; }
+
+a.sidebar {
+  color: #fff;
+  text-decoration: none; 
+  margin-top: -50px;
+  word-break: break-word; }
+
+a.sidebar:hover, a.sidebar:focus {
+  color: #046; }
+
+a.sidebar small {
+  font-size: 11px;
+  color: #fff;
+  display: inline-block; }
+
+a.sidebar:hover small {
+  color: #046; }
+
+p.sidebar {
+  margin-top: -10px;}
 
 a {
   color: #267CB9;
@@ -297,7 +318,7 @@ a:hover small {
   color: #777; }
 
 .wrapper {
-  width: 860px;
+  width: 1060px;
   margin: 0 auto; }
 
 blockquote {
@@ -337,9 +358,15 @@ img {
   max-width: 100%; }
 
 header {
-  width: 270px;
   float: left;
   position: fixed;
+  background: #86608E;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  padding: 2.5vw;
+  width: 20vw;
+  height: 100vh;
   -webkit-font-smoothing: subpixel-antialiased; }
 
 header ul {
@@ -393,9 +420,15 @@ header ul a strong {
   color: #222; }
 
 section {
-  width: 500px;
+  position: static;
   float: right;
-  padding-bottom: 50px; }
+  width: 70vw;
+  padding: 2.5vw;
+  word-wrap: break-word;
+  text-align: justify; }
+
+h1, h2, h3, h3, h4, h5, h6 {
+  text-align: left; }
 
 small {
   font-size: 11px; }
@@ -404,7 +437,7 @@ hr {
   border: 0;
   background: #e5e5e5;
   height: 1px;
-  margin: 0 0 20px; }
+  margin: 20px 0 20px; }
 
 footer {
   width: 270px;
@@ -413,53 +446,42 @@ footer {
   bottom: 50px;
   -webkit-font-smoothing: subpixel-antialiased; }
 
-@media print, screen and (max-width: 960px) {
-  div.wrapper {
+
+@media print, screen and (max-width: 810px) {
+
+  body {
+    position: static;
     width: auto;
+    left: 0;
+    top: 0;
+    padding: 0;
     margin: 0; }
 
-  header, section, footer {
+  header {
+    position: static;
+    float: none;
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 0;
+    padding: 8vw;
+    padding-bottom: 8vw;}
+  
+  section {
     float: none;
     position: static;
-    width: auto; }
-
-  header {
-    padding-right: 320px; }
-
-  section {
-    border: 1px solid #e5e5e5;
-    border-width: 1px 0;
-    padding: 20px 0;
-    margin: 0 0 20px; }
-
-  header a small {
-    display: inline; }
-
-  header ul {
-    position: absolute;
-    right: 50px;
-    top: 52px; } }
-@media print, screen and (max-width: 720px) {
-  body {
-    word-wrap: break-word; }
-
-  header {
-    padding: 0; }
-
-  header ul, header p.view {
-    position: static; }
-
-  pre, code {
-    word-wrap: normal; } }
-@media print, screen and (max-width: 480px) {
-  body {
-    padding: 15px; }
+    width: auto;
+    padding: 8vw;}
 
   header ul {
     width: 99%; }
 
   header li, header ul li + li + li {
-    width: 33%; } }
+    width: 33%; }
+
+  img.nothomepage {
+  display: none; }}
+
 @media print {
   body {
     padding: 0.4in;

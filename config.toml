@@ -1,10 +1,17 @@
 relativeURLs = true
-title = "Joel Becker"
+googleAnalytics = "UA-159072578-1"
+title = "Stefanie Stantcheva"
 theme = "academimal"
 sectionPagesMenu = "main"
 defaultContentLanguage = "en"
-ignorefiles = [ "hugo_travis_ci", ".travis.yml" ]
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[author]
+name = "Stefanie Stantcheva"
 
 [params]
-    shortbio = "Predoctoral Fellow, Harvard University"
-    logo = "grad_photo.png"
+title = "Professor of Economics,"
+institution = "Harvard University"
+logo = "stefanie-stantcheva-2-compressed-square.jpg"
+Twitter = "S_Stantcheva"
+Email = "sstantcheva@fas.harvard.edu"
