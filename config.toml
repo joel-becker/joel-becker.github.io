@@ -1,4 +1,4 @@
-baseurl = "https://joel-becker.git.hub.io/"
+baseurl = "https://joel-becker.github.io/"
 title = "Joel Becker"
 theme = "hugo-coder"
 languagecode = "en"
@@ -19,19 +19,44 @@ disqusShortname = "yourdiscussshortname"
     description = "Joel Becker's website"
     keywords = "blog,developer,personal"
     avatarurl = "images/avatar.jpg"
+    #gravatar = "john.doe@example.com"
+    footercontent = "Enter a text here."
+
+    dateformat = "January 2, 2006"
 
     favicon_32 = "/img/favicon-32x32.png"
     favicon_16 = "/img/favicon-16x16.png"
-
-    #footercontent = "Enter a text here."
 
     hidecredits = true
     hidecopyright = true
 
     rtl = false
-
     math = true
-    custom_css = ["css/custom.css"]
+
+    # Use inverted colors
+    inverted = false
+
+    # Specify light/dark colorscheme
+    # Supported values:
+    # "auto" (use preference set by browser)
+    # "dark" (dark background, light foreground)
+    # "light" (light background, dark foreground) (default)
+    colorscheme = "auto"
+
+
+    # Series see also post count
+    maxSeeAlsoItems = 5
+
+    # Custom CSS
+    custom_css = []
+
+    # Custom JS
+    custom_js = []
+
+[taxonomies]
+    category = "categories"
+    series = "series"
+    tag = "tags"
 
 # Social links
 [[params.social]]
@@ -42,19 +67,29 @@ disqusShortname = "yourdiscussshortname"
 [[params.social]]
     name = "Twitter"
     icon = "fab fa-twitter fa-2x"
+    weight = 2
+    url = "https://twitter.com/joel_bkr/"
+[[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin"
     weight = 3
-    url = "https://twitter.com/joel-becker/"
+    url = "https://www.linkedin.com/in/joel-becker/"
 
 # Menu links
-[[menu.main]]
-    name = "About"
-    weight = 2
-    url = "/about/"
-[[menu.main]]
-    name = "Research"
-    weight = 3
-    url = "/research/"
-[[menu.main]]
-    name = "CV"
-    weight = 4
-    url = "/cv/"
+[menu]
+    [[menu.main]]
+        name = "About"
+        weight = 1
+        url = "/about/"
+    [[menu.main]]
+        name = "Research"
+        weight = 2
+        url = "/research/"
+    [[menu.main]]
+        name = "CV"
+        weight = 3
+        url = "/cv/"
+    [[menu.main]]
+        name = "Contact me"
+        weight = 4
+        url = "/contact/"
