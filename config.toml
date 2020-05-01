@@ -1,3 +1,60 @@
-baseURL = "https://joel-becker.git.hub.io/"
-languageCode = "en-us"
-title = "Joel Becker's site"
+baseurl = "https://joel-becker.git.hub.io/"
+title = "Joel Becker"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "yourdiscussshortname"
+
+[params]
+    author = "Joel Becker"
+    info = "Predoctoral Fellow, Harvard University and NBER"
+    description = "Joel Becker's website"
+    keywords = "blog,developer,personal"
+    avatarurl = "images/avatar.jpg"
+
+    favicon_32 = "/img/favicon-32x32.png"
+    favicon_16 = "/img/favicon-16x16.png"
+
+    #footercontent = "Enter a text here."
+
+    hidecredits = true
+    hidecopyright = true
+
+    rtl = false
+
+    math = true
+    custom_css = ["css/custom.css"]
+
+# Social links
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/joel-becker/"
+[[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter fa-2x"
+    weight = 3
+    url = "https://twitter.com/joel-becker/"
+
+# Menu links
+[[menu.main]]
+    name = "About"
+    weight = 2
+    url = "/about/"
+[[menu.main]]
+    name = "Research"
+    weight = 3
+    url = "/research/"
+[[menu.main]]
+    name = "CV"
+    weight = 4
+    url = "/cv/"
