@@ -1,20 +1,29 @@
 [build]
 publish = "public"
 command = "hugo --gc --minify"
+
 [context.production.environment]
-HUGO_VERSION = "0.56.3"
+HUGO_VERSION = "0.69.2"
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
-PHP_VERSION = "7.2"
+#PHP_VERSION = "7.2"
+
 [context.split1]
 command = "hugo --gc --minify --enableGitInfo"
+
 [context.split1.environment]
 HUGO_ENV = "production"
+
 [context.deploy-preview]
 command = "HUGO_BASEURL=$DEPLOY_PRIME_URL hugo --gc --minify --buildFuture"
+
 [context.deploy-preview.environment]
+
 [context.branch-deploy]
 command = "HUGO_BASEURL=$DEPLOY_PRIME_URL hugo --gc --minify"
+
 [context.branch-deploy.environment]
+HUGO_VERSION = "0.69.2"
+
 [context.next.environment]
 HUGO_ENABLEGITINFO = "true"
