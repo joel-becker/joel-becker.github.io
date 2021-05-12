@@ -1,0 +1,110 @@
+{{ define "main" }}
+
+  {{ partial "page-title.html" . }}
+
+{{ "<!-- publications -->" | safeHTML }}
+<div class="sec-publications page" id="publications">
+  <div class="container">
+    <div class="row wow fadeInUp">
+      <div class="col-12 text-center mb-3">
+        {{ with .Site.Data.publications }}
+        <h2>{{ .titleSM }}</h2>
+         {{ end }}
+      </div>
+      <div class="col-12">
+        {{ range first 3 .Site.Data.publications.publicationsItem }}
+        {{ "<!-- publications-item -->" | safeHTML }}
+        <div class="row pub-list">  
+          <div class="col-md-3 img-box"> 
+            <a href="{{ .pblink }}">   
+              <img src="{{ .pbimg | absURL }}">
+            </a>
+          </div>    
+          <div class="col-md-9 text-box">
+            <div class="pb-column-in">
+              <h4>{{ .pbname }}</h4>
+              <div class="pdf-link" id="show-more">
+                <a href="javascript:unhide('{{ .id }}');">Show/Hide Abstract</a>
+              </div>
+              <div class="hidden" id="{{ .id }}">
+                <p>{{ .content }}</p>    
+              </div>           
+              <div class="pdf-link">
+                <a href="{{ .pblink }}" target="_blank">View PDF</a>
+              </div>
+            </div>
+          </div>         
+        </div>
+         {{ end }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center mb-3 mt-10">
+        {{ with .Site.Data.workingpapers }}
+        <h2>{{ .titleSM }}</h2>
+         {{ end }}
+      </div>
+      <div class="col-12">
+        {{ range first 3 .Site.Data.workingpapers.publicationsItem }}
+        {{ "<!-- workingpapers-item -->" | safeHTML }}
+        <div class="row pub-list wow fadeInUp">  
+          <div class="col-md-3 img-box"> 
+            <a href="{{ .pblink }}">   
+              <img src="{{ .pbimg | absURL }}">
+            </a>
+          </div>    
+          <div class="col-md-9 text-box">
+            <div class="pb-column-in">
+              <h4>{{ .pbname }}</h4>
+              <div class="pdf-link" id="show-more">
+                <a href="javascript:unhide('{{ .id }}');">Show/Hide Abstract</a>
+              </div>
+              <div class="hidden" id="{{ .id }}">
+                <p>{{ .content }}</p>    
+              </div> 
+              <div class="pdf-link">
+                <a href="{{ .pblink }}" target="_blank">View PDF</a>
+              </div>
+            </div>
+          </div>         
+        </div>
+         {{ end }}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 text-center mb-3 mt-10">
+        {{ with .Site.Data.workinprogress }}
+        <h2>{{ .titleSM }}</h2>
+         {{ end }}
+      </div>
+      <div class="col-12">
+        {{ range first 3 .Site.Data.workinprogress.publicationsItem }}
+        {{ "<!-- workinprogress-item -->" | safeHTML }}
+        <div class="row pub-list wow fadeInUp">    
+          <div class="col-md-12 text-box">
+            <div class="pb-column-in">
+              <h4>{{ .pbname }}</h4>
+              <div class="pdf-link" id="show-more">
+                <a href="javascript:unhide('{{ .id }}');">Show/Hide Abstract</a>
+              </div>
+              <div class="hidden" id="{{ .id }}">
+                <p>{{ .content }}</p>    
+              </div> 
+              <div class="pdf-link">
+                <a href="{{ .pblink }}" target="_blank">View PDF</a>
+              </div>
+            </div>
+          </div>         
+        </div>
+         {{ end }}
+      </div>
+    </div>
+
+  </div>
+</div>
+ {{ "<!-- /publications -->" | safeHTML }}
+
+{{ end }}

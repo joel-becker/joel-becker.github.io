@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+{{ "<!-- blog details -->" | safeHTML }}
+<section class="section pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        {{ "<!-- post thumb -->" | safeHTML }}
+        <h2>{{ .Title }}</h2>
+        <div class="content">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{{ end }}

@@ -1,95 +1,48 @@
-baseurl = "https://joel-becker.github.io/"
-title = "Joel Becker"
-theme = "hugo-coder"
-languagecode = "en"
-defaultcontentlanguage = "en"
+# baseURL = "https://examplesite.com/"
+languageCode = "en-us"
+title = "Joe"
+theme = "bexar-hugo"
+summaryLength = "10"
+paginate = 6
 
-paginate = 20
-canonifyurls = true
+[outputs]
+  home = ["HTML", "AMP", "RSS", "JSON"]
+  page = ["HTML"]
 
-pygmentsstyle = "bw"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+# Plugins
+[params.plugins]
 
-disqusShortname = "yourdiscussshortname"
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "/plugins/bootstrap/bootstrap.css"
+  [[params.plugins.css]]
+  URL = "/plugins/fontawesome/font-awesome.min.css"
+  [[params.plugins.css]]
+  URL = "/plugins/animate/animate.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "/plugins/jQuery/jquery-2.0.0.min.js"
+  [[params.plugins.js]]
+  URL = "/plugins/bootstrap/bootstrap.bundle.min.js"
+  [[params.plugins.js]]
+  URL = "/plugins/wow/wow.min.js"
+
+
+
+# navigation
+[menu]
 
 [params]
-    author = "Joel Becker"
-    info = "Predoctoral Fellow, Harvard University and NBER"
-    description = "Joel Becker's website"
-    keywords = "blog,developer,personal"
-    avatarurl = "images/avatar.jpg"
-    #gravatar = "john.doe@example.com"
-    footercontent = "Enter a text here."
+logo = "/images/logo.png"
+logoAlt = "/images/logo-alt.png"
+home = "Home"
+# Meta data
+description = ""
+author = ""
+# Google Analitycs
+googleAnalitycsID = "Your ID"
 
-    dateformat = "January 2, 2006"
-
-    favicon_32 = "/img/favicon-32x32.png"
-    favicon_16 = "/img/favicon-16x16.png"
-
-    hidecredits = true
-    hidecopyright = true
-
-    rtl = false
-    math = true
-
-    # Use inverted colors
-    inverted = false
-
-    # Specify light/dark colorscheme
-    # Supported values:
-    # "auto" (use preference set by browser)
-    # "dark" (dark background, light foreground)
-    # "light" (light background, dark foreground) (default)
-    colorscheme = "auto"
-
-
-    # Series see also post count
-    maxSeeAlsoItems = 5
-
-    # Custom CSS
-    custom_css = []
-
-    # Custom JS
-    custom_js = []
-
-[taxonomies]
-    category = "categories"
-    series = "series"
-    tag = "tags"
-
-# Social links
-[[params.social]]
-    name = "Github"
-    icon = "fab fa-github fa-2x"
-    weight = 1
-    url = "https://github.com/joel-becker/"
-[[params.social]]
-    name = "Twitter"
-    icon = "fab fa-twitter fa-2x"
-    weight = 2
-    url = "https://twitter.com/joel_bkr/"
-[[params.social]]
-    name = "LinkedIn"
-    icon = "fab fa-linkedin"
-    weight = 3
-    url = "https://www.linkedin.com/in/joel-becker/"
-
-# Menu links
-[menu]
-    [[menu.main]]
-        name = "About"
-        weight = 1
-        url = "/about/"
-    [[menu.main]]
-        name = "Research"
-        weight = 2
-        url = "/research/"
-    [[menu.main]]
-        name = "CV"
-        weight = 3
-        url = "/cv/"
-    [[menu.main]]
-        name = "Contact me"
-        weight = 4
-        url = "/contact/"
+# copyright
+[params.copyright]
+copyright = "The CV Name [www.weburl.com](https://www.weburl.com) "

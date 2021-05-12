@@ -1,0 +1,13 @@
+navigation:
+
+  # - name : "Bio"
+  #   url : "/#bio"
+  # - name : "Academics"
+  #   url : "/#academics"
+  - name : "Publications"
+    url : "/#publications"
+  - name : "Contact"
+    url : "/#contact"
+  - name : "CV"
+    url : "/images/cv.pdf"
+

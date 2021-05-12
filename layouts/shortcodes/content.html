@@ -1,0 +1,20 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{- $borderColor := .Get "borderColor" -}}
+{{- $borderStyle := .Get "borderStyle" -}}
+{{- $backgroundColor := .Get "backgroundColor" -}}
+{{- $width := .Get "width" -}}
+<div class="img-content" style="margin-bottom:15px; border:3px {{$borderColor}} {{$borderStyle}}; {{if $borderColor}}padding:20px; background:{{$backgroundColor}}{{end}}; width: {{ $width}}; margin:20px auto; ">
+	{{- $src := .Get "src" -}}
+	{{- $class := .Get "class" -}}
+{{- with .Get "src" -}}
+	<span class="img-container {{$class}}">
+		<img src="{{$src}}" alt="image" class="img-fluid">
+	</span>
+{{- end }}
+
+	
+	<span class="content-container">
+		{{ .Inner  }}
+	</span>
+	<div class="clearfix"></div>
+</div>
