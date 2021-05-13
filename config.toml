@@ -1,6 +1,6 @@
 # baseURL = "https://examplesite.com/"
 languageCode = "en-us"
-title = "Joe"
+title = "Joel Becker"
 theme = "bexar-hugo"
 summaryLength = "10"
 paginate = 6

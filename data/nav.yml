@@ -5,7 +5,7 @@ navigation:
   # - name : "Academics"
   #   url : "/#academics"
   - name : "Publications"
-    url : "/#publications"
+    url : "/publications"
   - name : "Contact"
     url : "/#contact"
   - name : "CV"
