@@ -9129,15 +9129,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -12519,7 +12519,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -13038,14 +13038,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -13709,7 +13709,7 @@ div#notebook {
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="o">-</span><span class="n">__lnL</span><span class="p">)</span> <span class="c1"># return the negative value of the log-likelihood for minimization</span>
 
     <span class="c1">## form a guess</span>
-    <span class="n">__guess</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">__nE</span><span class="o">/</span><span class="n">__n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">__nU</span><span class="o">/</span><span class="n">__n</span><span class="p">),</span> 
+    <span class="n">__guess</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">__nE</span><span class="o">/</span><span class="n">__n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">__nU</span><span class="o">/</span><span class="n">__n</span><span class="p">),</span>
                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">__dfE</span><span class="p">[</span><span class="s1">&#39;wE&#39;</span><span class="p">])),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">__dfE</span><span class="p">[</span><span class="s1">&#39;wE&#39;</span><span class="p">]))]</span>
 
 
@@ -13750,15 +13750,15 @@ div#notebook {
     <span class="n">__Ψ_hat</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">__Θ_hat</span>
     <span class="n">__Ψ_hat</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>   <span class="o">=</span> <span class="n">__est_resWage</span>
     <span class="n">__Ψ_hat</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>   <span class="o">=</span> <span class="n">__b_hat</span>
-    
-    
+
+
     <span class="c1">### COMPUTE ADDITIONAL STATISTICS</span>
     <span class="n">__hU</span> <span class="o">=</span> <span class="n">__λ_hat</span><span class="o">*</span><span class="n">Ftilde</span><span class="p">(</span><span class="n">__θ_hat</span><span class="p">)</span>
     <span class="n">__EtU</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">__hU</span>
     <span class="n">__meanAccW</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_w</span> <span class="p">:</span> <span class="n">_w</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">_w</span><span class="p">,</span><span class="n">__θ_hat</span><span class="p">)</span><span class="o">/</span><span class="n">Ftilde</span><span class="p">(</span><span class="n">__θ_hat</span><span class="p">),</span> <span class="n">__est_resWage</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">__addStats</span> <span class="o">=</span> <span class="p">[</span><span class="n">__hU</span><span class="p">,</span> <span class="n">__EtU</span><span class="p">,</span> <span class="n">__meanAccW</span><span class="p">]</span>
-    
+
     <span class="k">return</span> <span class="n">__Ψ_hat</span><span class="p">,</span> <span class="n">__Θ_hat_se_str</span><span class="p">,</span> <span class="n">__Θ_hat_neg_lnL</span><span class="p">,</span> <span class="n">__addStats</span>
 </pre></div>
 
@@ -13835,7 +13835,7 @@ div#notebook {
     <span class="c1">## (iii) the mean accepted wage, </span>
     <span class="c1">#  taking into account the two effects just considered and holding else fixed</span>
     <span class="n">__meanAccW</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_w</span> <span class="p">:</span> <span class="n">_w</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">_w</span><span class="p">,</span> <span class="n">_Ψ_hat</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="o">/</span> <span class="n">Ftilde</span><span class="p">(</span><span class="n">__wRes</span><span class="p">),</span> <span class="n">__wRes</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    
+
     <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">__wRes</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">__hU</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">__EtU</span><span class="p">),</span> <span class="n">__meanAccW</span><span class="p">]</span>
 </pre></div>
 
@@ -13941,7 +13941,7 @@ div#notebook {
         <span class="s1">&#39;Est_TX&#39;</span><span class="p">:</span> <span class="n">TX_Ψ_hat</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span>
         <span class="s1">&#39;SE_TX&#39;</span> <span class="p">:</span> <span class="n">TX_Θ_hat_se</span><span class="p">,</span>
         <span class="s1">&#39;Est_P&#39;</span> <span class="p">:</span> <span class="n">Pooled_Ψ_hat</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span>
-        <span class="s1">&#39;SE_P&#39;</span>  <span class="p">:</span> <span class="n">Pooled_Θ_hat_se</span><span class="p">,</span>        
+        <span class="s1">&#39;SE_P&#39;</span>  <span class="p">:</span> <span class="n">Pooled_Θ_hat_se</span><span class="p">,</span>
        <span class="p">}</span>
 <span class="n">df_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
 
@@ -14037,7 +14037,7 @@ div#notebook {
             <span class="n">multicolumn_format</span> <span class="o">=</span> <span class="s2">&quot;c&quot;</span>
             <span class="p">)</span>
     <span class="p">)</span>
-    
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Table 1c: Other Select Estimates&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df_tab</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide_index</span><span class="p">())</span>
 
@@ -14364,7 +14364,7 @@ Table 3: LR Test Results
   </div>
 </body>
 
- 
+
 
 
 </html>
