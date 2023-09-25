@@ -92,19 +92,16 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center mb-3">
-        <h2 class="wow fadeInUp">Personal</h2>
+        <!-- Removed Personal title here -->
       </div>
       <div class="col-12">
         <!-- Sidebar for Categories -->
         <div class="col-md-3">
+          <p>Your additional text here.</p> <!-- Text above Categories -->
           <h3>Categories</h3>
-          <ul id="categoriesList">
-            <!-- Populated by JS -->
-          </ul>
-          <h3>Archive</h3>
-          <ul id="archive">
-            <!-- Archive links will be populated here -->
-          </ul>
+          <div id="categoriesList">
+            <!-- Categories and posts will be populated here -->
+          </div>
         </div>
         <!-- Main Content -->
         <div class="col-md-9">
@@ -126,11 +123,26 @@
   fetch('archive.json')
     .then(response => response.json())
     .then(data => {
-      let archiveHtml = '';
+      // Sort by Last Modified date
+      data.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
+      
+      let categories = {};
       data.forEach(post => {
-        archiveHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, Last Modified: ${post.lastModified}</li>`;
+        if (!categories[post.category]) {
+          categories[post.category] = [];
+        }
+        categories[post.category].push(post);
       });
-      document.getElementById('archive').innerHTML = archiveHtml;
+
+      let categoryHtml = '';
+      for (const [category, posts] of Object.entries(categories)) {
+        categoryHtml += `<h4>${category}</h4><ul>`;
+        posts.forEach(post => {
+          categoryHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+        });
+        categoryHtml += '</ul>';
+      }
+      document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
 
   // Function to load post

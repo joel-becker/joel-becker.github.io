@@ -1,14 +1,16 @@
 [
   {
-    "title": "Post 1", 
-    "date": "2023-10-01", 
-    "lastModified": "2023-10-02", 
-    "url": "post1.md"
+    "title": "Post 1",
+    "url": "post1.md",
+    "date": "2022-01-01",
+    "lastModified": "2022-01-02",
+    "category": "Tech"
   },
   {
-    "title": "Post 2", 
-    "date": "2023-10-02", 
-    "lastModified": "2023-10-03", 
-    "url": "post2.md"
+    "title": "Post 2",
+    "url": "post2.md",
+    "date": "2022-02-01",
+    "lastModified": "2022-02-02",
+    "category": "Life"
   }
 ]
