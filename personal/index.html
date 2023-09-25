@@ -111,29 +111,29 @@
     </div>
   </div>
 
-<!-- JavaScript to fetch and display archive and posts -->
+<!-- JavaScript to fetch and display archive and categories -->
 <script>
   // Fetch and display archive and categories
   fetch('archive.json')
     .then(response => response.json())
     .then(data => {
-      // Sort by Last Modified date
+      // Sort by last modified date
       data.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
-      
+
       let categories = {};
       let archiveHtml = '<ul>';
-      
+
       // Organize posts by categories and prepare archive
       data.forEach(post => {
-        const category = post.category || "Uncategorized";
+        const category = post.category || "Uncategorized";  // Handle undefined category
         if (!categories[category]) {
           categories[category] = [];
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
       });
-      
+
       archiveHtml += '</ul>';
       document.getElementById('archive').innerHTML = archiveHtml;
 
@@ -142,23 +142,13 @@
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
         });
         categoryHtml += '</ul>';
       }
 
       document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
-
-  // Function to load post
-  function loadPost(url) {
-    fetch(url)
-      .then(response => response.text())
-      .then(text => {
-        const html = marked(text);
-        document.getElementById('postContent').innerHTML = html;
-      });
-  }
 </script>
 
 <!-- ... Closing tags ... -->
