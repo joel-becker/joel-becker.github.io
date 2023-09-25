@@ -145,6 +145,14 @@
       document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
 
+    data.forEach(post => {
+      const category = post.category || "Uncategorized"; // Handle undefined
+      if (!categories[category]) {
+        categories[category] = [];
+      }
+      categories[category].push(post);
+    });
+
   // Function to load post
   function loadPost(url) {
     fetch(url)
