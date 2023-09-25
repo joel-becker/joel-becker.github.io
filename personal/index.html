@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us"><head>
+<html lang="en-us">
 <head>
   <meta charset="utf-8">
   <title>Personal</title>
-  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <!-- mobile responsive meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description for personal page.">
   
@@ -87,21 +85,18 @@
 </section>
 <!-- /page title -->
 
-<!-- personal -->
-<div class="sec-personal page" id="personal">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center mb-3">
-        <!-- Removed Personal title here -->
-      </div>
-      <div class="col-12">
+  <!-- personal -->
+  <div class="sec-personal page" id="personal">
+    <div class="container">
+      <div class="row">
         <!-- Sidebar for Categories -->
         <div class="col-md-3">
-          <p>Your additional text here.</p> <!-- Text above Categories -->
+          <p>Your additional text here.</p>  <!-- Text above Categories -->
           <h3>Categories</h3>
-          <div id="categoriesList">
+          <div id="categoriesList"></div>
             <!-- Categories and posts will be populated here -->
-          </div>
+          <h4>Archive</h4>
+          <div id="archive"></div> <!-- Placeholder for Archive -->
         </div>
         <!-- Main Content -->
         <div class="col-md-9">
@@ -115,11 +110,10 @@
       </div>
     </div>
   </div>
-</div>
 
 <!-- JavaScript to fetch and display archive and posts -->
 <script>
-  // Fetch and display archive
+  // Fetch and display archive and categories
   fetch('archive.json')
     .then(response => response.json())
     .then(data => {
@@ -127,13 +121,23 @@
       data.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
       
       let categories = {};
+      let archiveHtml = '<ul>';
+      
+      // Organize posts by categories and prepare archive
       data.forEach(post => {
-        if (!categories[post.category]) {
-          categories[post.category] = [];
+        const category = post.category || "Uncategorized";
+        if (!categories[category]) {
+          categories[category] = [];
         }
-        categories[post.category].push(post);
+        categories[category].push(post);
+        
+        archiveHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
       });
+      
+      archiveHtml += '</ul>';
+      document.getElementById('archive').innerHTML = archiveHtml;
 
+      // Prepare categories
       let categoryHtml = '';
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
@@ -142,15 +146,8 @@
         });
         categoryHtml += '</ul>';
       }
-      document.getElementById('categoriesList').innerHTML = categoryHtml;
-    });
 
-    data.forEach(post => {
-      const category = post.category || "Uncategorized"; // Handle undefined
-      if (!categories[category]) {
-        categories[category] = [];
-      }
-      categories[category].push(post);
+      document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
 
   // Function to load post
@@ -165,4 +162,5 @@
 </script>
 
 <!-- ... Closing tags ... -->
+</body>
 </html>
