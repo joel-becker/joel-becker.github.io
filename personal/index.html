@@ -9,7 +9,7 @@
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this is meta description for publications page.">
+  <meta name="description" content="this is meta description for personal page.">
   
   <meta name="generator" content="Hugo 0.84.2" />
 
@@ -55,7 +55,7 @@
             <ul class="navbar-nav mr-auto wow fadeInDown">
 
                   <li><a href=/publications>Publications</a></li>
-                  <li><a href=/personal>Personal</a></li>-->
+                  <li><a href=/personal>Personal</a></li>
                   <li><a href=/#contact>Contact</a></li>
                   <li><a href=/images/CV/CV_JoelBecker.pdf>CV</a></li>
 
@@ -78,7 +78,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent p-0">
             <li class="breadcrumb-item font-weight-semebold"><a class="text-green" href="../">Home</a></li>
-            <li class="breadcrumb-item font-weight-semebold active text-primary" aria-current="page">Publications</li>
+            <li class="breadcrumb-item font-weight-semebold active text-primary" aria-current="page">Personal</li>
           </ol>
         </nav>
       </div>
@@ -88,7 +88,7 @@
 <!-- /page title -->
 
 <!-- personal -->
-<div class="sec-publications page" id="personal">
+<div class="sec-personal page" id="personal">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center mb-3">
@@ -101,11 +101,13 @@
           <ul id="categoriesList">
             <!-- Populated by JS -->
           </ul>
+          <h3>Archive</h3>
+          <ul id="archive">
+            <!-- Archive links will be populated here -->
+          </ul>
         </div>
         <!-- Main Content -->
         <div class="col-md-9">
-          <!-- Link to Archive -->
-          <a href="archive.html">Archive</a>
           <!-- Posts -->
           <div class="row pub-list wow fadeInUp">
             <div class="col-md-12 text-box">
@@ -124,11 +126,10 @@
   fetch('archive.json')
     .then(response => response.json())
     .then(data => {
-      let archiveHtml = '<ul>';
+      let archiveHtml = '';
       data.forEach(post => {
         archiveHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, Last Modified: ${post.lastModified}</li>`;
       });
-      archiveHtml += '</ul>';
       document.getElementById('archive').innerHTML = archiveHtml;
     });
 
