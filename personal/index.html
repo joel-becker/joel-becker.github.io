@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personal</title>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="archive"></div>
+  <div id="post"></div>
+
+  <script>
+    // Fetch and display archive
+    fetch('archive.json')
+      .then(response => response.json())
+      .then(data => {
+        let archiveHtml = '<ul>';
+        data.forEach(post => {
+          archiveHtml += `<li><a href="#" onclick="loadPost('${post.url}')">${post.title}</a> - Posted: ${post.date}, Last Modified: ${post.lastModified}</li>`;
+        });
+        archiveHtml += '</ul>';
+        document.getElementById('archive').innerHTML = archiveHtml;
+      });
+
+    // Function to load post
+    function loadPost(url) {
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+          const html = marked(text);
+          document.getElementById('postContent').innerHTML = html;
+        });
+    }
+  </script>
+</body>
+</html>
