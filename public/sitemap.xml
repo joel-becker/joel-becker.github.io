@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://joel-becker.com/personal/post1/</loc>
+  </url><url>
+    <loc>https://joel-becker.com/personal/post2/</loc>
+  </url><url>
+    <loc>https://joel-becker.com/categories/</loc>
+  </url><url>
+    <loc>https://joel-becker.com/</loc>
+  </url><url>
+    <loc>https://joel-becker.com/personal/</loc>
+  </url><url>
+    <loc>https://joel-becker.com/tags/</loc>
+  </url>
+</urlset>
