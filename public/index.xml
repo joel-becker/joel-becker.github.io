@@ -6,23 +6,25 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test 1</title>
-      <link>https://joel-becker.com/personal/post1/</link>
-      <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
+      <title>My favorite passion fruit products</title>
+      <link>https://joel-becker.com/personal/passion-fruit/</link>
+      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://joel-becker.com/personal/post1/</guid>
-      <description>Test 1 Test 1</description>
+      <guid>https://joel-becker.com/personal/passion-fruit/</guid>
+      <description>This list is a work-in-progress. If you have any suggestions for passion fruit products for me to try, please send me a message.
+Passion Fruit - agua de maracuya
+This &amp;ldquo;Passion Fruit&amp;rdquo; is a smoothie place in La Condesa (CDMX) that sells, among other treats, passion fruit juice by the bucket. My favorite passion fruit product of all time! I love that it isn&amp;rsquo;t too sweetened, and that the seeds have separated from the juice.</description>
     </item>
     
     <item>
-      <title>Test 2</title>
-      <link>https://joel-becker.com/personal/post2/</link>
-      <pubDate>Mon, 25 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Test post</title>
+      <link>https://joel-becker.com/personal/test-post/</link>
+      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://joel-becker.com/personal/post2/</guid>
-      <description>Test 2 Test 2</description>
+      <guid>https://joel-becker.com/personal/test-post/</guid>
+      <description>Test Test</description>
     </item>
     
   </channel>
