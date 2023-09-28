@@ -1,3 +1,6 @@
 baseURL = "https://joel-becker.com/"
 languageCode = "en-us"
 title = "Joel Becker"
+
+[permalinks]
+personal = "/personal/:filename/"
