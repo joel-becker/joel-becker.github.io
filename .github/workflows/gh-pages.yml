@@ -18,13 +18,15 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          # extended: true
 
       - name: Build
         run: hugo --minify
+
+      - name: Merge Hugo public to root
+        run: rsync -av --exclude '.git/' public/ ./
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./
