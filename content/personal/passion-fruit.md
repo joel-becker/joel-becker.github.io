@@ -1,6 +1,7 @@
 ---
 title: "My favorite passion fruit products"
 date: 2023-09-28
+lastMod: 2023-09-29
 ---
 
 This list is a work-in-progress. If you have any suggestions for passion fruit products for me to try, send me a [message](https://joel-becker.com/#contact)!

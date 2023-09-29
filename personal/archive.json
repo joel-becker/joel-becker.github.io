@@ -2,14 +2,14 @@
   {
     "title": "My favorite passion fruit products", 
     "date": "2023-09-28", 
-    "lastModified": "2023-09-28", 
+    "lastmod": "2023-09-29", 
     "url": "/personal/passion-fruit/",
     "category": "Taste"
   },
   {
     "title": "Test post", 
     "date": "2023-09-28", 
-    "lastModified": "2023-09-28", 
+    "lastmod": "2023-09-28", 
     "url": "/personal/test-post/",
     "category": "Test"
   }

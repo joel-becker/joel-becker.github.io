@@ -16,11 +16,10 @@
   <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css ">
   <link rel="stylesheet" href="/plugins/animate/animate.css ">
 
-
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/scss/style.min.53ff68cb90dc1b86bdbd31e3266fe55ad04ff65d8e92c7b5049942e86af6932b.css" integrity="sha256-U/9oy5DcG4a9vTHjJm/lWtBP9l2Okse1BJlC6Gr2kys=" media="screen">
 
-  <!-- Spacing -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/spacing.css">
   <link rel="stylesheet" href="/css/lists.css">
 
@@ -74,6 +73,9 @@
       <div class="row">
         <div class="col-12">
           <h2 class="mb-3">{{ .Title }}</h2>
+          <i style="font-size: small; color: grey;">Created: {{ .Date.Format "January 2, 2006" }}</i>
+          <br>
+          <i style="font-size: small; color: grey;">Last Modified: {{ .Lastmod.Format "January 2, 2006" }}</i>
         </div>
       </div>
     </div>
