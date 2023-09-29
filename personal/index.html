@@ -94,11 +94,13 @@
     <div class="container">
       <div class="row">
         <!-- Sidebar for Categories -->
-        <div class="col-md-3">
+        <div class="col-md-9">
+          <br> <!-- Empty line -->
           <p>This page is a work in progress!</p>  <!-- Text above Categories -->
           <h3>Categories</h3>
           <div id="categoriesList"></div>
             <!-- Categories and posts will be populated here -->
+          <br> <!-- Empty line between Categories and Archive -->
           <h3>Archive</h3>
           <div id="archive"></div> <!-- Placeholder for Archive -->
         </div>
@@ -106,7 +108,7 @@
         <div class="col-md-9">
           <!-- Posts -->
           <div class="row pub-list wow fadeInUp">
-            <div class="col-md-12 text-box">
+            <div class="col-md-9 text-box">
               <div id="postContent"></div>
             </div>
           </div>
@@ -123,10 +125,10 @@
     .then(data => {
       // Sort by last modified date
       data.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
-
+    
       let categories = {};
       let archiveHtml = '<ul>';
-
+      
       // Organize posts by categories and prepare archive
       data.forEach(post => {
         const category = post.category || "Uncategorized";  // Handle undefined category
@@ -135,22 +137,22 @@
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a></li>`;
       });
-
+    
       archiveHtml += '</ul>';
       document.getElementById('archive').innerHTML = archiveHtml;
-
+    
       // Prepare categories
       let categoryHtml = '';
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h5>${category}</h5><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a></li>`;
         });
         categoryHtml += '</ul>';
       }
-
+    
       document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
 </script>
