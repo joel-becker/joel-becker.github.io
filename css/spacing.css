@@ -1,0 +1,9 @@
+/* Shorten title section */
+.section.bg-cover.overlay {
+  padding: 20px 0;  /* Adjust values as needed */
+}
+
+/* Increase whitespace */
+.text-box {
+  padding-top: 40px;  /* Adjust values as needed */
+}
