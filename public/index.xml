@@ -6,7 +6,27 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Favorite Things</title>
+      <link>https://joel-becker.com/favorite-things/favorite-things/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/favorite-things/favorite-things/</guid>
+      <description>Test Test.
+YouTube Video Below Airtable This is the text that will appear above the YouTube video.</description>
+    </item>
+    
+    <item>
+      <title>Fitness advice for someone exactly like me</title>
+      <link>https://joel-becker.com/personal/fitness-advice/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/fitness-advice/</guid>
+      <description>I&amp;rsquo;m occasionally asked for fitness advice. (Credentials at the end.) Here it is, with one small caveat: for best results, you should be exactly like me. I am not promising methods that fit most people&amp;rsquo;s goals! My advice might be helpful to the extent that you:
+Care about appearances at least as much as other fitness goals (health, flexibility, strength, etc.). Are happy to do non-weightlifting sports no more than twice per week.</description>
+    </item>
+    
     <item>
       <title>My favorite passion fruit products</title>
       <link>https://joel-becker.com/personal/passion-fruit/</link>
@@ -24,6 +44,54 @@ Passion Fruit - agua de maracuya This &amp;ldquo;Passion Fruit&amp;rdquo; is a s
       
       <guid>https://joel-becker.com/personal/test-post/</guid>
       <description>Test Test</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/cafes-to-exist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/cafes-to-exist/</guid>
+      <description>One day, once I have long-term security in where I live, I want to open a series of cafes.
+Sauna and ice baths cafe. Dog cafe. Plant shop cafe. Austrian delicatessen-cafe. Napolitan cafe. </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/london-recommendations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/london-recommendations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/perfect-day/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/perfect-day/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/things-to-buy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/things-to-buy/</guid>
+      <description>Following many others, here are some things I recommend buying because they give me considerably more value than I paid for them.
+US immigration lawyers
+Dungarees
+Spare laptop batteries
+Many replacement chargers
+Large pill box
+Cerave skincare products
+Fulfil bars
+Only the ~200 calorie ones; the ~150 calorie ones are crap imitations.
+Yogurt with great macros
+Trampolining
+Sauna and ice baths</description>
     </item>
     
   </channel>
