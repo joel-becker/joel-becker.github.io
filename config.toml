@@ -4,3 +4,8 @@ title = "Joel Becker"
 
 [permalinks]
 personal = "/personal/:filename/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
