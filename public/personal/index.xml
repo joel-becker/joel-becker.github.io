@@ -6,7 +6,18 @@
     <description>Recent content in Personals on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/personal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/personal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Favorite Things</title>
+      <link>https://joel-becker.com/personal/favorite-things/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/favorite-things/</guid>
+      <description>These are a few of my favorite things.
+Using this table, you can browse:
+My product recommendations. My favorite holiday spots. My favorite passion fruit-based product finds. And much more besides. Please get in touch if you share a love for something on this list or have a recommendation!</description>
+    </item>
+    
     <item>
       <title>Fitness advice for someone exactly like me</title>
       <link>https://joel-becker.com/personal/fitness-advice/</link>

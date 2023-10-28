@@ -2,32 +2,32 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <title>{{ .Title }}</title>
+  <title>My Favorite Things</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- mobile responsive meta -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="{{ .Description | default "this is meta description for single page."}}">
+  <meta name="description" content="this is meta description for single page.">
   
   <meta name="generator" content="Hugo 0.84.2" />
 
-  <!-- plugins -->
+  
   <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.css ">
   <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css ">
   <link rel="stylesheet" href="/plugins/animate/animate.css ">
 
-  <!-- Main Stylesheet -->
+  
   <link rel="stylesheet" href="/scss/style.min.53ff68cb90dc1b86bdbd31e3266fe55ad04ff65d8e92c7b5049942e86af6932b.css" integrity="sha256-U/9oy5DcG4a9vTHjJm/lWtBP9l2Okse1BJlC6Gr2kys=" media="screen">
 
-  <!-- Custom CSS -->
+  
   <link rel="stylesheet" href="/css/spacing.css">
   <link rel="stylesheet" href="/css/lists.css">
 
-  <!--Favicon-->
+  
   <link rel="shortcut icon" href="images/favicon.png " type="image/x-icon">
   <link rel="icon" href="images/favicon.png " type="image/x-icon">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165204758-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -66,34 +66,44 @@
   </div>
   </header>
 
-  <!-- page title -->
+  
   <section class="section bg-cover overlay">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="mb-3">{{ .Title }}</h2>
-          <i style="font-size: small; color: grey;">Created: {{ .Date.Format "January 2, 2006" }}</i>
+          <h2 class="mb-3">My Favorite Things</h2>
+          <i style="font-size: small; color: grey;">Created: October 22, 2023</i>
           <br>
-          <i style="font-size: small; color: grey;">Last Modified: {{ .Lastmod.Format "January 2, 2006" }}</i>
+          <i style="font-size: small; color: grey;">Last Modified: October 28, 2023</i>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- main content -->
+  
   <div class="sec-page page" id="page">
     <div class="container">
       <div class="row">
-        <!-- Sidebar for Categories -->
+        
         <div class="col-md-3">
-          <!-- Categories and Archive will be populated dynamically -->
+          
         </div>
-        <!-- Main Content -->
+        
         <div class="col-md-9">
           <div class="row pub-list wow fadeInUp">
             <div class="col-md-9 text-box">
-              <br> <!-- Empty line -->
-              {{ .Content }}
+              <br> 
+              <p><a href="https://www.youtube.com/watch?v=2G6dd7ikrXs">These are a few of my favorite things</a>.</p>
+<iframe class="airtable-embed" src="https://airtable.com/embed/appSHZWG5rZ82v59a/shrFEzaIFmK76FNV1?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+<p>Using this table, you can browse:</p>
+<ol>
+<li>My product recommendations.</li>
+<li>My favorite holiday spots.</li>
+<li>My favorite passion fruit-based product finds.</li>
+<li>And much more besides.</li>
+</ol>
+<p>Please <a href="https://joel-becker.com/#contact">get in touch</a> if you share a love for something on this list or have a recommendation!</p>
+
             </div>
           </div>
         </div>
@@ -101,9 +111,9 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <!-- ... Your existing JavaScript ... -->
+  
+  
 
-  <!-- ... Closing tags ... -->
+  
 </body>
 </html>
