@@ -90,7 +90,7 @@
     <div class="container">
       <div class="row">
         <!-- Sidebar for Categories -->
-        <div class="col-md-3">
+        <div class="col-md-8">
           <p>Work in progress!</p>  <!-- Text above Categories -->
           <h2>Categories</h2>
           <div id="categoriesList"></div>
@@ -131,7 +131,7 @@
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastmod || 'N/A'}</li>`;
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod || 'N/A'})</li>`;
       });
 
       archiveHtml += '</ul>';
@@ -142,7 +142,7 @@
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastmod || 'N/A'}</li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod || 'N/A'})</li>`;
         });
         categoryHtml += '</ul>';
       }
