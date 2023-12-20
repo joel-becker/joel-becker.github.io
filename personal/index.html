@@ -131,7 +131,7 @@
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastMod || 'N/A'}</li>`;
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastmod || 'N/A'}</li>`;
       });
 
       archiveHtml += '</ul>';
@@ -142,7 +142,7 @@
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastMod || 'N/A'}</li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Last Modified: ${post.lastmod || 'N/A'}</li>`;
         });
         categoryHtml += '</ul>';
       }

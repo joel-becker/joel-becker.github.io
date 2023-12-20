@@ -99,9 +99,9 @@ I still think it was reasonable to be worried about both of these things. It rea
 
 ## I’m a bit worried about how the regrantor model scales
 
-I expect more quickly diminishing returns within the grantmaking of a given regrantor than I would for a more centralized operation. This is principally because independent regrantors have more limited deal flow, making their early grants look unusually strong. (Perhaps this wouldn’t be true if Manifund received many more project applications. I would guess that, at present, the majority of funded projects are first discovered by regrantors outside the platform.)
+I expect more quickly diminishing returns within the grantmaking of a given regrantor than I would for a more centralized operation. This is principally because independent regrantors have more limited deal flow, making their early grants look unusually strong. (Perhaps this wouldn’t be true if Manifund received many more project applications. I would guess that, at present, the majority of funded projects are first discovered by regrantors *outside* the platform.)
 
-(I am more bearish on other possible reasons for skepticism — diminishing deal flow or judgment between regrantors, challenges due to part-time grantmaking, best regrantors having high opportunity cost.)
+(I am more bearish on other possible reasons for skepticism — diminishing deal flow or judgment *between* regrantors, challenges due to part-time grantmaking, best regrantors having high opportunity cost.)
 
 ## Still, I love Manifund
 
