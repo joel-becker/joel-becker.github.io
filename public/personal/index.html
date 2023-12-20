@@ -117,8 +117,8 @@
   fetch('archive.json')
     .then(response => response.json())
     .then(data => {
-      // Sort by last modified date
-      data.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
+      // Sort by date in reverse chronological order
+      data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       let categories = {};
       let archiveHtml = '<ul>';
@@ -131,7 +131,7 @@
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, Last Modified: ${post.lastModified || 'N/A'}</li>`;
       });
 
       archiveHtml += '</ul>';
@@ -142,7 +142,7 @@
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, <span style='white-space: nowrap;'>Last Modified: ${post.lastModified}</span></li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a> - Posted: ${post.date}, Last Modified: ${post.lastModified || 'N/A'}</li>`;
         });
         categoryHtml += '</ul>';
       }
