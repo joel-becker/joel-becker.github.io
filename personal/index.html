@@ -91,11 +91,10 @@
       <div class="row">
         <!-- Sidebar for Categories -->
         <div class="col-md-8">
-          <p>Work in progress!</p>  <!-- Text above Categories -->
           <h2>Categories</h2>
           <div id="categoriesList"></div>
             <!-- Categories and posts will be populated here -->
-          <h2>Archive</h2>
+          <h2 style="margin-top: 20px;">Archive</h2>
           <div id="archive"></div> <!-- Placeholder for Archive -->
         </div>
         <!-- Main Content -->
@@ -113,6 +112,13 @@
 
 <!-- JavaScript to fetch and display archive and categories -->
 <script>
+  // Function to format date as "{month name} {year}"
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { month: 'long', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
+
   // Fetch and display archive and categories
   fetch('archive.json')
     .then(response => response.json())
@@ -131,7 +137,8 @@
         }
         categories[category].push(post);
         
-        archiveHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod || 'N/A'})</li>`;
+        // Use formatDate function to format date
+        archiveHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod ? formatDate(post.lastmod) : 'N/A'})</li>`;
       });
 
       archiveHtml += '</ul>';
@@ -142,7 +149,7 @@
       for (const [category, posts] of Object.entries(categories)) {
         categoryHtml += `<h4>${category}</h4><ul>`;
         posts.forEach(post => {
-          categoryHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod || 'N/A'})</li>`;
+          categoryHtml += `<li><a href="${post.url}">${post.title}</a> (last modified: ${post.lastmod ? formatDate(post.lastmod) : 'N/A'})</li>`;
         });
         categoryHtml += '</ul>';
       }
