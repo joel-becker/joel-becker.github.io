@@ -11,7 +11,7 @@
     "date": "2023-10-22", 
     "lastmod": "2023-10-28", 
     "url": "/personal/favorite-things/",
-    "category": "Favorites"
+    "category": "Taste"
   },
   {
     "title": "The best workout split: posterior-anterior", 
@@ -37,7 +37,7 @@
   {
     "title": "Cafés I want to exist", 
     "date": "2023-12-19", 
-    "lastmod": "2023-12-19", 
+    "lastmod": "2023-12-29", 
     "url": "/personal/cafes-to-exist/",
     "category": "Taste"
   },
@@ -46,6 +46,13 @@
     "date": "2023-12-20", 
     "lastmod": "2023-12-20", 
     "url": "/personal/regrantor/",
-    "category": "Judgment"
+    "category": "Professional-ish"
+  },
+  {
+    "title": "The cost of an O-1 visa", 
+    "date": "2023-12-29", 
+    "lastmod": "2023-12-30", 
+    "url": "/personal/cost-of-o1/",
+    "category": "Professional-ish"
   }
 ]
