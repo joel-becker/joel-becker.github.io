@@ -1,5 +1,5 @@
 ---
-title: "O-1"
+title: "The cost of an O-1 visa"
 date: 2023-11-14
 lastMod: 2023-12-29
 ---
