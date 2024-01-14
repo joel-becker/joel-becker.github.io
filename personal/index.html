@@ -7,7 +7,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this is meta description for personal page.">
+  <meta name="description" content="Personal content.">
   
   <meta name="generator" content="Hugo 0.84.2" />
 
@@ -88,6 +88,13 @@
   <div class="sec-personal page" id="personal">
     <div class="container">
       <div class="row">
+        <!-- Sidebar for description of personal page -->
+        <div class="col-md-8">
+          <p>
+            This is my scrappy, dishevelled 
+            <a href="https://maggieappleton.com/garden-history" target="_blank">digital garden</a>.
+          </p>
+        </div>
         <!-- Sidebar for Categories -->
         <div class="col-md-8">
           <h2>Categories</h2>
@@ -123,7 +130,7 @@
     .then(response => response.json())
     .then(data => {
       // Sort by date in reverse chronological order
-      data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      data.sort((a, b) => new Date(b.lastmod) - new Date(a.lastmod));
 
       let categories = {};
       let archiveHtml = '<ul>';
