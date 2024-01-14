@@ -131,25 +131,26 @@
     .then(data => {
       // Sort by date in reverse chronological order
       data.sort((a, b) => new Date(b.lastmod) - new Date(a.lastmod));
-
+    
       let categories = {};
       let archiveHtml = '<ul>';
-
+      
       // Organize posts by categories and prepare archive
       data.forEach(post => {
-        const category = post.category || "Uncategorized";  // Handle undefined category
-        if (!categories[category]) {
-          categories[category] = [];
-        }
-        categories[category].push(post);
+        const postCategories = post.category || ["Uncategorized"];  // Handle undefined or empty category
+        postCategories.forEach(category => {
+          if (!categories[category]) {
+            categories[category] = [];
+          }
+          categories[category].push(post);
+        });
         
-        // Use formatDate function to format date
         archiveHtml += `<li><a href="${post.url}">${post.title}</a> (modified: ${post.lastmod ? formatDate(post.lastmod) : 'N/A'})</li>`;
       });
-
+    
       archiveHtml += '</ul>';
       document.getElementById('archive').innerHTML = archiveHtml;
-
+    
       // Prepare categories
       let categoryHtml = '';
       for (const [category, posts] of Object.entries(categories)) {
@@ -159,7 +160,7 @@
         });
         categoryHtml += '</ul>';
       }
-
+    
       document.getElementById('categoriesList').innerHTML = categoryHtml;
     });
 </script>
