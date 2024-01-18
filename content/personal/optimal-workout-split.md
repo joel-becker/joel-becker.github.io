@@ -1,10 +1,10 @@
 ---
 title: "Optimal workout split"
 date: 2023-10-29
-lastMod: 2023-10-29
+lastMod: 2024-01-18
 ---
 
-You've transcended beyond the novitiate aches of weightlifting, mastering the discipline to endure 4+ sessions weekly. Now, how should you best split exercises across days?
+You've transcended the novitiate aches of weightlifting, enduring 4+ sessions weekly. How should you now split exercises across days?
 
 My answer is: use the **posterior-anterior split**. One day for the muscles used in a deadlift (back, hamstrings, glutes) plus biceps, one day for more-or-less everything else (chest, front- and side-delts, triceps, quads, hip flexors).
 

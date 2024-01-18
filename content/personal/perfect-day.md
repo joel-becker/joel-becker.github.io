@@ -1,7 +1,7 @@
 ---
 title: "Perfect Day"
 date: 2023-11-14
-lastMod: 2023-12-19
+lastMod: 2024-01-18
 ---
 
 The 4th of the famous [36 questions for falling in love](https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html) is: "What would constitute a 'perfect' day for you?" On September 10th, 2023, I attempted to live out my answer.
@@ -28,7 +28,7 @@ The message to friends read, with minor edits:
 
 ## Activities
 
-Of course, constraints prevented me from including a bunch of activities in the day. These include:
+Constraints prevented me from including a bunch of activities in the day. These include:
 
 1. Music jam.
 2. Karaoke.
@@ -50,10 +50,10 @@ I've booked the private sauna and ice baths a couple of times since the event. Â
 
 Trampolining, alas, is too far away to regularly bother with.
 
-Piano hopping was much more lame than I expected. (And I love playing and singing for crowds.) I think the crowd having shared enjoyment and context was the missing piece.
+Piano hopping was much more lame than I expected. (And I love playing and singing for crowds.) I think the missing piece was the crowd having shared context.
 
 ## Planning challenges
 
-The hardest aspect of planning the day was getting the geography right. Ignoring this, arranging ideal activities in preferred order regardless of geography, would have led to costly travel and a much more empty schedule.
+The hardest aspect of planning the day was getting the geography right. Ignoring this (arranging ideal activities in preferred order regardless of geography) would have led to costly travel and a much more empty schedule.
 
 This event might have been significantly harder to pull off if I had not been prepared to pay for the entire thing myself. In the end, I more or less did pay for everything, but note that what matters is only the worst-case _commitment_ to paying. Money makes coordinating people to be in the same place at the same time much easier -- once coordinated, people are happier to pay! I could have been firmer about tracking expense shares and following up on this, without making the event noticeably worse.
