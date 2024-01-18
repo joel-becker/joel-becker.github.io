@@ -1,7 +1,7 @@
 ---
-title: "Some new types of friends I'd like to make"
+title: "Some types of friends I'd like to make"
 date: 2024-01-14
-lastMod: 2024-01-14
+lastMod: 2024-01-18
 ---
 
 1. Friend that complements existing hobbies. 
