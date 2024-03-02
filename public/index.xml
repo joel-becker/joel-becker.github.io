@@ -6,7 +6,18 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ignoring the future when valuing time</title>
+      <link>https://joel-becker.com/personal/ignoring-the-future/</link>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/ignoring-the-future/</guid>
+      <description>Let’s suppose that all hours are equivalently valuable, and that you can easily earn more money by working more hours. There is still one more problem with valuing your time at your current average wage: not appropriately accounting for future benefits and costs.
+Consider the following model of career progression:
+In year $0$, you are paid $$X$ (in nominal terms). In year $1$, you are paid $$(X + W)$, or $$(X + W) \times R^{-1}$ in real terms.</description>
+    </item>
+    
     <item>
       <title>3 Mistakes When Valuing Time</title>
       <link>https://joel-becker.com/personal/mistakes-valuing-time/</link>
@@ -107,7 +118,9 @@ Here, diet-in-reality is largely determined by &amp;rsquo;the kind of person you
       <pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://joel-becker.com/personal/memeing-myself/</guid>
-      <description>soccer american work ethic loving america exercise</description>
+      <description>soccer american work ethic loving america exercise good at first dates
+what&amp;rsquo;s the theme here?
+different types of memeing oneself (intentional, external circumstances, &amp;hellip;) describing internal experience of memeing oneself something about meta-preferences something about limits of memeing oneself </description>
     </item>
     
     <item>
@@ -128,6 +141,23 @@ Please only attend the parts of the day that speak to you, and RSVP if you will 
       
       <guid>https://joel-becker.com/personal/planning-my-funeral/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Scope-sensitive personal finance</title>
+      <link>https://joel-becker.com/personal/scope-sensitive-personal-finance/</link>
+      <pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/scope-sensitive-personal-finance/</guid>
+      <description>Scope-sensitivity is one of my favorite ideas.
+In this post, I will apply the concept to personal finance. The idea to do this is entirely due to my friend Arden. I&amp;rsquo;m just writing it down.
+I&amp;rsquo;ll survey some options, then discuss what I take from them.
+Options Transportation Food Consumer goods Finance Work [ANALYSIS]
+best allocation for me
+best allocation as function of cost of time
+[TAKEAWAYS]
+[NOTES]
+wait, work seems like odd one out.</description>
     </item>
     
     <item>
@@ -176,6 +206,26 @@ For transparency, I should note a stronger, less confident belief of mine that I
     
     <item>
       <title></title>
+      <link>https://joel-becker.com/personal/my-heroes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/my-heroes/</guid>
+      <description>I try to leave people off of my favourite things list.
+Gareth Bale Alice Evans Cate Hall Derek Parfit </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/shaping-dayjectory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/shaping-dayjectory/</guid>
+      <description>Suppose you agree with me that discussion of the &amp;ldquo;value of time&amp;rdquo; is ridden with conceptual confusion.
+you seek a better way see conceptual confusion 1 notice that even if you can state how much better an hour of your time will be with friends vs alone, at cafe vs office, etc., you don&amp;rsquo;t know which hour this is occurring during toby has framework for this! Toby Ord presents a simple mathematical framework for understanding how reducing existential risk compares with other ways of influencing the longterm future.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://joel-becker.com/personal/time-money-dynamic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -183,6 +233,28 @@ For transparency, I should note a stronger, less confident belief of mine that I
       <description>A dynamic model of time-money trade-offs People who make somewhat explicit time-money trade-offs often use something like their average wage as a proxy for the price at which they are indifferent between spending money to save an hour and spending an hour to save money.
 This is a reasonable start, but I think it&amp;rsquo;s mistaken for at least 3 reasons:
 Most people cannot earn an extra one hours of wages by working one hour more.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/time-value-differs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/time-value-differs/</guid>
+      <description>When you purchase an hour of time, it is not immediately obvious how much value you get, because (1) different hours have different value, and (2) it is not always clear which hour you are purchasing.
+Different hours have different value Ways in which an hour can be more valuable to you include:
+Time of day: morning, evening. Social context: with friends, with family, with strangers, alone. Location: at home, at work, at an art studio, on a beach, in a hospital.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://joel-becker.com/personal/trajectory-makes-sense/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/trajectory-makes-sense/</guid>
+      <description>The standard model of valuing time is ridden with conceptual confusion, and can easily lead to naive misvaluations of the true value of time.
+Is there a better alternative?
+One possibility is to borrow from Toby Ord&amp;rsquo;s framework for thinking about shaping the value of humanity&amp;rsquo;s longterm trajectory. Ord presents a framework</description>
     </item>
     
   </channel>
