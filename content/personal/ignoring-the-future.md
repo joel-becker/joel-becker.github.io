@@ -8,21 +8,21 @@ Let’s suppose that all hours are equivalently valuable, and that you can easil
 
 Consider the following model of career progression:
 
-- In year \(0\), you are paid \(\$X\) (in nominal terms).
-- In year \(1\), you are paid \(\$(X + W)\), or \(\$(X + W) \times R^{-1}\) in real terms.
-- In year \(t\), you are paid \(\$(X + W \times t)\), or \(\$(X + W \times t) \times R^{-t}\) in real terms.
+- In year \\(0\\), you are paid \\(\$X\\) (in nominal terms).
+- In year \\(1\\), you are paid \\(\$(X + W)\\), or \\(\$(X + W) \times R^{-1}\\) in real terms.
+- In year \\(t\\), you are paid \\(\$(X + W \times t)\\), or \\(\$(X + W \times t) \times R^{-t}\\) in real terms.
 
-This dumb model produces income paths that aren’t so dissimilar from (my memory of) typical US income paths, at least for reasonable values of \(W\) and \(R\).
+This dumb model produces income paths that aren’t so dissimilar from (my memory of) typical US income paths, at least for reasonable values of \\(W\\) and \\(R\\).
 
 ![](../../images/personal/ignoring-the-future/1.png)
 
-In this model, lifetime income from \(t=0\) onwards is given by \(\sum_{t=0}^T \$(X + W \times t) \times R^{-t}\).
+In this model, lifetime income from \\(t=0\\) onwards is given by \\(\sum_{t=0}^T \$(X + W \times t) \times R^{-t}\\).
 
-Now, let’s say you have the option to work \(H\) hours more for 1 year, which would earn you a promotion associated with earning an extra \(H \times W / 500\) next year. Further, due to the persistence of career capital, promotion raises are persistent: you will get the \(H \times W / 500\) each year until retirement.
+Now, let’s say you have the option to work \\(H\\) hours more for 1 year, which would earn you a promotion associated with earning an extra \\(H \times W / 500\\) next year. Further, due to the persistence of career capital, promotion raises are persistent: you will get the \\(H \times W / 500\\) each year until retirement.
 
 How much is this opportunity worth? 
 
-From the perspective of \(t=0\), the additional income from \(t=s\) onwards is worth \(\sum_{t=s}^T (H \times W / 500) \times R^{-t}\). For \(W=6,000\), \(R=1.03\), additional income as a function of \(s\) and \(H\) is as in the heat map below.[^1]
+From the perspective of \\(t=0\\), the additional income from \\(t=s\\) onwards is worth \\(\sum_{t=s}^T (H \times W / 500) \times R^{-t}\\). For \\(W=6,000\\), \\(R=1.03\\), additional income as a function of \\(s\\) and \\(H\\) is as in the heat map below.[^1]
 
 ![](../../images/personal/ignoring-the-future/2.png)
 
@@ -30,7 +30,7 @@ Early in your career, on this model, an extra $30,000 in lifetime income looks a
 
 Previously, following conventional practice, you might have used current hourly wage as a proxy for the value of time. Let’s call this $20, as implied above.
 
-Now, you see an additional \(\$30,000 / 100 = \$300\) gross benefit _per extra hour you work early in your career_.
+Now, you see an additional \\(\$30,000 / 100 = \$300\\) gross benefit _per extra hour you work early in your career_.
 
 So, shouldn’t your value of time be closer to $320, 16x higher than your earlier guess?
 
