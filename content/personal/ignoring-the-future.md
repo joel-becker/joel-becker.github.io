@@ -43,10 +43,8 @@ I can see a couple of reasons why this might be too aggressive:
 
 Fair enough. But the logic feels directionally correct; **not appropriately accounting for future benefits and costs can lead to significant miscalculations of the value of your time**.
 
-[^1]: 
-
-There are two further implications of this model to draw attention to.
-
-First, increasing work hours earlier has dramatic returns. See [Sam Altman's advice on work-life balance in your 20's](https://youtu.be/sYMqVwsewSg?si=dq48FVj9DlsssBas&t=219).
-
-Second, your inability to adjust on the intensive margin of hours is not a big deal in practice, at least not early in your career, because most benefits from working harder are realized in the future.
+[^1]: There are two further implications of this model to draw attention to.
+  
+  First, increasing work hours earlier has dramatic returns. See [Sam Altman's advice on work-life balance in your 20's](https://youtu.be/sYMqVwsewSg?si=dq48FVj9DlsssBas&t=219).
+  
+  Second, your inability to adjust on the intensive margin of hours is not a big deal in practice, at least not early in your career, because most benefits from working harder are realized in the future.
