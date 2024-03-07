@@ -6,7 +6,18 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Different hours have different value</title>
+      <link>https://joel-becker.com/personal/hours-have-different-value/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/personal/hours-have-different-value/</guid>
+      <description>When you purchase an hour of time, it is not immediately obvious how much value you get, because (1) different hours have different value, and (2) it is not always clear which hour you are purchasing.
+Different hours have different value Ways in which an hour can be more valuable to you include:
+Time of day: morning, evening. Social context: with friends, with family, with strangers, alone. Location: at home, at work, at an art studio, on a beach, in a hospital.</description>
+    </item>
+    
     <item>
       <title>Ignoring the future when valuing time</title>
       <link>https://joel-becker.com/personal/ignoring-the-future/</link>
@@ -19,13 +30,13 @@ In year \(0\), you are paid \($X\) (in nominal terms). In year \(1\), you are pa
     </item>
     
     <item>
-      <title>3 Mistakes When Valuing Time</title>
+      <title>2 Mistakes When Valuing Time</title>
       <link>https://joel-becker.com/personal/mistakes-valuing-time/</link>
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       
       <guid>https://joel-becker.com/personal/mistakes-valuing-time/</guid>
       <description>People who make somewhat explicit time-money trade-offs often use something like their average wage as a proxy for the &amp;ldquo;value of time&amp;rdquo; &amp;ndash; the price at which they are indifferent between spending money to save an hour and spending an hour to save money.
-This is a reasonable start, but I think it&amp;rsquo;s mistaken, for at least 3 reasons:
+This is a reasonable start, but I think it&amp;rsquo;s mistaken, for at least 2 important reasons:
 The value of a purchased hour depends on more than just wage level.</description>
     </item>
     

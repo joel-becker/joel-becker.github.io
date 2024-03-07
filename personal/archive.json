@@ -77,9 +77,9 @@
     "category": ["Thinking clearly"]
   },
   {
-    "title": "3 Mistakes When Valuing Time", 
+    "title": "2 Mistakes When Valuing Time", 
     "date": "2024-02-09", 
-    "lastmod": "2024-02-09", 
+    "lastmod": "2024-03-06", 
     "url": "/personal/mistakes-valuing-time/",
     "category": ["Thinking clearly"]
   },
@@ -88,6 +88,13 @@
     "date": "2024-03-02", 
     "lastmod": "2024-03-02", 
     "url": "/personal/ignoring-the-future/",
+    "category": ["Thinking clearly"]
+  },
+  {
+    "title": "Different hours have different value", 
+    "date": "2024-03-06", 
+    "lastmod": "2024-03-06", 
+    "url": "/personal/hours-have-different-value/",
     "category": ["Thinking clearly"]
   }
 ]
