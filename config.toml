@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Joel Becker"
 
 [permalinks]
-personal = "/personal/:filename/"
+digital-garden = "/digital-garden/:filename/"
 
 [markup]
   [markup.goldmark]

@@ -5,7 +5,7 @@ lastMod: 2023-12-29
 ---
 
 1. Sauna and ice baths cafe. (Found something like this in Prague.)
-2. Dog cafe. ([Boris and Horton](/Users/joel/projects/joel-becker.github.io/content/personal/cafes-to-exist.md), NYC.)
+2. Dog cafe. ([Boris and Horton](/Users/joel/projects/joel-becker.github.io/content/digital-garden/cafes-to-exist.md), NYC.)
 3. Plant shop cafe. ([REMI](https://www.reminyc.com/), NYC; kind of [Frëims](https://freims.mx/), CDMX.)
 4. Austrian delicatessen-cafe. ([Wally's Kaffeehaus](https://wallysdeli.co.uk/kaffeehaus-home-page/), Cardiff.)
 5. Neapolitan cafe. ([Gran Caffè Gambrinus](https://grancaffegambrinus.com/en/), Naples.)

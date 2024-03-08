@@ -4,7 +4,7 @@ date: 2024-03-02
 lastMod: 2024-03-02
 ---
 
-Let’s suppose that all hours are equivalently valuable, and that you can easily earn more money by working more hours. There is still [one more problem with valuing your time at your current average wage](https://joel-becker.com/personal/mistakes-valuing-time/): not appropriately accounting for future benefits and costs.
+Let’s suppose that all hours are equivalently valuable, and that you can easily earn more money by working more hours. There is still [one more problem with valuing your time at your current average wage](https://joel-becker.com/digital-garden/mistakes-valuing-time/): not appropriately accounting for future benefits and costs.
 
 Consider the following model of career progression:
 
@@ -14,7 +14,7 @@ Consider the following model of career progression:
 
 This dumb model produces income paths that aren’t so dissimilar from (my memory of) typical US income paths, at least for reasonable values of \\(W\\) and \\(R\\).
 
-![](../../images/personal/ignoring-the-future/1.png)
+![](../../images/digital-garden/ignoring-the-future/1.png)
 
 In this model, lifetime income from \\(t=0\\) onwards is given by \\(\sum_{t=0}^T \$(X + W \times t) \times R^{-t}\\).
 
@@ -24,7 +24,7 @@ How much is this opportunity worth?
 
 From the perspective of \\(t=0\\), the additional income from \\(t=s\\) onwards is worth \\(\sum_{t=s}^T (H \times W / 500) \times R^{-t}\\). For \\(W=6,000\\), \\(R=1.03\\), additional income as a function of \\(s\\) and \\(H\\) is as in the heat map below.[^1]
 
-![](../../images/personal/ignoring-the-future/2.png)
+![](../../images/digital-garden/ignoring-the-future/2.png)
 
 Early in your career, on this model, an extra $30,000 in lifetime income looks achievable with 2 hours extra work per week for a year.
 
