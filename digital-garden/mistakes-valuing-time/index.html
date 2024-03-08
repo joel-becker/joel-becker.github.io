@@ -2,32 +2,39 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <title>{{ .Title }}</title>
+  <title>2 Mistakes When Valuing Time</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- mobile responsive meta -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="{{ .Description | default "this is meta description for single page."}}">
+  <meta name="description" content="2 Mistakes When Valuing Time">
   
   <meta name="generator" content="Hugo 0.84.2" />
 
-  <!-- plugins -->
+  
   <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.css ">
   <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css ">
   <link rel="stylesheet" href="/plugins/animate/animate.css ">
 
-  <!-- Main Stylesheet -->
+  
   <link rel="stylesheet" href="/scss/style.min.53ff68cb90dc1b86bdbd31e3266fe55ad04ff65d8e92c7b5049942e86af6932b.css" integrity="sha256-U/9oy5DcG4a9vTHjJm/lWtBP9l2Okse1BJlC6Gr2kys=" media="screen">
 
-  <!-- Custom CSS -->
+  
   <link rel="stylesheet" href="/css/spacing.css">
+  <link rel="stylesheet" href="/css/images.css">
   <link rel="stylesheet" href="/css/lists.css">
+  <link rel="stylesheet" href="/css/quotes.css">
+  <link rel="stylesheet" href="/css/headings.css">
 
-  <!--Favicon-->
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
   <link rel="shortcut icon" href="images/favicon.png " type="image/x-icon">
   <link rel="icon" href="images/favicon.png " type="image/x-icon">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165204758-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,10 +61,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto wow fadeInDown">
 
-                  <li><a href=/#publications>Publications</a></li>
                   <li><a href=/#contact>Contact</a></li>
-                  <li><a href=/digital-garden>Digital Garden</a></li>
                   <li><a href=/images/CV/CV_JoelBecker.pdf>CV</a></li>
+                  <li><a href=/digital-garden>Digital Garden</a></li>
 
                 </ul>
             </div>
@@ -67,34 +73,50 @@
   </div>
   </header>
 
-  <!-- page title -->
+  
   <section class="section bg-cover overlay">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="mb-3">{{ .Title }}</h2>
-          <i style="font-size: small; color: grey;">Created: {{ .Date.Format "January 2, 2006" }}</i>
+          <h2 class="mb-3">2 Mistakes When Valuing Time</h2>
+          <i style="font-size: small; color: grey;">Created: February 9, 2024</i>
           <br>
-          <i style="font-size: small; color: grey;">Last Modified: {{ .Lastmod.Format "January 2, 2006" }}</i>
+          <i style="font-size: small; color: grey;">Last Modified: March 6, 2024</i>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- main content -->
+  
   <div class="sec-page page" id="page">
     <div class="container">
       <div class="row">
-        <!-- Sidebar for Categories -->
+        
         <div class="col-md-3">
-          <!-- Categories and Archive will be populated dynamically -->
+          
         </div>
-        <!-- Main Content -->
+        
         <div class="col-md-9">
           <div class="row pub-list wow fadeInUp">
             <div class="col-md-9 text-box">
-              <br> <!-- Empty line -->
-              {{ .Content }}
+              <br> 
+              <p>People who make somewhat explicit time-money trade-offs often use something like their average wage as a proxy for the &ldquo;value of time&rdquo; &ndash; the price at which they are indifferent between spending money to save an hour and spending an hour to save money.</p>
+<p>This is a reasonable start, but I think it&rsquo;s mistaken, for at least 2 important reasons:</p>
+<ol>
+<li>The value of a purchased hour depends on more than just wage level. (<a href="https://joel-becker.com/digital-garden/hours-have-different-value/">Related post</a>.)
+<ol>
+<li>In most instances, the more leisure time you have, the less you value an additional hour of it. (&ldquo;Marginal value of leisure is decreasing.&rdquo;)</li>
+<li>Separate from how much work and leisure time you have when deciding to buy an hour, particular hours have characteristics &ndash; energy level, time of day, location, etc. &ndash; that affect their value.</li>
+</ol>
+</li>
+<li>Valuing time is not a static decision problem. (<a href="https://joel-becker.com/digital-garden/ignoring-the-future/">Related post</a>.)
+<ol>
+<li>Factors that affect tomorrow&rsquo;s value of time (e.g. wages, energy levels) very plausibly depend on today&rsquo;s decisions about work and leisure. Valuing time without taking this into account might lead to worse decisions. For instance, working more today might lead to counterfactually higher wages or lower energy levels tomorrow, in which case ignoring this fact would lead you to under- or over-invest in work respectively.</li>
+</ol>
+</li>
+</ol>
+<p>(There are also some reasons that I think are not important in practice. For instance, that most people cannot earn an extra one hour of wages by working one hour more, because employment contracts often specify fixed hours.)</p>
+
             </div>
           </div>
         </div>
@@ -102,9 +124,9 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <!-- ... Your existing JavaScript ... -->
+  
+  
 
-  <!-- ... Closing tags ... -->
+  
 </body>
 </html>
