@@ -3,14 +3,14 @@
     "title": "Post 1", 
     "date": "2023-10-01", 
     "lastModified": "2023-10-02", 
-    "url": "/personal/post1/",
+    "url": "/digital-garden/post1/",
     "category": "Tech"
   },
   {
     "title": "Post 2", 
     "date": "2023-10-02", 
     "lastModified": "2023-10-03", 
-    "url": "/personal/post2/",
+    "url": "/digital-garden/post2/",
     "category": "Lifestyle"
   }
 ]
