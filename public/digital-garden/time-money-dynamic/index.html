@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+  
+  <meta name="generator" content="Hugo 0.84.2" />
+
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.css ">
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css ">
+  <link rel="stylesheet" href="/plugins/animate/animate.css ">
+
+  
+  <link rel="stylesheet" href="/scss/style.min.53ff68cb90dc1b86bdbd31e3266fe55ad04ff65d8e92c7b5049942e86af6932b.css" integrity="sha256-U/9oy5DcG4a9vTHjJm/lWtBP9l2Okse1BJlC6Gr2kys=" media="screen">
+
+  
+  <link rel="stylesheet" href="/css/spacing.css">
+  <link rel="stylesheet" href="/css/images.css">
+  <link rel="stylesheet" href="/css/lists.css">
+  <link rel="stylesheet" href="/css/quotes.css">
+  <link rel="stylesheet" href="/css/headings.css">
+
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  <link rel="shortcut icon" href="images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="images/favicon.png " type="image/x-icon">
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165204758-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-165204758-1');
+  </script>
+</head>
+<body>
+  <header id="header">
+  <div class="header-sec">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="logo-box wow fadeInDown">
+          <a class="navbar-brand  pb-lg-0  pt-lg-0" href="/">Joel<span>.</span></a>
+        </div>
+        <div class="menu-box">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="bar-icon"></span>
+            <span class="bar-icon"></span>
+            <span class="bar-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto wow fadeInDown">
+
+                  <li><a href=/#contact>Contact</a></li>
+                  <li><a href=/images/CV/CV_JoelBecker.pdf>CV</a></li>
+                  <li><a href=/digital-garden>Digital Garden</a></li>
+
+                </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </header>
+
+  
+  <section class="section bg-cover overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-3"></h2>
+          <i style="font-size: small; color: grey;">Created: January 1, 0001</i>
+          <br>
+          <i style="font-size: small; color: grey;">Last Modified: January 1, 0001</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="sec-page page" id="page">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-3">
+          
+        </div>
+        
+        <div class="col-md-12">
+          <div class="row pub-list wow fadeInUp">
+            <div class="col-md-12 text-box">
+              <br> 
+              <h1 id="a-dynamic-model-of-time-money-trade-offs">A dynamic model of time-money trade-offs</h1>
+<p>People who make somewhat explicit time-money trade-offs often use something like their average wage as a proxy for the price at which they are indifferent between spending money to save an hour and spending an hour to save money.</p>
+<p>This is a reasonable start, but <a href="">I think it&rsquo;s mistaken for at least 3 reasons</a>:</p>
+<ol>
+<li>Most people cannot earn an extra one hours of wages by working one hour more. (&ldquo;Adjust on the intensive margin.&rdquo;)</li>
+<li>The value of a purchased hour depends on the amount of time currently spent on work and leisure (&ldquo;marginal value of leisure is decreasing&rdquo;), as well as factors such as energy levels or time of day.</li>
+<li>Choices about time-money trade-offs are not static &ndash; the best decision tomorrow depends on the decision today. Indifference prices that do not incorporate this fact might be mistaken.</li>
+</ol>
+<p>This post addresses the last mistake.</p>
+<h2 id="static-model">Static Model</h2>
+<p>In <a href="">another post</a>, we found that, with logarithmic utility, the price at which an individual is indifferent between spending money to save an hour and spending an hour to save money is given by:</p>
+<p>$$p_s = \frac{\alpha wL - \beta (l + 1)}{\alpha}$$</p>
+<p>The individual will want to buy an hour of leisure if the price is less than this, and will want to sell an hour of leisure if the price is more than this.</p>
+<h2 id="adjusting-for-future-wages">Adjusting for Future Wages</h2>
+<p>Even if you cannot straightforwardly earn an extra one hour of wages by working one hour more, you might be able to earn more in the future by working more now. That is, future wages ($w_2$) can be a function of current leisure hours ($l_1$).</p>
+<h3 id="2-period-model">2-period model</h3>
+<p>With a model otherwise similar to the above, adding a second period will not change the result; the indifference price is always the same. Making future wages a function of current work hours changes this.</p>
+<h3 id="modified-utility">Modified Utility</h3>
+<p>Utility is now given by:</p>
+<p>$$U = \alpha log(l_1 + s_1) + \beta log(c_1) + \delta (\alpha log(l_2 + s_2) + \beta log(c_2))$$</p>
+<p>where $\delta$ is a discount factor and $w_2 = f(w_1, l_1)$.</p>
+<h3 id="marginal-utility-analysis">Marginal Utility Analysis</h3>
+<p>To find the price that equates the marginal utility of leisure to the marginal utility of consumption, we equate the derivatives of the utility function with respect to $l_1$ and $c_1$:</p>
+<p>$$MU_{l_1} = \frac{\partial}{\partial l_1} {\alpha log(l_1 + s_1) + \beta log(c_1) + \delta (\alpha log(l_2 + s_2) + \beta log(c_2))}$$</p>
+<p>$$MU_{l_1} = \alpha \frac{1}{l_1 + s_1} + \frac{\partial}{\partial l_1} {\delta \beta log(w_2 L_2 - p_s s_2)}$$</p>
+<p>$$MU_{l_1} = \alpha \frac{1}{l_1 + s_1} + \frac{\partial}{\partial l_1} {\delta \beta log(f(w_1, l_1) L_2 - p_s s_2)}$$</p>
+<p>$$MU_{l_1} = \alpha \frac{1}{l_1 + s_1} + \delta \cdot \beta \frac{f^{&rsquo;}_{l_1}(w_1, l_1) L_2}{f(w_1, l_1) L_2 - p_s s_2}$$</p>
+<p>$$MU_{c_1} = \beta \frac{1}{c_1}$$</p>
+<p>Setting these equal gives us the indifference price for time-saving services in the first period:</p>
+<p>$$MU_{l_1} = MU_{c_1}$$</p>
+<p>$$\alpha \frac{1}{l_1 + s_1} + \delta \cdot \beta \frac{f^{&rsquo;}_{l_1}(w_1, l_1) L_2}{f(w_1, l_1) L_2 - p_s s_2} = \beta \frac{1}{w_1 L_1 - p_s s_1}$$</p>
+<p>$$\alpha (w_1 L_1 - p_s s_1) (f(w_1, l_1) L_2 - p_s s_2) + \delta \cdot \beta f^{&rsquo;}_{l_1}(w_1, l_1) L_2(w_1 L_1 - p_s s_1) (l_1 + s_1) = \beta (l_1 + s_1) (f(w_1, l_1) L_2 - p_s s_2)$$</p>
+<p>$$\alpha w_1 L_1 f(w_1, l_1) L_2$$</p>
+<p>Differentiating by $L_1$ to find equa</p>
+<p>Acknowledging future wages, we adapt our approach to include the potential increase in future earnings:</p>
+<p>$$p_s = \frac{\alpha wL + \delta \cdot \alpha f^{&rsquo;}(L) - \beta (l + s) f(L)L}{\alpha + \beta (l + s)}$$</p>
+<p>This equation highlights how the indifference price for time-saving services is influenced by:</p>
+<ul>
+<li>Current wage rate ($w$) and work hours ($L$),</li>
+<li>The derivative of future wages with respect to current hours ($f^{&rsquo;}(L)$),</li>
+<li>The individual&rsquo;s preferences for leisure and consumption ($α$, $β$),</li>
+<li>The discount factor for future utility ($δ$).</li>
+</ul>
+<h2 id="key-insights">Key Insights</h2>
+<ol>
+<li><strong>Complex Trade-offs</strong>: The decision to purchase time-saving services involves balancing the immediate utility of leisure against the utility of consumption, while also considering the long-term benefits of current work hours on future wages.</li>
+<li><strong>Future Wages Impact</strong>: Incorporating future wages into the model reveals the investment aspect of current work hours, emphasizing the role of labor not just for immediate income but also for enhancing future earning potential.</li>
+<li><strong>Indifference Price Calculation</strong>: The derived formula for $p_s$ provides a way to quantify the price at which an individual would be indifferent to buying an hour of leisure, factoring in both current and anticipated future economic conditions.</li>
+</ol>
+<p>This theoretical exploration underscores the intricacies of valuing time, especially in the context of fixed work hours and the potential for future wage growth. It offers a mathematical foundation for understanding the economic rationale behind purchasing time-saving services and the broader implications of work-leisure decisions on long-term well-being.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+
+  
+</body>
+</html>
