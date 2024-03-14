@@ -1,10 +1,10 @@
 ---
-title: "Quirks downstream of aphantasia"
+title: "Idiosyncrasies downstream of aphantasia"
 date: 2024-03-13
-lastMod: 2024-03-13
+lastMod: 2024-03-14
 ---
 
-I have my quirks. I have [aphantasia](https://en.wikipedia.org/wiki/Aphantasia). I wonder how many of my quirks are downstream of aphantasia, given that [the condition is not well understood](https://joel-becker.com/digital-garden/aphantasia-ontology/).
+I have my idiosyncrasies. I have [aphantasia](https://en.wikipedia.org/wiki/Aphantasia). I wonder how many of my idiosyncrasies are downstream of aphantasia, given that [the condition is not well understood](https://joel-becker.com/digital-garden/aphantasia-ontology/).
 
 Some candidates:
 
