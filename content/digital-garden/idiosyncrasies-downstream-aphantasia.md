@@ -1,7 +1,7 @@
 ---
 title: "Idiosyncrasies downstream of aphantasia"
 date: 2024-03-13
-lastMod: 2024-03-14
+lastMod: 2024-03-19
 ---
 
 I have my idiosyncrasies. I have [aphantasia](https://en.wikipedia.org/wiki/Aphantasia). I wonder how many of my idiosyncrasies are downstream of aphantasia, given that [the condition is not well understood](https://joel-becker.com/digital-garden/aphantasia-ontology/).
@@ -15,3 +15,4 @@ Some candidates:
 4. [Limited inner-life](https://twitter.com/Mjreard/status/1765881580315201722), very little if any inner-monologue.
 5. Not being able to imagine sounds, tastes, or smells.
 6. Literally mouthing people's words back to them when they are describing something to me, as they are describing something to me.
+7. Not doing birthdays...? ![](../../images/digital-garden/idiosyncrasies-downstream-aphantasia/bdays.png)
