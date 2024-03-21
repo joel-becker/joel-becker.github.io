@@ -60,7 +60,7 @@
     "date": "2024-01-05", 
     "lastmod": "2024-01-05", 
     "url": "/digital-garden/cost-of-o1/",
-    "category": ["Professional-ish"]
+    "category": ["Professional-ish", "Ambition"]
   },
   {
     "title": "Some types of friends I'd like to make", 
@@ -74,48 +74,55 @@
     "date": "2024-01-14", 
     "lastmod": "2024-01-14", 
     "url": "/digital-garden/seeing-through-clouds/",
-    "category": ["Thinking clearly"]
+    "category": ["Brains"]
   },
   {
     "title": "2 Mistakes When Valuing Time", 
     "date": "2024-02-09", 
     "lastmod": "2024-03-06", 
     "url": "/digital-garden/mistakes-valuing-time/",
-    "category": ["Thinking clearly"]
+    "category": ["Value of time"]
   },
   {
     "title": "Ignoring the future when valuing time", 
     "date": "2024-03-02", 
     "lastmod": "2024-03-02", 
     "url": "/digital-garden/ignoring-the-future/",
-    "category": ["Thinking clearly"]
+    "category": ["Ambition", "Value of time"]
   },
   {
     "title": "Different hours have different value", 
     "date": "2024-03-06", 
     "lastmod": "2024-03-06", 
     "url": "/digital-garden/hours-have-different-value/",
-    "category": ["Thinking clearly"]
+    "category": ["Value of time"]
   },
   {
     "title": "Memeing myself", 
     "date": "2024-03-11", 
     "lastmod": "2024-03-11", 
     "url": "/digital-garden/memeing-myself/",
-    "category": ["Taste"]
+    "category": ["Ambition", "Brains"]
   },
   {
     "title": "An ontology of aphantasia", 
     "date": "2024-03-11", 
     "lastmod": "2024-03-13", 
     "url": "/digital-garden/aphantasia-ontology/",
-    "category": ["Thinking clearly"]
+    "category": ["Brains"]
   },
   {
     "title": "Idiosyncrasies downstream of aphantasia", 
     "date": "2024-03-13", 
     "lastmod": "2024-03-19", 
     "url": "/digital-garden/idiosyncrasies-downstream-aphantasia/",
-    "category": ["Thinking clearly"]
+    "category": ["Brains"]
+  },
+  {
+    "title": "Strategic", 
+    "date": "2024-03-20", 
+    "lastmod": "2024-03-20", 
+    "url": "/digital-garden/strategic/",
+    "category": ["Ambition"]
   }
 ]
