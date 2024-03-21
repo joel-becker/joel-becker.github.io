@@ -4,7 +4,7 @@ date: 2024-03-20
 lastMod: 2024-03-20
 ---
 
-[Humans are not automatically strategic](https://www.lesswrong.com/posts/PBRWb2Em5SNeWYwwB/humans-are-not-automatically-strategic), but here are some examples of where they have been. (Some are cleaner than others.)
+[Humans are not automatically strategic](https://www.lesswrong.com/posts/PBRWb2Em5SNeWYwwB/humans-are-not-automatically-strategic), but here are some examples of times where they have been. (Some are cleaner than others.)
 
 1. Sports and gambling
    1. My [recommended workout split](https://joel-becker.com/digital-garden/optimal-workout-split/)
@@ -28,5 +28,6 @@ lastMod: 2024-03-20
 5. Health
    1. [Ignaz Semmelweis and handwashing](https://en.wikipedia.org/wiki/Ignaz_Semmelweis)
    2. [Norman Borlaug](https://en.wikipedia.org/wiki/Norman_Borlaug#Wheat_research_in_Mexico) and the Green Revolution
-6. War
-   1. [Fabian strategy](https://en.wikipedia.org/wiki/Fabian_strategy#Rome_versus_Carthage:_The_Second_Punic_War)
+6. War and politics
+   1. [Vote Leave](https://en.wikipedia.org/wiki/Vote_Leave)
+   2. [Fabian strategy](https://en.wikipedia.org/wiki/Fabian_strategy#Rome_versus_Carthage:_The_Second_Punic_War)

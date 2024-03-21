@@ -2,12 +2,12 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <title>Strategic</title>
+  <title>SingalongTech</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Strategic">
+  <meta name="description" content="SingalongTech">
   
   <meta name="generator" content="Hugo 0.84.2" />
 
@@ -78,7 +78,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="mb-3">Strategic</h2>
+          <h2 class="mb-3">SingalongTech</h2>
           <i style="font-size: small; color: grey;">Created: March 20, 2024</i>
           <br>
           <i style="font-size: small; color: grey;">Last Modified: March 20, 2024</i>
@@ -100,51 +100,29 @@
           <div class="row pub-list wow fadeInUp">
             <div class="col-md-12 text-box">
               <br> 
-              <p><a href="https://www.lesswrong.com/posts/PBRWb2Em5SNeWYwwB/humans-are-not-automatically-strategic">Humans are not automatically strategic</a>, but here are some examples of times where they have been. (Some are cleaner than others.)</p>
+              <p>My friend Rob created <a href="https://521.glitch.me/">this helpful app</a> for proposing and voting on songs to sing along to. It came to mind a couple of months later, when I joined my first Manifold hackathon.</p>
+<p>Mash-ups are one of my favorite things about sing-alongs. They can sound great, and often lead to <a href="https://en.wikipedia.org/wiki/Theories_of_humor#Incongruity_theory">comic surprise</a>. Consider some of my favorites:</p>
 <ol>
-<li>Sports and gambling
-<ol>
-<li>My <a href="https://joel-becker.com/digital-garden/optimal-workout-split/">recommended workout split</a></li>
-<li><a href="https://statsbomb.com/articles/soccer/changing-how-the-world-thinks-about-set-pieces/">Statsbomb and set-pieces</a></li>
-<li><a href="https://usefulfictions.substack.com/p/how-to-be-more-agentic">Cate Hall and physical reads</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Billy_Beane">Moneyball</a></li>
-<li>Pep Guardiola and the <a href="https://www.youtube.com/watch?v=t8jPSUQzyBE">False 9</a></li>
-<li>Muhammad Ali and the <a href="https://en.wikipedia.org/wiki/The_Rumble_in_the_Jungle">rope-a-dope</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Dick_Fosbury#High_school_and_the_origins_of_the_Fosbury_Flop">Fosbury Flop</a></li>
-<li><a href="https://www.amazon.com/Spaced-Out-Three-Point-Revolution-Everything/dp/1629378860">The Three-Point Revolution</a></li>
+<li>i - III - VII - IV: Wonderwall, Boulevard of Broken Dreams, Mad World</li>
+<li>I - VII - IV - I: Sweet Child O&rsquo; Mine (verses), Take Your Mama, Music In Me, Safety Dance (almost), Champagne Supernova (almost)</li>
+<li>I - vi - IV - V - I: Stand By Me, Beautiful Girls, I&rsquo;ll Follow You Into The Dark (verses, almost)</li>
+<li>i - V - iii - IV - V: Baby One More Time, Alexander Hamilton (almost), Hotel California (ok this one is a stretch)</li>
 </ol>
-</li>
-<li>Disruptive businesses
+<p>These can be hard to find except through trial-and-error&hellip; until LLMs.</p>
+<p>Behold, my joint-winning hackathon project, the <a href="https://github.com/joel-becker/mashup-generator">mash-up generator</a>. (Apologies that the code is so untidy/bad and the project very unfinished. Please feel free to further develop this idea, then send me a link or PR!)</p>
+<p>The <a href="https://github.com/joel-becker/mashup-generator/blob/main/test.py">main workflow</a> is:</p>
 <ol>
-<li>Ikea and <a href="https://en.wikipedia.org/wiki/Ready-to-assemble_furniture">flat-pack furniture</a></li>
-<li><a href="https://www.youtube.com/watch?v=Jgw-_hlFQk4">SpaceX</a></li>
-<li>Google and <a href="https://en.wikipedia.org/wiki/PageRank">PageRank</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Renaissance_Technologies#Monemetrics">RenTec</a></li>
+<li>Scrape song chords from ultimate guitar, clean the html aggressively.</li>
+<li>Ask GPT-4 to write a clean version of the main chord progression, transposed to C or Am, getting rid of embellishments.</li>
+<li>One-hot encode the chords in each position in the sequence.</li>
+<li>Apply a similarity metric to the encoded sequences, and return songs with the most similar sequences.</li>
 </ol>
-</li>
-<li>Academia
+<p>A neat first try. Some obvious improvements for future versions:</p>
 <ol>
-<li>Alice Evans <a href="https://seenunseen.in/episodes/2022/10/3/episode-297-alice-evans-studies-the-great-gender-divergence/">ignoring (presumed) incentives in academic publishing</a></li>
-</ol>
-</li>
-<li>Productivity
-<ol>
-<li><a href="https://en.wikipedia.org/wiki/FIRE_movement">FIRE movement</a></li>
-<li><a href="https://www.youtube.com/watch?v=Lt54CX9DmS4">Evidence-based study techniques</a></li>
-</ol>
-</li>
-<li>Health
-<ol>
-<li><a href="https://en.wikipedia.org/wiki/Ignaz_Semmelweis">Ignaz Semmelweis and handwashing</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Norman_Borlaug#Wheat_research_in_Mexico">Norman Borlaug</a> and the Green Revolution</li>
-</ol>
-</li>
-<li>War and politics
-<ol>
-<li><a href="https://en.wikipedia.org/wiki/Vote_Leave">Vote Leave</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Fabian_strategy#Rome_versus_Carthage:_The_Second_Punic_War">Fabian strategy</a></li>
-</ol>
-</li>
+<li>Instead of scraping ultimate guitar, use a multimodal LLM to directly transcribe audio to chords.</li>
+<li>Do a better job cleaning chord progressions, use roman numerals, encode speed and time signature.</li>
+<li>Rather than one-hot encoding chords, maybe multi-hot encode the notes of each chord. (For the purpose of mash-ups of songs with imperfectly similar chord progressions, it often sounds fine to use an unusual but more congruent base note with the incongruous chord, so long as the respective triads share some notes.)</li>
+<li>Have the similarity metric account for more information.</li>
 </ol>
 
             </div>
