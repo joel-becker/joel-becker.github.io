@@ -6,7 +6,27 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1 set per exercise</title>
+      <link>https://joel-becker.com/digital-garden/1-set-per-exercise/</link>
+      <pubDate>Fri, 03 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/1-set-per-exercise/</guid>
+      <description>I prefer for my weightlifting workouts to involve just 1 set per exercise.
+There isn&amp;rsquo;t exactly conventional wisdom on this question, but it&amp;rsquo;s extremely common to stick with 3 or so sets per exercise. Defenders of the status quo, when pressed, say something like &amp;ldquo;3 sets helps you measure progression,&amp;rdquo; which is obviously nonsense (you could still maintain a consistent ordered list of exercises with 1 set per exercise).
+What are the trade-offs?</description>
+    </item>
+    
+    <item>
+      <title>Questions about AI</title>
+      <link>https://joel-becker.com/digital-garden/ai-questions/</link>
+      <pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/ai-questions/</guid>
+      <description>Are there distributed training schemes that don&amp;rsquo;t require syncing weights at end of each training step? (My understanding is that even &amp;lsquo;async&amp;rsquo; approaches require this.) Feels like you could apply old grad updates like momentum - but discounted in ~time rather than training steps. Why doesn&amp;rsquo;t initializing with existing model weights work in NLP?. Or, if it does, why isn&amp;rsquo;t it more common? What is the best practice for training smaller models in a language model family?</description>
+    </item>
+    
     <item>
       <title>80,000 Hours, Actually After Hours</title>
       <link>https://joel-becker.com/digital-garden/80k-after-hours/</link>
