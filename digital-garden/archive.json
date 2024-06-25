@@ -137,7 +137,7 @@
     "date": "2024-03-20", 
     "lastmod": "2024-06-15", 
     "url": "/digital-garden/singalong-tech/",
-    "category": ["Social", "Taste"]
+    "category": ["Music", "Social"]
   },
   {
     "title": "1 set per exercise", 
@@ -159,5 +159,12 @@
     "lastmod": "2024-06-25", 
     "url": "/digital-garden/ideal-workout-routine/",
     "category": ["Exercise"]
+  },
+  {
+    "title": "Mash-ups", 
+    "date": "2024-06-25", 
+    "lastmod": "2024-06-25", 
+    "url": "/digital-garden/mashups/",
+    "category": ["Music", "Taste"]
   }
 ]
