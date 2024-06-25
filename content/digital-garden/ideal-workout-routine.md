@@ -47,6 +47,8 @@ Ideally ~90 minutes.
 
 ## Day 4: Pull-Functional
 
+Pull:
+
 1. 1x pull-up
 2. 1x chin-up
 3. 2x bent-over row, barbell
@@ -57,6 +59,8 @@ Ideally ~90 minutes.
 8. 1x lat pulldown, cable
 9. 1x seated row, cable
 10. 1x reverse fly, cable
+
+Functional:
 
 1. 1x Forward Lunge
 2. 1x Backward Lunge
