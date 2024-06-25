@@ -1,17 +1,19 @@
 ---
 title: "SingalongTech"
 date: 2024-03-20
-lastMod: 2024-03-20
+lastMod: 2024-06-15
 ---
 
 My friend Rob created [this helpful app](https://521.glitch.me/) for proposing and voting on songs to sing along to. It came to mind a couple of months later, when I joined my first Manifold hackathon.
 
 Mash-ups are one of my favorite things about sing-alongs. They can sound great, and often lead to [comic surprise](https://en.wikipedia.org/wiki/Theories_of_humor#Incongruity_theory). Consider some of my favorites:
 
-1. i - III - VII - IV: Wonderwall, Boulevard of Broken Dreams, Mad World
+1. i - III - VII - IV: Wonderwall, Boulevard of Broken Dreams, Mad World, A Team (pre-chorus; double-tempo), Let It Go (verses), Skinny Love (double-tempo), Radioactive, Pumped Up Kicks, Just Dance (half-tempo)
 2. I - VII - IV - I: Sweet Child O' Mine (verses), Take Your Mama, Music In Me, Safety Dance (almost), Champagne Supernova (almost)
-3. I - vi - IV - V - I: Stand By Me, Beautiful Girls, I'll Follow You Into The Dark (verses, almost)
-4. i - V - iii - IV - V: Baby One More Time, Alexander Hamilton (almost), Hotel California (ok this one is a stretch)
+3. I - vi - IV - V - I: Stand By Me, Beautiful Girls, Who Knew (almost), I'll Follow You Into The Dark (verses, almost), How To Save A Life (almost), Riptide (stretch), Blank Space (almost; double-tempo)
+4. i - V - iii - IV - V: Baby One More Time, Havana, Levitating (almost), Alexander Hamilton (almost), My Shot (almost), Hotel California (stretch), Lose Yourself (stretch)
+5. vi - IV - V/vi: Sweet Dreams Are Made Of This, Everybody (Backstreet's Back), Bet On It (verses), Survivor (almost)
+6. vi - IV - I - V: Save Tonight (double-tempo), Thrift Shop, Sparks Fly, California Gurls, We Found Love, Just A Dream (double-tempo), If I Die Young, Written In The Stars (double-tempo), Burn, If I Were A Boy, I'm Not Afraid (double-tempo), Magic, Stay With Me, Love The Way You Lie Part 2, Wing$ (almost; double-tempo)
 
 These can be hard to find except through trial-and-error... until LLMs.
 

@@ -135,7 +135,7 @@
   {
     "title": "SingalongTech", 
     "date": "2024-03-20", 
-    "lastmod": "2024-03-20", 
+    "lastmod": "2024-06-15", 
     "url": "/digital-garden/singalong-tech/",
     "category": ["Social", "Taste"]
   },
@@ -144,6 +144,20 @@
     "date": "2024-05-03", 
     "lastmod": "2024-05-03", 
     "url": "/digital-garden/1-set-per-exercise/",
+    "category": ["Exercise"]
+  },
+  {
+    "title": "A frame for deciding to take ADHD meds", 
+    "date": "2024-06-25", 
+    "lastmod": "2024-06-25", 
+    "url": "/digital-garden/adhd-meds/",
+    "category": ["Brains"]
+  },
+  {
+    "title": "Ideal workout routine for someone with exactly my preferences and constraints", 
+    "date": "2024-06-25", 
+    "lastmod": "2024-06-25", 
+    "url": "/digital-garden/ideal-workout-routine/",
     "category": ["Exercise"]
   }
 ]
