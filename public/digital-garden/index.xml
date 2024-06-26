@@ -6,7 +6,29 @@
     <description>Recent content in Digital-gardens on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/digital-garden/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/digital-garden/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Invisible differences in internal experience</title>
+      <link>https://joel-becker.com/digital-garden/invisible-differences/</link>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/invisible-differences/</guid>
+      <description>Maybe there are many axes of internal experience with significant variation; aphantasia/vividness of visual imagery is merely easiest to name.
+Some candidates:
+Vividness of imagination for senses other than sight &amp;ndash; smell, taste, touch. Stability/control of imagination. Seeing connections/structure vs. more descriptive picture &amp;ndash; paranoia/apophenia, literal-mindedness. Strength of associations &amp;ndash; bouba/kiki, synesthesia. Internal monologue vs&amp;hellip; mentalese? Intensity of sensory experience. </description>
+    </item>
+    
+    <item>
+      <title>Midwit Self-Experimentation</title>
+      <link>https://joel-becker.com/digital-garden/midwit-quantified-self/</link>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/midwit-quantified-self/</guid>
+      <description>Dumb On the left, we have the dumbest approach to self-experimentation: just try stuff.
+From day 0 (today) until day N, try something. See how you feel. If you want to take a more explicit approach, take the difference between
+Midwit Smart </description>
+    </item>
+    
     <item>
       <title>A frame for deciding to take ADHD meds</title>
       <link>https://joel-becker.com/digital-garden/adhd-meds/</link>
@@ -27,6 +49,16 @@ The frame ADHD meds give you another option for how to work, with some significa
       <description>For why I like 1 set per workout so much, see this post; for why I like multiple types of workouts per day, see this post.
 Day 1: Soccer Ideally ~90 minutes.
 Day 2: Pull-Legs-Stretch 1x pull-up 1x chin-up 2x romanian deadlift (or squat), barbell 1x bent-over row, barbell 1x hack squat 1x hip thrust, machine 1x seated leg press 1x seated row, cable or plate-loaded 1x glute-ham raise 1x archer curl 1x seated leg curl 1x vertical traction 1x single-arm preacher curl, machine 1x leg extension 1x reverse fly, cable 5-15 mins stretching</description>
+    </item>
+    
+    <item>
+      <title>Mash-ups</title>
+      <link>https://joel-becker.com/digital-garden/mashups/</link>
+      <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/mashups/</guid>
+      <description>Mash-ups are one of my favorite things about sing-alongs. They can sound great, and often lead to comic surprise. Some of my favorites:
+Song Approximate Chord Progression Fits Progression Relative Timing Wonderwall i - III - VII - IV Yes Normal Boulevard of Broken Dreams i - III - VII - IV Yes Normal Mad World i - III - VII - IV Yes Normal A Team i - III - VII - IV Yes Double-tempo (pre-chorus) Let It Go i - III - VII - IV Yes Normal (verses) Skinny Love i - III - VII - IV Yes Double-tempo Radioactive i - III - VII - IV Yes Normal Pumped Up Kicks i - III - VII - IV Yes Normal Just Dance i - III - VII - IV Yes Half-tempo Sweet Child O&amp;rsquo; Mine I - VII - IV - I Yes Normal (verses) Take Your Mama I - VII - IV - I Yes Normal Music In Me I - VII - IV - I Yes Normal Safety Dance I - VII - IV - I Almost Normal Champagne Supernova I - VII - IV - I Almost Normal Stand By Me I - vi - IV - V - I Yes Normal Beautiful Girls I - vi - IV - V - I Yes Normal Who Knew I - vi - IV - V - I Almost Normal I&amp;rsquo;ll Follow You Into The Dark I - vi - IV - V - I Almost Normal (verses) How To Save A Life I - vi - IV - V - I Almost Normal Riptide I - vi - IV - V - I Stretch Normal Blank Space I - vi - IV - V - I Almost Double-tempo Baby One More Time i - V - iii - IV - V Yes Normal Havana i - V - iii - IV - V Yes Normal Levitating i - V - iii - IV - V Almost Normal Alexander Hamilton i - V - iii - IV - V Almost Normal My Shot i - V - iii - IV - V Almost Normal Hotel California i - V - iii - IV - V Stretch Normal Lose Yourself i - V - iii - IV - V Stretch Normal Sweet Dreams Are Made Of This vi - IV - V/vi Yes Normal Everybody (Backstreet&amp;rsquo;s Back) vi - IV - V/vi Yes Normal Bet On It vi - IV - V/vi Yes Normal (verses) Survivor vi - IV - V/vi Almost Normal Save Tonight vi - IV - I - V Yes Double-tempo Thrift Shop vi - IV - I - V Yes Normal Sparks Fly vi - IV - I - V Yes Normal California Gurls vi - IV - I - V Yes Normal We Found Love vi - IV - I - V Yes Normal Just A Dream vi - IV - I - V Yes Double-tempo If I Die Young vi - IV - I - V Yes Normal Written In The Stars vi - IV - I - V Yes Double-tempo Burn vi - IV - I - V Yes Normal If I Were A Boy vi - IV - I - V Yes Normal I&amp;rsquo;m Not Afraid vi - IV - I - V Yes Double-tempo Magic vi - IV - I - V Yes Normal Stay With Me vi - IV - I - V Yes Normal Love The Way You Lie Part 2 vi - IV - I - V Yes Normal Wing$ vi - IV - I - V Almost Double-tempo </description>
     </item>
     
     <item>
@@ -65,8 +97,8 @@ What are the trade-offs?</description>
       
       <guid>https://joel-becker.com/digital-garden/singalong-tech/</guid>
       <description>My friend Rob created this helpful app for proposing and voting on songs to sing along to. It came to mind a couple of months later, when I joined my first Manifold hackathon.
-Mash-ups are one of my favorite things about sing-alongs. They can sound great, and often lead to comic surprise. Consider some of my favorites:
-i - III - VII - IV: Wonderwall, Boulevard of Broken Dreams, Mad World, A Team (pre-chorus; double-tempo), Let It Go (verses), Skinny Love (double-tempo), Radioactive, Pumped Up Kicks, Just Dance (half-tempo) I - VII - IV - I: Sweet Child O&amp;rsquo; Mine (verses), Take Your Mama, Music In Me, Safety Dance (almost), Champagne Supernova (almost) I - vi - IV - V - I: Stand By Me, Beautiful Girls, Who Knew (almost), I&amp;rsquo;ll Follow You Into The Dark (verses, almost), How To Save A Life (almost), Riptide (stretch), Blank Space (almost; double-tempo) i - V - iii - IV - V: Baby One More Time, Havana, Levitating (almost), Alexander Hamilton (almost), My Shot (almost), Hotel California (stretch), Lose Yourself (stretch) vi - IV - V/vi: Sweet Dreams Are Made Of This, Everybody (Backstreet&amp;rsquo;s Back), Bet On It (verses), Survivor (almost) vi - IV - I - V: Save Tonight (double-tempo), Thrift Shop, Sparks Fly, California Gurls, We Found Love, Just A Dream (double-tempo), If I Die Young, Written In The Stars (double-tempo), Burn, If I Were A Boy, I&amp;rsquo;m Not Afraid (double-tempo), Magic, Stay With Me, Love The Way You Lie Part 2, Wing$ (almost; double-tempo) These can be hard to find except through trial-and-error&amp;hellip; until LLMs.</description>
+For background, I love incongruent mash-ups. These can be hard to find except through trial-and-error&amp;hellip; until LLMs.
+Behold, my joint-winning hackathon project, the mash-up generator. (Apologies that the code is so untidy/bad and the project very unfinished. Please feel free to further develop this idea, then send me a link or PR!</description>
     </item>
     
     <item>
@@ -309,15 +341,6 @@ Passion Fruit - agua de maracuya This &amp;ldquo;Passion Fruit&amp;rdquo; is a s
       <description>Epistemic status: not sure how reliable my intuition is, but I do have more experience with these programs than most.
 TL;DR Making sure &amp;gt;30 participants have regular opportunities to spontaneously gather, active programming, basic food and medical amenities, and common knowledge about visit dates hugely increases the benefit of residential fellowship programs.
 For transparency, I should note a stronger, less confident belief of mine that I will not defend here. My instinct is that all of the above factors are not merely beneficial but necessary in order for these programs to be worth their cost (assuming that their goals are indeed as I describe below).</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://joel-becker.com/digital-garden/midwit-quantified-self/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://joel-becker.com/digital-garden/midwit-quantified-self/</guid>
-      <description></description>
     </item>
     
     <item>
