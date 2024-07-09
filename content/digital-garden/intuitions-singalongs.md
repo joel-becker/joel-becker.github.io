@@ -26,6 +26,6 @@ Some factors that are perhaps surprisingly unimportant:
 
 1. Instrumentalist skill.
 2. Participant skill.
-	1. With one important exception: {incongruous mashups}, where it's crucial that at least 2 singers can confidently sing contemporaneously/on top of one another. This arrangement can work beautifully, but totally totally flops if you don't have confident singers on each song -- by default, participants assume that the group will only sing songs sequentially.
+	1. With one important exception: [incongruous mashups](https://joel-becker.com/digital-garden/mashups/), where it's crucial that at least 2 singers can confidently sing contemporaneously/on top of one another. This arrangement can work beautifully, but totally totally flops if you don't have confident singers on each song -- by default, participants assume that the group will only sing songs sequentially.
 3. Mechanism for choosing songs.
 	1. I prefer either launching into songs and seeing what sticks, or democracy/having participants vote on a running list. But not a big deal.
