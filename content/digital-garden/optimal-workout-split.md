@@ -1,5 +1,5 @@
 ---
-title: "Optimal workout split"
+title: "The best workout split: posterior-anterior"
 date: 2023-10-29
 lastMod: 2024-01-19
 ---
