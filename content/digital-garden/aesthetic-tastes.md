@@ -1,7 +1,7 @@
 ---
 title: "Pointing to my aesthetic tastes"
 date: 2024-07-27
-lastMod: 2024-07-27
+lastMod: 2024-08-18
 ---
 
 I don't have a good articulation of my current aesthetic tastes. (Because I am insufficiently articulate and/or they are incoherent.) But here are some pointers.
