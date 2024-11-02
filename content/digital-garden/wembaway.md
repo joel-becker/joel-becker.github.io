@@ -4,8 +4,6 @@ date: 2024-08-10
 lastMod: 2024-08-10
 ---
 
-An arrangement for a mashup featuring "The Lion Sleeps Tonight," "Brown Eyed Girl," "Shut Up and Dance," "Mr. Brightside," and "What Makes You Beautiful."
-
 | **Chords** | **Part 1** | **Part 2** | **Part 3** |
 |------------|------------|------------|------------|
 | C, F       | Eeeeeee | Wembaway | |
