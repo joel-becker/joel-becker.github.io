@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://joel-becker.com/digital-garden/beginner-workout-routine/</loc>
-    <lastmod>2024-08-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/</loc>
-    <lastmod>2024-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/</loc>
+    <lastmod>2024-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://joel-becker.com/digital-garden/wembaway/</loc>
+    <lastmod>2024-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://joel-becker.com/digital-garden/beginner-workout-routine/</loc>
     <lastmod>2024-08-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/minimum-viable-piano/</loc>
@@ -18,9 +21,6 @@
     <lastmod>2024-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/britney-hamilton/</loc>
-    <lastmod>2024-08-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/wembaway/</loc>
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/hey-sweet-child/</loc>
