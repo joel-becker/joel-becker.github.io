@@ -10,8 +10,8 @@ Some notes on this one:
 
 1. The arrangement is very simple and rigid. Ideally you want to get some [confident singers singing lyrics to different songs](https://joel-becker.com/digital-garden/intuitions-singalongs/) over one another, flowing in and out of songs as feels right. But the simpler way to do this -- wordless melody, as here -- works nicely, especially with a less familiar crowd.
 2. The worldess melody here is from Hamilton's "[My Shot](https://youtu.be/r1izVfVpBwE?si=4KoI_tKJgi2WdWb4&t=349)."
-3. Another nice simplification: matching rapped lyrics with sung melodies, which can be easier to follow.
-4. The intention behind using D/A once you get to Hotel California is to paper over the fact that the mashup chords are a mismatch for this song. (Hotel California goes roughly Bm, F#, A, E; G, D, Em, F#.)
+3. Another feature that makes this easier to follow: matching rapped lyrics with sung melodies.
+4. You can mix this Havana, Levitating, or Hotel California. (If adding Hotel California, changing around the root on the Bm and D especially can be helpful; the original goes roughly Bm, F#, A, E; G, D, Em, F#.)
 
 | **Chords** | **Part 1** | **Part 2** |
 |------------|------------|------------|
@@ -34,11 +34,6 @@ Some notes on this one:
 | D, Em, F#  | Whoooaaa, whoooaaa | |
 | Bm, F#     | (All join in) whoa, whoa, whoooaaa | |
 | D, Em, F#  | Whoooaaa, whoooaaa | |
-|            |            | |
-| Bm, F#     | Whoa, whoa, whoooaaa | Havana, ooh na-na, half of my heart is in |
-| D, Em, F#  | Whoooaaa, whoooaaa | Havana, ooh na-na, he took me back to East Atlanta |
-| Bm, F#     | Whoa, whoa, whoooaaa | Na-na-na, but my heart is in Havana |
-| D, Em, F#  | Whoooaaa, whoooaaa | My heart is in Havana, Havana, ooh-na-na |
 |            |            | |
 | Bm, F#     | Whoa, whoa, whoooaaa | Oh baby, baby, how was I supposed to know |
 | D, Em, F#  | Whoooaaa, whoooaaa | That somethin' wasn't right here? |
@@ -68,20 +63,6 @@ Some notes on this one:
 |            |            | |
 | Bm, F#     | Whoa, whoa, whoooaaa | Alexander Hamilton, my name is Alexander Hamilton |
 | D, Em, F#  | Whoooaaa, whoooaaa | And there's a million things I haven't done, but just you wait, just you wait... |
-|            |            | |
-| Bm, F#     | Whoa, whoa, whoooaaa | On a dark desert highway, cool wind in my hair |
-| D/A, Em, F#| Whoooaaa, whoooaaa | Warm smell of colitas rising up through the air |
-| Bm, F#     | Whoa, whoa, whoooaaa | Up ahead in the distance, I saw a shimmering light |
-| D/A, Em, F#| Whoooaaa, whoooaaa | My head grew heavy and my sight grew dim, I had to stop for the night |
-| Bm, F#     | Whoa, whoa, whoooaaa | There she stood in the doorway, I heard the mission bell |
-| D/A, Em, F#| Whoooaaa, whoooaaa | And I was thinkin' to myself, "This could be heaven or this could be hell" |
-| Bm, F#     | Whoa, whoa, whoooaaa | Then she lit up a candle and she showed me the way |
-| D/A, Em, F#| Whoooaaa, whoooaaa | There were voices down the corridor, I thought I heard them say |
-|            |            | |
-| Bm, F#     | Whoa, whoa, whoooaaa | Havana, ooh na-na, half of my heart is in |
-| D, Em, F#  | Whoooaaa, whoooaaa | Havana, ooh na-na, he took me back to East Atlanta |
-| Bm, F#     | Whoa, whoa, whoooaaa | Na-na-na, but my heart is in Havana |
-| D, Em, F#  | Whoooaaa, whoooaaa | My heart is in Havana, Havana, ooh-na-na |
 |            |            | |
 | Bm, F#     | Whoa, whoa, whoooaaa | Oh, baby, baby, the reason I breathe is you |
 | D, Em, F#  | Whoooaaa, whoooaaa | Boy, you got me blinded |
