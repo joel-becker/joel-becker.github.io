@@ -25,7 +25,7 @@
     "date": "2023-11-14", 
     "lastmod": "2023-11-25", 
     "url": "/digital-garden/exercise-vs-diet/",
-    "category": ["Exercise"]
+    "category": ["Exercise", "Vanity"]
   },
   {
     "title": "Perfect day", 
@@ -235,13 +235,27 @@
     "date": "2025-03-02", 
     "lastmod": "2025-03-02", 
     "url": "/digital-garden/gender-affirming-surgery/",
-    "category": []
+    "category": ["Vanity"]
   },
   {
     "title": "Pick a date", 
     "date": "2025-03-02", 
     "lastmod": "2025-03-02", 
     "url": "/digital-garden/pick-a-date/",
-    "category": ["Social"]
+    "category": ["Vanity"]
+  },
+  {
+    "title": "Leaky bucket", 
+    "date": "2025-03-23", 
+    "lastmod": "2025-03-23", 
+    "url": "/digital-garden/leaky-bucket/",
+    "category": ["Vanity"]
+  },
+  {
+    "title": "My process for selecting a cosmetic surgeon", 
+    "date": "2025-03-23", 
+    "lastmod": "2025-03-23", 
+    "url": "/digital-garden/selecting-surgeon/",
+    "category": ["Vanity"]
   }
 ]
