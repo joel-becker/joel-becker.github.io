@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Selected takes on AI, Mar 2025</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Selected takes on AI, Mar 2025">
+  
+  <meta name="generator" content="Hugo 0.84.2" />
+
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.css ">
+  <link rel="stylesheet" href="/plugins/fontawesome/font-awesome.min.css ">
+  <link rel="stylesheet" href="/plugins/animate/animate.css ">
+
+  
+  <link rel="stylesheet" href="/scss/style.min.53ff68cb90dc1b86bdbd31e3266fe55ad04ff65d8e92c7b5049942e86af6932b.css" integrity="sha256-U/9oy5DcG4a9vTHjJm/lWtBP9l2Okse1BJlC6Gr2kys=" media="screen">
+
+  
+  <link rel="stylesheet" href="/css/spacing.css">
+  <link rel="stylesheet" href="/css/images.css">
+  <link rel="stylesheet" href="/css/lists.css">
+  <link rel="stylesheet" href="/css/quotes.css">
+  <link rel="stylesheet" href="/css/headings.css">
+  <link rel="stylesheet" href="/css/tables.css">
+
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  <link rel="shortcut icon" href="images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="images/favicon.png " type="image/x-icon">
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165204758-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-165204758-1');
+  </script>
+</head>
+<body>
+  <header id="header">
+  <div class="header-sec">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="logo-box wow fadeInDown">
+          <a class="navbar-brand  pb-lg-0  pt-lg-0" href="/">Joel<span>.</span></a>
+        </div>
+        <div class="menu-box">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="bar-icon"></span>
+            <span class="bar-icon"></span>
+            <span class="bar-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto wow fadeInDown">
+
+                  <li><a href=/#contact>Contact</a></li>
+                  <li><a href=/images/CV/CV_JoelBecker.pdf>CV</a></li>
+                  <li><a href=/digital-garden>Digital Garden</a></li>
+
+                </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </header>
+
+  
+  <section class="section bg-cover overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-3">Selected takes on AI, Mar 2025</h2>
+          <i style="font-size: small; color: grey;">Created: March 24, 2025</i>
+          <br>
+          <i style="font-size: small; color: grey;">Last Modified: March 24, 2025</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="sec-page page" id="page">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-3">
+          
+        </div>
+        
+        <div class="col-md-12">
+          <div class="row pub-list wow fadeInUp">
+            <div class="col-md-12 text-box">
+              <br> 
+              <p>In the past couple of months I’ve contributed to a series of papers — <a href="https://arxiv.org/abs/2411.15114">RE-Bench</a>, <a href="https://arxiv.org/abs/2503.17354">HCAST</a>, and, bringing them together, <a href="https://arxiv.org/abs/2503.14499">Measuring AI Ability to Complete Long Tasks</a> — that I think have painted a clearer picture of AI progress. (<a href="%5Bhttps://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">This blog post</a> on the latter paper provides helpful background.)</p>
+<p>Here are some takes informed by the outputs of these projects.</p>
+<p><strong>(It’s totally wild but I think robustly true that) recent historical progress in AI has followed remarkably steady trends.</strong></p>
+<p>We see this with scaling laws for loss in data and parameter count, but also in the central RE-Bench and Measuring AI Ability to Complete Long Tasks plots.</p>
+<p>My experience inside METR has only made this take feel more viscerally correct. I remember staring at best-of-{2,4,6,8,16} results on RE-Bench, hearing that lines would start to bend, then extending to {32,64,128+} and seeing no signs of bending. I remember contributing to the plot of different model’s task length horizon over calendar time, having no a priori reason for thinking the line should be straight (in log space!) beyond that being true for all lines in AI, then seeing the extremely straight output. (Followed by a lot of unsuccessful poking at this central result, documented in the paper.)</p>
+<p>Of course, none of this is to say that curves will not bend.</p>
+<p>(But in which direction?)</p>
+<p><strong>The uptick at the end of the task length over time plot is maybe understated.</strong></p>
+<p>Belying popular narrative, progress on the task length over time plot in 2024 appears to be slightly steeper than pre-2024 progress. The change in trend looks to be within statistical noise. Regardless, I think people are still sleeping on how surprising recent reasoning model results have been. This progress seems to me to have two important implications. First, that we have figured out (scalable?) pipelines for (loosely speaking) having LLMs teach themselves to perform better in environments where it is possible albeit unlikely that they sometimes take performant actions/get correct answers, steepening the task length curve. Second, that the slope of the post-training task length curve has been steepening in pre-training compute.</p>
+<p>On the other hand, slowed pre-training scaling laws might imply a slower exponential over calendar time. I’m unclear on how these factors might net out.</p>
+<p><strong>Current performance is underrated, even at the frontier.</strong></p>
+<p><a href="https://x.com/joel_bkr/status/1890539509613277269">Tweet on this in the context of elicitation effort</a>.</p>
+<p><a href="https://x.com/joel_bkr/status/1860069848749080620">Twitter thread on this in the context of human comparisons</a>.</p>
+<p><strong>Model intelligence is really confusing.</strong></p>
+<p>I think it just is correct that models both show signs of being able to complete long-horizon, very challenging tasks successfully, and also that they are totally unhelpful for some workflows, owing to lack of context on the users work, poor UI, and lack of robustness.</p>
+<p><a href="https://www.youtube.com/watch?v=IMkqAUsVAfc">In some ways intelligence has turned out to be a lot more straightforward than I might have expected</a>, yet the topology is a lot weirder.</p>
+<p>My current guess is that at least poor UI and lack of robustness will be solved by just throwing more compute + human effort at the problem.</p>
+<p><strong>Timelines…</strong></p>
+<p>It seems to me that you should have somewhat short timelines:</p>
+<ol>
+<li>Naive trend extrapolation seems to backtest as the best forecasting strategy through the past several orders of magnitude. On this method, we might get general computer-use agents in the next 1-2 years, 1-month AGIs in 3-4 years.
+<ul>
+<li>Any signs of this slowing down seem to me to be barely empirical/rely on special pleading (e.g. recent non-reasoning being less impressive than expected, even as actual-frontier models stay steady or even speed up). Special pleading as a heuristic backtests terribly through the past several orders of magnitude.</li>
+<li>Signs of the trend speeding up are also not yet very empirical (e.g. my suggestion above that progress might be speeding up because RL is beginning to work).</li>
+<li>(FWIW I’m not clear that task length horizon is a great frame. It is indeed sensitive to task distribution and degree of robustness, and feels like it won’t cash out in the things I most care about.)</li>
+</ul>
+</li>
+<li>Model capabilities today are already remarkable.
+<ul>
+<li>There plausibly aren’t that many more steps left to unlock.</li>
+<li>Also, there are sparks of occasionally being able to do even more remarkable things. (See e.g. RE-Bench results or FrontierMath o3 results.) Previously when this has been the case, practitioners have been able to turn occasional, remarkable behavior into default behavior via distillation.</li>
+</ul>
+</li>
+<li>People with short timelines seem to have better forecasting track records. (With apologies for cherry-picking, see <a href="https://www.lesswrong.com/posts/6Xgy6CAf2jqHhynHL/what-2026-looks-like">Daniel Kokotajlo</a> vs. <a href="https://benjamintodd.substack.com/p/gary-marcus-says-ai-cant-do-things">Gary Marcus</a>.)</li>
+</ol>
+<p>That said, I think I have longer timelines vs. my colleagues. Some unclear gestures as to why this might be the case:</p>
+<ol>
+<li>I think reliability/robustness might be somewhat more important than they expect, and I that progress on this in practice might be meaningfully slower than they expect.
+<ul>
+<li>This is related to <a href="https://x.com/joel_bkr/status/1890539509613277269">my tweet about capabilities/elicitation effort at the frontier</a>. I expect my colleagues to continue to be unusually fast adopters + talented engineers even relative to the ML frontier -&gt; in practice people will have access to weaker capabilities than are possible at the time -&gt; similar level of capabilities will take longer to access.</li>
+</ul>
+</li>
+<li>I expect more weirdness in the ‘topology of intelligence’ or whatever. It would have been difficult for me to articulate the present situation with ‘benchmark-brained’ models previously. I expect something similar might be true w.r.t. the future.</li>
+<li>I continue to have this intuition from economics that many technological capabilities which one expects to be substituting are actually augmenting, in addition to my strong respect for hard-to-articulate bottlenecks.
+<ul>
+<li>To be clear this mostly points to bearishness on short-term job loss, which is totally compatible with scary AI R&amp;D automation in the short-term.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, my hand-wavey guess is something like: 6-month doubling time, starting from 8x lower-base -&gt; about 5 years to 1-month AGIs; this will feel deficient in some respect, but sufficient for crazy things to start happening.</p>
+<p><strong>METR is fantastic and you should join.</strong></p>
+<p><a href="https://hiring.metr.org/">Hiring page link</a>.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+
+  
+</body>
+</html>

@@ -6,7 +6,18 @@
     <description>Recent content on Joel Becker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://joel-becker.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Selected takes on AI, Mar 2025</title>
+      <link>https://joel-becker.com/digital-garden/selected-ai-takes/</link>
+      <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://joel-becker.com/digital-garden/selected-ai-takes/</guid>
+      <description>In the past couple of months I’ve contributed to a series of papers — RE-Bench, HCAST, and, bringing them together, Measuring AI Ability to Complete Long Tasks — that I think have painted a clearer picture of AI progress. (This blog post on the latter paper provides helpful background.)
+Here are some takes informed by the outputs of these projects.
+(It’s totally wild but I think robustly true that) recent historical progress in AI has followed remarkably steady trends.</description>
+    </item>
+    
     <item>
       <title>“Leaky bucket” as a metaphor for hair loss</title>
       <link>https://joel-becker.com/digital-garden/leaky-bucket/</link>
