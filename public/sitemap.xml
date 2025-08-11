@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://joel-becker.com/digital-garden/</loc>
-    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/</loc>
-    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://joel-becker.com/digital-garden/audience-choir/</loc>
+    <lastmod>2025-08-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/selected-ai-takes/</loc>
     <lastmod>2025-03-24T00:00:00+00:00</lastmod>
@@ -17,9 +20,6 @@
     <loc>https://joel-becker.com/digital-garden/selecting-surgeon/</loc>
     <lastmod>2025-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joel-becker.com/digital-garden/audience-choir/</loc>
-    <lastmod>2025-03-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/2025-gmp/</loc>
     <lastmod>2025-03-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -29,11 +29,11 @@
     <loc>https://joel-becker.com/digital-garden/gender-affirming-surgery/</loc>
     <lastmod>2025-03-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://joel-becker.com/digital-garden/diffusion/</loc>
+    <lastmod>2025-03-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://joel-becker.com/digital-garden/wembaway/</loc>
     <lastmod>2024-11-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/beginner-workout-routine/</loc>
-    <lastmod>2024-08-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/minimum-viable-piano/</loc>
     <lastmod>2024-08-18T00:00:00+00:00</lastmod>
@@ -44,25 +44,13 @@
     <loc>https://joel-becker.com/digital-garden/britney-hamilton/</loc>
     <lastmod>2024-08-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joel-becker.com/digital-garden/hey-sweet-child/</loc>
-    <lastmod>2024-08-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/belong-with-broken-dreams/</loc>
-    <lastmod>2024-08-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/aesthetic-tastes/</loc>
     <lastmod>2024-08-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/intuitions-singalongs/</loc>
     <lastmod>2024-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joel-becker.com/digital-garden/self-constrained-optimization/</loc>
-    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/invisible-differences/</loc>
-    <lastmod>2024-06-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/midwit-quantified-self/</loc>
     <lastmod>2024-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/adhd-meds/</loc>
@@ -76,9 +64,6 @@
   </url><url>
     <loc>https://joel-becker.com/digital-garden/1-set-per-exercise/</loc>
     <lastmod>2024-05-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/ai-questions/</loc>
-    <lastmod>2024-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/80k-after-hours/</loc>
     <lastmod>2024-03-22T00:00:00+00:00</lastmod>
@@ -116,9 +101,6 @@
     <loc>https://joel-becker.com/digital-garden/types-of-friends/</loc>
     <lastmod>2024-01-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joel-becker.com/digital-garden/defensive-full-back/</loc>
-    <lastmod>2024-01-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/cost-of-o1/</loc>
     <lastmod>2024-01-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -155,13 +137,9 @@
     <loc>https://joel-becker.com/digital-garden/fellowship-programs/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://joel-becker.com/digital-garden/examples-unusual-time-value/</loc>
-  </url><url>
     <loc>https://joel-becker.com/digital-garden/my-heroes/</loc>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/shaping-dayjectory/</loc>
-  </url><url>
-    <loc>https://joel-becker.com/digital-garden/swe/</loc>
   </url><url>
     <loc>https://joel-becker.com/digital-garden/time-money-dynamic/</loc>
   </url><url>
