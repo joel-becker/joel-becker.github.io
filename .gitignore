@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Hugo
+resources/
+.hugo_build.lock
+
+# Editor/IDE
+.specstory/
+
+# Node (if ever used)
+node_modules/
