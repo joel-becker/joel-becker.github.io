@@ -13,3 +13,7 @@
 - Podcasts: `podcast appearances on X, Y, Z`
 - No colons — use lowercase descriptive phrases.
 - Multiple articles from the same outlet: `Outlet (1, 2)` where each number is a separate link.
+
+## Repo history
+- History was reset in Oct 2026: the full pre-reset history (including retired digital garden posts) lives in the private repo `joel-becker/joel-becker.github.io-archive`, cloned locally at `~/projects/joel-becker.github.io-archive`. Don't push that history to this repo.
+- `public/` is a stale Hugo output and is gitignored; GitHub Pages serves the repo root.
