@@ -1,0 +1,11 @@
+baseURL = "https://joel-becker.com/"
+languageCode = "en-us"
+title = "Joel Becker"
+
+[permalinks]
+digital-garden = "/digital-garden/:filename/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
