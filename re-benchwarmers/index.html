@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RE-Benchwarmers</title>
+  <meta name="generator" content="re-benchwarmers">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="RE-Benchwarmers: every league game, table, squad and lineup of one recreational soccer team.">
+  <meta property="og:title" content="RE-Benchwarmers">
+  <meta property="og:description" content="Every league game, table, squad and lineup of one recreational soccer team.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%231baf7a'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply a saved theme before first paint to avoid a flash.
+    try { const t = localStorage.getItem("se-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#overview" id="logo">RE-BENCHWARMERS<span class="dot">.</span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#overview">Overview</a>
+        <a href="#results">Results</a>
+        <a href="#table">Table</a>
+        <a href="#opponents">Opponents</a>
+        <a href="#turnout">Turnout</a>
+        <a href="#players">Players</a>
+        <a href="#squads">Squads</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="toggles">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="filterbar">
+    <div class="filterbar-inner">
+      <span class="filter-label">Period</span>
+      <div class="seg" id="period-toggle" role="group" aria-label="Time period"></div>
+      <span class="filter-range" id="period-range"></span>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview">
+      <div class="hero">
+        <div>
+          <p class="eyebrow"><span class="pip"></span><span id="updated">League record</span></p>
+          <h1 id="team-name">RE-Benchwarmers</h1>
+          <p class="dek" id="dek"></p>
+        </div>
+        <div class="hero-figure" id="hero-figure"></div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <!-- The cards below are drawn by js/sections/*.js, which the training log (~/projects/health-dashboard) also uses: keep the ids. -->
+    <div id="league-block" hidden>
+      <section class="block" id="results">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Results</h2></div>
+          <p>Every league game we have played: the run of results, how each season built up game by game, the scorelines, and when we win.</p>
+        </div>
+        <div class="grid cols-2">
+          <div class="card span-2" id="form-card"></div>
+          <div class="card span-2" id="snake-card"></div>
+          <div class="card span-2" id="rolling-card"></div>
+          <div class="card span-2" id="gd-card"></div>
+          <div class="card" id="scores-card"></div>
+          <div class="card" id="leagueby-card"></div>
+          <div class="card" id="margin-card"></div>
+          <div class="card" id="attack-card"></div>
+          <div class="card span-2" id="streaks-card"></div>
+        </div>
+      </section>
+
+      <section class="block" id="table">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Table</h2></div>
+          <p>Where we finished in each season's league table, among every team in that league.</p>
+        </div>
+        <div class="card" id="standings-card" hidden></div>
+      </section>
+
+      <section class="block" id="opponents">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Opponents</h2></div>
+          <p>The teams we have met, and how we have done against each.</p>
+        </div>
+        <div class="card" id="h2h-card" hidden></div>
+      </section>
+
+      <section class="block" id="turnout">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Turnout</h2></div>
+          <p>Who said yes to each game on the league's site. Saying yes is not the same as turning up, so read these as RSVPs.</p>
+        </div>
+        <div class="grid cols-2">
+          <div class="card span-2" id="turnout-card" hidden></div>
+          <div class="card span-2" id="attgrid-card" hidden></div>
+          <div class="card" id="reliable-card" hidden></div>
+          <div class="card" id="regulars-card" hidden></div>
+          <div class="card" id="women-card" hidden></div>
+          <div class="card" id="dropins-card" hidden></div>
+        </div>
+      </section>
+
+      <section class="block" id="players">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Players</h2></div>
+          <p>How the team does in the games each person said yes to, against the games they missed. Small numbers and not a rating: who is free on which night is not random.</p>
+        </div>
+        <div class="grid cols-2">
+          <div class="card" id="ppg-pair-card" hidden></div>
+          <div class="card" id="ppg-diff-card" hidden></div>
+          <div class="card" id="gd-pair-card" hidden></div>
+          <div class="card" id="gd-diff-card" hidden></div>
+          <div class="card span-2" id="pairs-card" hidden></div>
+        </div>
+      </section>
+
+      <section class="block" id="squads">
+        <div class="section-head">
+          <div><span class="num" data-num></span><h2>Squads</h2></div>
+          <p>Who was on each season's squad list, and how much of the squad carries over from one season to the next.</p>
+        </div>
+        <div class="grid cols-2">
+          <div class="card span-2" id="squad-card" hidden></div>
+          <div class="card span-2" id="squadsize-card" hidden></div>
+          <div class="card" id="squadrecord-card" hidden></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="block" id="about">
+      <div class="section-head">
+        <div><span class="num" data-num></span><h2>About</h2></div>
+        <p>Where the numbers come from and what they can and cannot say.</p>
+      </div>
+      <div class="card" id="about-card"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span id="footer-team">RE-Benchwarmers</span>
+    <span id="footer-meta"></span>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+  <script src="vendor/d3.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
