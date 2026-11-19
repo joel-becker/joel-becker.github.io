@@ -6,106 +6,125 @@
   <title>Live Band Karaoke RSVPs</title>
   <meta name="generator" content="lbk-rsvp-dashboard">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="How RSVPs for Live Band Karaoke are piling up, compared with past events.">
+  <meta name="description" content="How RSVPs for Live Band Karaoke are piling up, against the events before it.">
   <meta property="og:title" content="Live Band Karaoke RSVPs">
-  <meta property="og:description" content="How RSVPs are piling up, compared with past events.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%238172B3'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
+  <meta property="og:description" content="How RSVPs are piling up, against the events before it.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%236250d6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
+  <!-- styles.css, js/ui.js, js/charts.js and vendor/ are copies of the RE-Benchwarmers page's (~/projects/re-benchwarmers/site) -->
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Layout: sticky top bar, four summary tiles, then one full-width card per chart, grouped in sections.
-       Same shell as the RE-Benchwarmers page; the accent is the upcoming event's colour in the charts. */
-    :root {
-      color-scheme: light;
-      --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
-      --ring: rgba(11, 11, 11, 0.09); --accent: #6a5aa6; --chart-paper: #ffffff;
-      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      --display: "Barlow Condensed", "Arial Narrow", var(--sans);
-      --radius: 14px; --maxw: 1180px;
+    /* the page's own accent: the purple the upcoming event has in every chart */
+    :root { --brand: #6250d6; }
+    @media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) { --brand: #9085e9; } }
+    :root[data-theme="dark"] { --brand: #9085e9; }
+    @media (max-width: 860px) {
+      .hero, .section-head { grid-template-columns: 1fr; gap: 20px; }
+      .hero-figure { justify-self: start; text-align: left; }
+      .cols-2 { grid-template-columns: 1fr; }
+      .span-2 { grid-column: auto; }
     }
-    @media (prefers-color-scheme: dark) {
-      :root:where(:not([data-theme="light"])) {
-        color-scheme: dark;
-        --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
-        --ring: rgba(255, 255, 255, 0.09); --accent: #a99be0; --chart-paper: #ffffff;
-      }
-    }
-    :root[data-theme="dark"] {
-      color-scheme: dark;
-      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
-      --ring: rgba(255, 255, 255, 0.09); --accent: #a99be0; --chart-paper: #ffffff;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.55 var(--sans);
-           -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-    .topbar { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--ring);
-              background: color-mix(in srgb, var(--page) 88%, transparent); backdrop-filter: blur(10px); }
-    .topbar-inner { max-width: var(--maxw); margin: 0 auto; padding: 10px 20px; display: flex;
-                    flex-wrap: wrap; align-items: baseline; gap: 6px 22px; }
-    .logo { font: 600 20px/1 var(--display); letter-spacing: 0.04em; text-decoration: none; white-space: nowrap; }
-    .logo .dot { color: var(--accent); }
-    .nav { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; color: var(--ink-2); }
-    .nav a { text-decoration: none; }
-    .nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); }
-    main { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px 56px; display: flex;
-           flex-direction: column; gap: 36px; }
-    h1 { font: 600 clamp(34px, 6vw, 52px)/1.02 var(--display); letter-spacing: 0.01em; margin: 0;
-         text-wrap: balance; }
-    .lede { margin: 8px 0 0; color: var(--ink-2); }
-    .pill { display: inline-block; margin-left: 6px; padding: 1px 10px; border-radius: 999px; font-size: 13px;
-            color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
-    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-    .tile { background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius);
-            padding: 14px 16px; }
-    .tile:first-child { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
-    .tile-label { font: 600 14px/1.2 var(--display); letter-spacing: 0.08em; text-transform: uppercase;
-                  color: var(--ink-2); }
-    .tile-value { font: 600 44px/1.1 var(--display); font-variant-numeric: tabular-nums; }
-    .tile:first-child .tile-value { color: var(--accent); }
-    .tile-note { font-size: 13px; color: var(--muted); }
-    section { display: flex; flex-direction: column; gap: 14px; }
-    h2 { font: 600 26px/1.1 var(--display); letter-spacing: 0.02em; margin: 0; }
-    .card { margin: 0; background: var(--surface); border: 1px solid var(--ring); border-radius: var(--radius);
-            padding: 16px 18px 18px; }
-    h3 { font: 600 16px/1.3 var(--sans); margin: 0; text-wrap: balance; }
-    .caption { margin: 4px 0 12px; color: var(--ink-2); font-size: 14px; max-width: 78ch; }
-    .chart { display: block; background: var(--chart-paper); border-radius: 10px; padding: 10px;
-             overflow-x: auto; }
-    .chart img { display: block; width: 100%; min-width: 620px; height: auto; }
-    .about { color: var(--ink-2); font-size: 14px; max-width: 78ch; }
-    .about p { margin: 0 0 8px; }
+    @media (max-width: 560px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } main { padding: 0 16px 72px; } }
   </style>
+  <script>
+    // Apply a saved theme before first paint to avoid a flash.
+    try { const t = localStorage.getItem("se-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="logo" href="#top">LIVE BAND KARAOKE<span class="dot">.</span></a>
-      <nav class="nav" aria-label="Sections"><a href="#lead-up">Lead-up</a><a href="#forecast">Forecast</a><a href="#regulars">Regulars</a><a href="#women-and-men">Women and men</a><a href="#replies">Replies</a><a href="#about">About</a></nav>
+      <a class="logo" href="#overview" id="logo">LIVE BAND KARAOKE<span class="dot">.</span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#overview">Overview</a>
+        <a href="#lead-up">Lead-up</a>
+        <a href="#regulars">Regulars</a>
+        <a href="#women-and-men">Women and men</a>
+        <a href="#replies">Replies</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="toggles">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
     </div>
   </header>
-  <main id="top">
-    <div>
-      <h1>RSVPs for Berkeley, Nov 21</h1>
-      <p class="lede">Updated Wed Nov 18, 11:26pm Pacific <span class="pill">3 days to go</span></p>
-    </div>
-    <div class="tiles"><div class="tile"><div class="tile-label">Going</div><div class="tile-value">248</div><div class="tile-note">headcount, with +1s</div></div><div class="tile"><div class="tile-label">Maybe</div><div class="tile-value">186</div><div class="tile-note">have said maybe</div></div><div class="tile"><div class="tile-label">Can&#x27;t go</div><div class="tile-value">79</div><div class="tile-note">have said no</div></div><div class="tile"><div class="tile-label">Guest list</div><div class="tile-value">1,239</div><div class="tile-note">invited or replied</div></div></div>
-    <section id="lead-up"><h2>Lead-up</h2><figure class="card"><h3>Headcount as the night approaches</h3><p class="caption">People going (solid) and maybe (dashed), counting +1s, against days before each event.</p><a class="chart" href="charts/snake_chart.webp"><img src="charts/snake_chart.webp" width="2200" height="1386" loading="lazy" alt="Headcount as the night approaches: People going (solid) and maybe (dashed), counting +1s, against days before each event."></a></figure><figure class="card"><h3>The first days after invites went out</h3><p class="caption">The same lines counted from each event&#x27;s launch, so the starts can be compared.</p><a class="chart" href="charts/launch_chart.webp"><img src="charts/launch_chart.webp" width="2200" height="1475" loading="lazy" alt="The first days after invites went out: The same lines counted from each event&#x27;s launch, so the starts can be compared."></a></figure><figure class="card"><h3>Size of the guest list</h3><p class="caption">Everyone invited or replied so far, against days before each event.</p><a class="chart" href="charts/guest_list_chart.webp"><img src="charts/guest_list_chart.webp" width="2200" height="1337" loading="lazy" alt="Size of the guest list: Everyone invited or replied so far, against days before each event."></a></figure></section><section id="forecast"><h2>Forecast</h2><figure class="card"><h3>Where the headcount is heading</h3><p class="caption">Left: the going headcount projected forward as if it grows the way past events grew from this point. Right: what people at past events ended up doing, by where they stood this many days out.</p><a class="chart" href="charts/forecast_chart.webp"><img src="charts/forecast_chart.webp" width="2200" height="965" loading="lazy" alt="Where the headcount is heading: Left: the going headcount projected forward as if it grows the way past events grew from this point. Right: what people at past events ended up doing, by where they stood this many days out."></a></figure></section><section id="regulars"><h2>Regulars</h2><figure class="card"><h3>New and returning guests</h3><p class="caption">Left: people going to each event, by how many earlier ones they went to. Right: where past guests stand for this one.</p><a class="chart" href="charts/returning_chart.webp"><img src="charts/returning_chart.webp" width="2200" height="1035" loading="lazy" alt="New and returning guests: Left: people going to each event, by how many earlier ones they went to. Right: where past guests stand for this one."></a></figure></section><section id="women-and-men"><h2>Women and men</h2><figure class="card"><h3>Women and men going, as the night approaches</h3><p class="caption">Left: women (solid) and men (dashed) going at each event. Right: women going minus men going.</p><a class="chart" href="charts/gender_snake_chart.webp"><img src="charts/gender_snake_chart.webp" width="2200" height="1029" loading="lazy" alt="Women and men going, as the night approaches: Left: women (solid) and men (dashed) going at each event. Right: women going minus men going."></a></figure><figure class="card"><h3>Who gets invited, and who says yes</h3><p class="caption">Left: share of women among people invited, people who found the link, the whole list and people going. Right: how invited women and men replied.</p><a class="chart" href="charts/gender_response_chart.webp"><img src="charts/gender_response_chart.webp" width="2200" height="990" loading="lazy" alt="Who gets invited, and who says yes: Left: share of women among people invited, people who found the link, the whole list and people going. Right: how invited women and men replied."></a></figure><figure class="card"><h3>Share going, and share of men, over time</h3><p class="caption">Top: of the people who said going or maybe, the share who said going. Bottom: share of men at each event.</p><a class="chart" href="charts/composition_chart.webp"><img src="charts/composition_chart.webp" width="2200" height="1463" loading="lazy" alt="Share going, and share of men, over time: Top: of the people who said going or maybe, the share who said going. Bottom: share of men at each event."></a></figure></section><section id="replies"><h2>Replies</h2><figure class="card"><h3>How quickly people reply to an invite</h3><p class="caption">Share of invited people who have replied, against time since their invite was sent.</p><a class="chart" href="charts/reply_speed_public.webp"><img src="charts/reply_speed_public.webp" width="2200" height="1455" loading="lazy" alt="How quickly people reply to an invite: Share of invited people who have replied, against time since their invite was sent."></a></figure></section>
-    <section id="about">
-      <h2>About</h2>
-      <div class="about">
-        <p>Numbers come from the Partiful guest lists of this event and the four before it.</p>
-        <p>Women and men are a best guess from first names. People whose names can't be placed are left out,
-           and a +1 without a name counts as half a woman and half a man.</p>
-        <p>One past event (Love Band Karaoke) approved guests rather than letting them say going, so its
-           line counts each approved guest as 0.65 of a person going.</p>
-        <p>Tap a chart to open it full size.</p>
+
+  <main>
+    <section id="overview">
+      <div class="hero">
+        <div>
+          <p class="eyebrow"><span class="pip"></span><span id="updated">RSVPs</span></p>
+          <h1 id="event-name">Live Band Karaoke</h1>
+          <p class="dek" id="dek"></p>
+        </div>
+        <div class="hero-figure" id="hero-figure"></div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section class="block" id="lead-up">
+      <div class="section-head">
+        <div><span class="num">01</span><h2>Lead-up</h2></div>
+        <p>How the headcount and the guest list have built up, laid over the four events before this one.</p>
+      </div>
+      <div class="grid cols-2">
+        <div class="card span-2" id="leadup-card"></div>
+        <div class="card" id="launch-card"></div>
+        <div class="card" id="list-card"></div>
       </div>
     </section>
+
+    <section class="block" id="regulars">
+      <div class="section-head">
+        <div><span class="num">02</span><h2>Regulars</h2></div>
+        <p>Who is new, who keeps coming back, and where the people who came before stand for this one. Saying going is an RSVP, not a check-in on the night.</p>
+      </div>
+      <div class="grid cols-2">
+        <div class="card" id="experience-card"></div>
+        <div class="card" id="standing-card"></div>
+      </div>
+    </section>
+
+    <section class="block" id="women-and-men">
+      <div class="section-head">
+        <div><span class="num">03</span><h2>Women and men</h2></div>
+        <p>The balance among people going, and where it shifts between the invite and the yes. Women and men are a best guess from first names.</p>
+      </div>
+      <div class="grid cols-2">
+        <div class="card span-2" id="gap-card"></div>
+        <div class="card" id="men-card"></div>
+        <div class="card" id="mix-card"></div>
+      </div>
+    </section>
+
+    <section class="block" id="replies">
+      <div class="section-head">
+        <div><span class="num">04</span><h2>Replies</h2></div>
+        <p>How long people take to answer an invite.</p>
+      </div>
+      <div class="card" id="replies-card"></div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="section-head">
+        <div><span class="num">05</span><h2>About</h2></div>
+        <p>Where the numbers come from and what they can and cannot say.</p>
+      </div>
+      <div class="card" id="about-card"></div>
+    </section>
   </main>
+
+  <footer>
+    <span>Live Band Karaoke</span>
+    <span id="footer-meta"></span>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+  <script src="vendor/d3.min.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
