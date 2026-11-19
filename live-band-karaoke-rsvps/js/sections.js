@@ -346,46 +346,49 @@ export function mix(data) {
   });
 }
 
-// ---------------------------------------------------------------- Lighthaven crowd
+// ---------------------------------------------------------------- Lighthaven and Mox crowd
 
-export function lhGoing(data) {
-  const el = document.getElementById("lh-going-card");
+const plural = (n, word) => `${int(n)} ${word}${n === 1 ? "" : "s"}`;
+
+export function crowdGoing(data) {
+  const el = document.getElementById("crowd-going-card");
   const S = setup(data);
-  const events = S.events.filter((e) => e.lighthaven?.going.length);
+  const events = S.events.filter((e) => e.crowd?.going.length);
   if (!events.length) { el.hidden = true; return; }
-  const pts = (e) => e.lighthaven.going;
-  let title = "Share of people going who had been to another Lighthaven event";
+  const pts = (e) => e.crowd.going;
+  let title = "Share of people going who had been to another Lighthaven or Mox event";
   if (S.up && events.includes(S.up)) {
     const now = last(pts(S.up))[1], before = valueAt(pts(S.up), S.up.now - 7)?.[1];
     const move = before == null ? "" : Math.round(now * 100) === Math.round(before * 100) ? ", the same as a week ago" : `, ${now > before ? "up" : "down"} from ${pct(before)} a week ago`;
-    title = `${pct(now)} of people going to ${S.up.name} had said going to another Lighthaven event before${move}`;
+    title = `${pct(now)} of people going to ${S.up.name} had said going to another Lighthaven or Mox event before${move}`;
   }
+  const seen = S.events[0].crowd.events;
   const values = events.flatMap((e) => pts(e).filter((p) => p[0] >= S.daysDomain[0]).map((p) => p[1]));
   const c = card(el, {
     title,
-    sub: `Share of people going who had already said going to one of the other Lighthaven events Joel has been to (${S.events[0].lighthaven.events} so far; karaoke nights are not counted), ` +
-      "one line per event, as the RSVPs came in. A line starts once ten people are going.",
+    sub: `Share of people going who had already said going to one of the other events Joel has been to at Lighthaven (${plural(seen.lighthaven || 0, "event")}) or Mox (${int(seen.mox || 0)}), ` +
+      "karaoke nights not counted. One line per event, as the RSVPs came in; a line starts once ten people are going.",
   });
   lineLegend(c.legend, events, (e) => pct(last(pts(e))[1]));
   stageTable(c, { ...S, events }, pts, (p) => pct(p[1]));
   lineChart(c.body, {
-    ...daysAxis(S.daysDomain), label: "Share of people going who had been to another Lighthaven event, by days before each event",
+    ...daysAxis(S.daysDomain), label: "Share of people going who had been to another Lighthaven or Mox event, by days before each event",
     series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
     yDomain: [0, Math.max(0.6, Math.ceil(d3.max(values) * 10) / 10)],
-    yLabel: "Share who had been to another Lighthaven event", yFormat: pct, nowX: S.up?.now,
+    yLabel: "Share who had been to another Lighthaven or Mox event", yFormat: pct, nowX: S.up?.now,
     endLabel: (p) => `${pct(p[1])} now`, height: 320,
   });
 }
 
-export function lhMix(data) {
-  const el = document.getElementById("lh-mix-card");
+export function crowdMix(data) {
+  const el = document.getElementById("crowd-mix-card");
   const S = setup(data), e0 = S.events[0];
-  if (!e0.lighthaven) { el.hidden = true; return; }
-  const m = e0.lighthaven.mix;
+  if (!e0.crowd) { el.hidden = true; return; }
+  const m = e0.crowd.mix;
   groupDots(el, S, {
-    get: (e) => e.lighthaven?.mix, of: "who had been to another Lighthaven event", span: [0.1, 0.5],
-    title: `${pct(m.going.share)} of people going to ${e0.name} have been to Lighthaven before, against ${pct(m.list.share)} of the whole guest list`,
-    sub: "Share who had already said going to another Lighthaven event, in four groups at each event: people invited directly, people who came through a shared link, the whole guest list, and people going.",
+    get: (e) => e.crowd?.mix, of: "who had been to another Lighthaven or Mox event", span: [0.2, 0.6],
+    title: `${pct(m.going.share)} of people going to ${e0.name} have been to Lighthaven or Mox before, against ${pct(m.list.share)} of the whole guest list`,
+    sub: "Share who had already said going to another Lighthaven or Mox event, in four groups at each event: people invited directly, people who came through a shared link, the whole guest list, and people going.",
   });
 }
 
@@ -456,8 +459,9 @@ export function about(data) {
     ["Going and headcount", "Going counts everyone who said going plus the +1s they are bringing. The guest list counts each person invited or who replied, and a +1 only when it has a name."],
     ["Love Band Karaoke", `That event approved guests rather than letting them say going, and not every approved guest came. Its going line counts each approved guest as ${S.meta.approved_weight} of a person.`],
     ["Women and men", "A best guess from first names. People whose names can't be placed are left out, and a +1 without a name counts as half a woman and half a man. Read these as rough shares, not a register."],
-    ["Lighthaven crowd", `Someone counts if their Partiful account said going to another event at Lighthaven before the karaoke in question. Only the ${S.events[0].lighthaven?.events ?? 0} events there that Joel also went to can be seen, ` +
-      "so the real share of Lighthaven regulars is higher. Karaoke nights are not counted, and neither are people without a Partiful account."],
+    ["Lighthaven and Mox crowd", `Someone counts if their Partiful account said going to another event at Lighthaven (Berkeley) or Mox (San Francisco) before the karaoke in question. ` +
+      `Only the ${int(d3.sum(Object.values(S.events[0].crowd?.events || {})))} events there that Joel also went to can be seen, so the real share of regulars at those two places is higher. ` +
+      "Karaoke nights are not counted, and neither are people without a Partiful account."],
     ["Regulars", "People are matched across events by their Partiful account. Saying going is an RSVP: some people say going and don't come, and some come without saying so."],
   ];
   c.body.append(h("dl", { class: "about-list" }, ...items.flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, v)])));
