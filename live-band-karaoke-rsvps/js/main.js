@@ -1,6 +1,6 @@
 // Entry point: load the numbers, draw every card, redraw on a theme change or a resize.
-import { h } from "./ui.js";
-import * as S from "./sections.js";
+import { h } from "./ui.js?v=6bfcb6cc";
+import * as S from "./sections.js?v=6bfcb6cc";
 
 const CARDS = [S.overview, S.leadup, S.launch, S.guestList, S.experience, S.standing, S.crowdGoing, S.crowdMix, S.men, S.mix, S.replies, S.about];
 let data = null;
