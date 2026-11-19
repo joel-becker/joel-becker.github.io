@@ -285,54 +285,108 @@ export function men(data) {
   });
 }
 
-export function mix(data) {
-  const el = document.getElementById("mix-card");
-  const S = setup(data), P = S.P;
+/**
+ * A row per event, a dot per group of guests, placed by a share (0 to 1).
+ * o: { title, sub, get(event) -> { invited, link, list, going: { share, n } }, of (what the share is of, for labels),
+ *      mark: { value, label } an optional reference line, span: [lo, hi] the least the axis should cover }
+ */
+function groupDots(el, S, o) {
+  const P = S.P;
   const GROUPS = [
     { id: "invited", label: "Invited directly", color: P.cat[0] },
     { id: "link", label: "Found the shared link", color: P.cat[1] },
     { id: "list", label: "Whole guest list", color: P.muted },
     { id: "going", label: "Going", color: P.ink },
   ];
-  const e0 = S.events[0];
-  const c = card(el, {
-    title: `${pct(e0.mix.invited.share)} of the people invited to ${e0.name} are women, against ${pct(e0.mix.link.share)} of those who found the link themselves`,
-    sub: "Share of women in four groups at each event: people invited directly, people who came through a shared link without an invite, the whole guest list, and people going.",
-  });
+  const events = S.events.filter((e) => o.get(e));
+  const c = card(el, { title: o.title, sub: o.sub });
   legend(c.legend, GROUPS.map((k) => ({ label: k.label, color: k.color, mark: "dt" })));
-  c.setTable([{ label: "Event", value: (e) => e.name }, ...GROUPS.map((k) => ({ label: k.label, num: true, value: (e) => (e.mix[k.id].share == null ? "–" : `${pct(e.mix[k.id].share)} of ${int(e.mix[k.id].n)}`) }))], S.events);
+  const cell = (m) => (m.share == null ? "–" : `${pct(m.share)} of ${int(m.n)}`);
+  c.setTable([{ label: "Event", value: (e) => e.name }, ...GROUPS.map((k) => ({ label: k.label, num: true, value: (e) => cell(o.get(e)[k.id]) }))], events);
 
   const narrow = isNarrow(el, 440);
-  const shares = S.events.flatMap((e) => GROUPS.map((k) => e.mix[k.id].share)).filter((v) => v != null);
-  const lo = Math.min(0.3, Math.floor(d3.min(shares) * 10) / 10), hi = Math.max(0.6, Math.ceil(d3.max(shares) * 10) / 10);
-  const f = frame(c.body, { height: S.events.length * 46 + 54, margin: { left: narrow ? 82 : 150, right: 16, top: 20, bottom: 30 } });
+  const shares = events.flatMap((e) => GROUPS.map((k) => o.get(e)[k.id].share)).filter((v) => v != null);
+  const lo = Math.min(o.span[0], Math.floor(d3.min(shares) * 10) / 10), hi = Math.max(o.span[1], Math.ceil(d3.max(shares) * 10) / 10);
+  const f = frame(c.body, { height: events.length * 46 + 54, margin: { left: narrow ? 82 : 150, right: 16, top: 20, bottom: 30 } });
   const { g, w, h: ht } = f;
   const x = d3.scaleLinear().domain([lo, hi]).range([0, w]);
-  const y = d3.scalePoint().domain(S.events.map((e) => e.slug)).range([0, ht]).padding(0.6);
+  const y = d3.scalePoint().domain(events.map((e) => e.slug)).range([0, ht]).padding(0.6);
   const ticks = d3.range(Math.round(lo * 10), Math.round(hi * 10) + 1).map((t) => t / 10);
   const ax = g.append("g").attr("class", "axis");
   ax.selectAll("line").data(ticks).join("line").attr("class", "gridline").attr("x1", (t) => Math.round(x(t)) + 0.5).attr("x2", (t) => Math.round(x(t)) + 0.5).attr("y1", 0).attr("y2", ht)
-    .style("stroke", (t) => (t === 0.5 ? P.muted : null));
+    .style("stroke", (t) => (o.mark && t === o.mark.value ? P.muted : null));
   ax.selectAll("text").data(ticks).join("text").attr("x", (t) => x(t)).attr("y", ht + 17).attr("text-anchor", "middle").text(pct);
-  g.append("text").attr("class", "annot-muted").attr("x", x(0.5)).attr("y", -8).attr("text-anchor", "middle").text("half women");
-  for (const e of S.events) {
+  if (o.mark) g.append("text").attr("class", "annot-muted").attr("x", x(o.mark.value)).attr("y", -8).attr("text-anchor", "middle").text(o.mark.label);
+  for (const e of events) {
     const yy = y(e.slug);
-    const marks = GROUPS.map((k) => ({ k, ...e.mix[k.id] })).filter((m) => m.share != null);
+    const marks = GROUPS.map((k) => ({ k, ...o.get(e)[k.id] })).filter((m) => m.share != null);
     g.append("text").attr("class", "annot").attr("x", -12).attr("y", yy).attr("dy", "0.35em").attr("text-anchor", "end")
       .style("fill", e.upcoming ? P.ink : null).style("font-weight", e.upcoming ? 600 : null).text(narrow ? e.short : e.name);
     g.append("line").attr("x1", x(d3.min(marks, (m) => m.share))).attr("x2", x(d3.max(marks, (m) => m.share))).attr("y1", yy).attr("y2", yy)
       .attr("stroke", P.axis).attr("stroke-width", 2);
     g.append("g").selectAll("circle").data(marks).join("circle").attr("cx", (m) => x(m.share)).attr("cy", yy).attr("r", 6)
       .attr("fill", (m) => m.k.color).attr("stroke", P.surface).attr("stroke-width", 2).attr("tabindex", 0).style("cursor", "pointer")
-      .attr("aria-label", (m) => `${e.name}, ${m.k.label}: ${pct(m.share)} women`)
+      .attr("aria-label", (m) => `${e.name}, ${m.k.label}: ${pct(m.share)} ${o.of}`)
       .on("pointerenter pointermove focus", function (ev) {
         tooltip.show(ev.type === "focus" ? focusEvent(this) : ev, {
-          title: `${e.name} · share of women`,
-          rows: marks.map((m) => ({ label: m.k.label, value: `${pct(m.share)} of ${int(m.n)}`, color: m.k.color })),
+          title: `${e.name} · share ${o.of}`,
+          rows: marks.map((m) => ({ label: m.k.label, value: cell(m), color: m.k.color })),
         });
       })
       .on("pointerleave blur", () => tooltip.hide());
   }
+}
+
+export function mix(data) {
+  const S = setup(data), e0 = S.events[0];
+  groupDots(document.getElementById("mix-card"), S, {
+    get: (e) => e.mix, of: "of women", mark: { value: 0.5, label: "half women" }, span: [0.3, 0.6],
+    title: `${pct(e0.mix.invited.share)} of the people invited to ${e0.name} are women, against ${pct(e0.mix.link.share)} of those who found the link themselves`,
+    sub: "Share of women in four groups at each event: people invited directly, people who came through a shared link without an invite, the whole guest list, and people going.",
+  });
+}
+
+// ---------------------------------------------------------------- Lighthaven crowd
+
+export function lhGoing(data) {
+  const el = document.getElementById("lh-going-card");
+  const S = setup(data);
+  const events = S.events.filter((e) => e.lighthaven?.going.length);
+  if (!events.length) { el.hidden = true; return; }
+  const pts = (e) => e.lighthaven.going;
+  let title = "Share of people going who had been to another Lighthaven event";
+  if (S.up && events.includes(S.up)) {
+    const now = last(pts(S.up))[1], before = valueAt(pts(S.up), S.up.now - 7)?.[1];
+    const move = before == null ? "" : Math.round(now * 100) === Math.round(before * 100) ? ", the same as a week ago" : `, ${now > before ? "up" : "down"} from ${pct(before)} a week ago`;
+    title = `${pct(now)} of people going to ${S.up.name} had said going to another Lighthaven event before${move}`;
+  }
+  const values = events.flatMap((e) => pts(e).filter((p) => p[0] >= S.daysDomain[0]).map((p) => p[1]));
+  const c = card(el, {
+    title,
+    sub: `Share of people going who had already said going to one of the other Lighthaven events Joel has been to (${S.events[0].lighthaven.events} so far; karaoke nights are not counted), ` +
+      "one line per event, as the RSVPs came in. A line starts once ten people are going.",
+  });
+  lineLegend(c.legend, events, (e) => pct(last(pts(e))[1]));
+  stageTable(c, { ...S, events }, pts, (p) => pct(p[1]));
+  lineChart(c.body, {
+    ...daysAxis(S.daysDomain), label: "Share of people going who had been to another Lighthaven event, by days before each event",
+    series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
+    yDomain: [0, Math.max(0.6, Math.ceil(d3.max(values) * 10) / 10)],
+    yLabel: "Share who had been to another Lighthaven event", yFormat: pct, nowX: S.up?.now,
+    endLabel: (p) => `${pct(p[1])} now`, height: 320,
+  });
+}
+
+export function lhMix(data) {
+  const el = document.getElementById("lh-mix-card");
+  const S = setup(data), e0 = S.events[0];
+  if (!e0.lighthaven) { el.hidden = true; return; }
+  const m = e0.lighthaven.mix;
+  groupDots(el, S, {
+    get: (e) => e.lighthaven?.mix, of: "who had been to another Lighthaven event", span: [0.1, 0.5],
+    title: `${pct(m.going.share)} of people going to ${e0.name} have been to Lighthaven before, against ${pct(m.list.share)} of the whole guest list`,
+    sub: "Share who had already said going to another Lighthaven event, in four groups at each event: people invited directly, people who came through a shared link, the whole guest list, and people going.",
+  });
 }
 
 // ---------------------------------------------------------------- replies
@@ -402,6 +456,8 @@ export function about(data) {
     ["Going and headcount", "Going counts everyone who said going plus the +1s they are bringing. The guest list counts each person invited or who replied, and a +1 only when it has a name."],
     ["Love Band Karaoke", `That event approved guests rather than letting them say going, and not every approved guest came. Its going line counts each approved guest as ${S.meta.approved_weight} of a person.`],
     ["Women and men", "A best guess from first names. People whose names can't be placed are left out, and a +1 without a name counts as half a woman and half a man. Read these as rough shares, not a register."],
+    ["Lighthaven crowd", `Someone counts if their Partiful account said going to another event at Lighthaven before the karaoke in question. Only the ${S.events[0].lighthaven?.events ?? 0} events there that Joel also went to can be seen, ` +
+      "so the real share of Lighthaven regulars is higher. Karaoke nights are not counted, and neither are people without a Partiful account."],
     ["Regulars", "People are matched across events by their Partiful account. Saying going is an RSVP: some people say going and don't come, and some come without saying so."],
   ];
   c.body.append(h("dl", { class: "about-list" }, ...items.flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, v)])));
