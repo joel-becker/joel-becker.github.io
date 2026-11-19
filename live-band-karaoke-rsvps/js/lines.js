@@ -56,10 +56,6 @@ export function lineChart(el, o) {
     g.append("line").attr("x1", 0).attr("x2", w).attr("y1", yr).attr("y2", yr).attr("stroke", P.muted).attr("shape-rendering", "crispEdges");
     g.append("text").attr("class", "annot-muted halo").attr("x", 4).attr("y", yr - 6).style("font-weight", 500).text(o.ref.label);
   }
-  if (o.corners) {
-    g.append("text").attr("class", "annot-muted").attr("x", 6).attr("y", 12).text(o.corners.top);
-    g.append("text").attr("class", "annot-muted").attr("x", 6).attr("y", h - 8).text(o.corners.bottom);
-  }
   if (o.nowX != null && o.nowX > o.xDomain[0] && o.nowX < o.xDomain[1]) {
     const xn = Math.round(x(o.nowX)) + 0.5;
     g.append("line").attr("x1", xn).attr("x2", xn).attr("y1", -6).attr("y2", h).attr("stroke", P.muted).attr("stroke-dasharray", "3 3");

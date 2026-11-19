@@ -6,7 +6,6 @@ import { lineChart, valueAt } from "./lines.js";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
-const signed = (v) => { const r = Math.round(v); return r > 0 ? `+${int(r)}` : r < 0 ? `−${int(-r)}` : "0"; };
 const last = (a) => a[a.length - 1];
 const words = (n) => ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"][n] || String(n);
 const isNarrow = (el, at = 520) => (el.getBoundingClientRect().width || 900) < at;
@@ -258,31 +257,6 @@ export function standing(data) {
 }
 
 // ---------------------------------------------------------------- women and men
-
-export function gap(data) {
-  const el = document.getElementById("gap-card");
-  const S = setup(data);
-  const pts = (e) => e.gender.map(([x, women, men]) => [x, women - men, women, men]);
-  const lead = (d) => (Math.abs(d) < 0.5 ? "level" : d > 0 ? `women ahead by ${int(d)}` : `men ahead by ${int(-d)}`);
-  let title = "Women going minus men going, event by event";
-  if (S.up) {
-    const now = last(pts(S.up)), before = valueAt(pts(S.up), S.up.now - 7);
-    title = `${int(now[3])} men and ${int(now[2])} women going: ${lead(now[1])}` + (before ? `; a week ago it was ${lead(before[1])}` : "");
-  }
-  const c = card(el, {
-    title,
-    sub: "Women going minus men going, by days before each event: above the line means more women. A +1 without a name counts as half a woman and half a man.",
-  });
-  lineLegend(c.legend, S.events, (e) => signed(last(pts(e))[1]));
-  stageTable(c, S, pts, (p) => `${signed(p[1])} (${int(p[2])} women, ${int(p[3])} men)`);
-  lineChart(c.body, {
-    ...daysAxis(S.daysDomain), label: "Women going minus men going, by days before each event",
-    series: S.events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
-    yLabel: "Women going minus men going", yFormat: signed, nowX: S.up?.now, corners: { top: "More women ↑", bottom: "More men ↓" },
-    endLabel: (p) => `${signed(p[1])} now`, tipValue: (p) => `${signed(p[1])} (${int(p[2])} women, ${int(p[3])} men)`,
-    height: isNarrow(el) ? 310 : 380,
-  });
-}
 
 export function men(data) {
   const el = document.getElementById("men-card");

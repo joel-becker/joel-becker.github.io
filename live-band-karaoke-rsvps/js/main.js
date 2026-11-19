@@ -2,7 +2,7 @@
 import { h } from "./ui.js";
 import * as S from "./sections.js";
 
-const CARDS = [S.overview, S.leadup, S.launch, S.guestList, S.experience, S.standing, S.gap, S.men, S.mix, S.replies, S.about];
+const CARDS = [S.overview, S.leadup, S.launch, S.guestList, S.experience, S.standing, S.men, S.mix, S.replies, S.about];
 let data = null;
 
 function renderAll() {
