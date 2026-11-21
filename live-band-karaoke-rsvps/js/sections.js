@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=1116d95e";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=1116d95e";
-import { lineChart, valueAt } from "./lines.js?v=1116d95e";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=669010fe";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=669010fe";
+import { lineChart, valueAt } from "./lines.js?v=669010fe";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -69,7 +69,7 @@ export function leadup(data) {
   }
   const approved = events.some((e) => e.approval) && M.id === "going";
   const tools = h("div", { class: "seg small", role: "group", "aria-label": "Which reply to count" });
-  segmented(tools, MEASURES, M.id, (id) => { measure = id; leadup(data); });
+  segmented(tools, MEASURES, M.id, (id) => { measure = id; leadup(data); leadupFinal(data); });
   const c = card(el, {
     title,
     sub: `People who said ${M.id === "going" ? "going" : "maybe"}, counting their +1s, by days before each event.` +
@@ -82,6 +82,27 @@ export function leadup(data) {
     ...daysAxis(S.daysDomain), label: `${M.label} headcount by days before each event`,
     series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
     yLabel: `People ${M.id === "going" ? "going" : "saying maybe"}, running total`, yFormat: int, nowX: S.up?.now,
+    endLabel: (p) => `${int(p[1])} now`, height: isNarrow(el) ? 310 : 400,
+  });
+}
+
+/** The same running totals, zoomed in on the last three days. */
+export function leadupFinal(data) {
+  const el = document.getElementById("final-card");
+  const S = setup(data), M = MEASURES.find((m) => m.id === measure);
+  const events = S.events.filter((e) => e.lead[M.id].length);
+  const pts = (e) => e.lead[M.id];
+  const c = card(el, {
+    title: `The last three days: ${M.id === "going" ? "people going" : "maybes"} before each event`,
+    sub: `Same running totals as above, zoomed in on the final 3 days. Follows the Going/Maybe switch above.`,
+  });
+  lineLegend(c.legend, events, (e) => int(last(pts(e))[1]), (e) => (e.approval && M.id === "going" ? ` (approved × ${S.meta.approved_weight})` : ""));
+  stageTable(c, { ...S, events }, pts, (p) => int(p[1]));
+  const axis = daysAxis([-3, 0]);
+  lineChart(c.body, {
+    ...axis, xTicks: [-3, -2, -1, 0], label: `${M.label} headcount in the last three days`,
+    series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
+    yLabel: `People ${M.id === "going" ? "going" : "saying maybe"}, running total`, yFormat: int, yZero: false, nowX: S.up?.now,
     endLabel: (p) => `${int(p[1])} now`, height: isNarrow(el) ? 310 : 400,
   });
 }

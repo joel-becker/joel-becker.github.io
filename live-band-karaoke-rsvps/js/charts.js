@@ -1,7 +1,7 @@
 // Reusable chart primitives (d3 v7, global). Marks follow the dataviz spec:
 // thin bars (<=24px) with 4px rounded data-ends, 2px lines, >=8px markers with a
 // surface ring, hairline recessive grid, crosshair/tooltip hover on everything.
-import { tooltip, focusEvent } from "./ui.js?v=1116d95e";
+import { tooltip, focusEvent } from "./ui.js?v=669010fe";
 
 export const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
