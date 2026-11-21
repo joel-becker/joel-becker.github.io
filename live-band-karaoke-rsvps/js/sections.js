@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=669010fe";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=669010fe";
-import { lineChart, valueAt } from "./lines.js?v=669010fe";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=49739559";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=49739559";
+import { lineChart, valueAt } from "./lines.js?v=49739559";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
