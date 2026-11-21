@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=6bfcb6cc";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=6bfcb6cc";
-import { lineChart, valueAt } from "./lines.js?v=6bfcb6cc";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=1116d95e";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=1116d95e";
+import { lineChart, valueAt } from "./lines.js?v=1116d95e";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -23,7 +23,7 @@ function setup(data) {
   const left = data.meta.days_left;
   const stage = left <= 0 ? "on the day" : left === 1 ? "with a day to go" : `with ${left} days to go`;
   const first = d3.min(events, (e) => (e.lead.going.length ? e.lead.going[0][0] : 0));
-  return { P, events, up, past: events.filter((e) => !e.upcoming), stage, daysDomain: [Math.max(-40, Math.floor(first)), 0], meta: data.meta };
+  return { P, events, up, past: events.filter((e) => !e.upcoming), stage, daysDomain: [-31, 0], meta: data.meta };
 }
 
 const daysAxis = (domain) => ({
