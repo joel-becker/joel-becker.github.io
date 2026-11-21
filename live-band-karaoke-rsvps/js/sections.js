@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=50b49746";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=50b49746";
-import { lineChart, valueAt } from "./lines.js?v=50b49746";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=4a6f9b9d";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=4a6f9b9d";
+import { lineChart, valueAt } from "./lines.js?v=4a6f9b9d";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -365,6 +365,47 @@ export function mix(data) {
     title: `${pct(e0.mix.invited.share)} of the people invited to ${e0.name} are women, against ${pct(e0.mix.link.share)} of those who found the link themselves`,
     sub: "Share of women in four groups at each event: people invited directly, people who came through a shared link without an invite, the whole guest list, and people going.",
   });
+}
+
+export function goingRate(data) {
+  const el = document.getElementById("rate-card");
+  const S = setup(data), P = S.P;
+  const events = S.events.filter((e) => e.going_rate && e.going_rate.women.share != null && e.going_rate.men.share != null);
+  const KEYS = [{ id: "women", label: "Women", color: P.cat[4] }, { id: "men", label: "Men", color: P.cat[0] }];
+  const e0 = events[0], r0 = e0?.going_rate;
+  const c = card(el, {
+    title: r0 ? `${pct(r0.women.share)} of invited women and ${pct(r0.men.share)} of invited men said going to ${e0.name}` : "Share of invited women and men who said going",
+    sub: "Of the people invited directly, the share who said going so far. Women and men are a best guess from first names. Love Band Karaoke counts approved guests as going.",
+  });
+  legend(c.legend, KEYS.map((k) => ({ label: k.label, color: k.color, mark: "dt" })));
+  const cell = (m) => `${pct(m.share)} of ${int(m.n)}`;
+  c.setTable([{ label: "Event", value: (e) => e.name }, ...KEYS.map((k) => ({ label: k.label, num: true, value: (e) => cell(e.going_rate[k.id]) }))], events);
+  const narrow = isNarrow(el, 440);
+  const hi = Math.max(0.5, Math.ceil(d3.max(events, (e) => d3.max(KEYS, (k) => e.going_rate[k.id].share)) * 10) / 10);
+  const f = frame(c.body, { height: events.length * 46 + 54, margin: { left: narrow ? 82 : 150, right: 16, top: 12, bottom: 30 } });
+  const { g, w, h: ht } = f;
+  const x = d3.scaleLinear().domain([0, hi]).range([0, w]);
+  const y = d3.scalePoint().domain(events.map((e) => e.slug)).range([0, ht]).padding(0.6);
+  const ticks = d3.range(0, Math.round(hi * 10) + 1).map((t) => t / 10);
+  const ax = g.append("g").attr("class", "axis");
+  ax.selectAll("line").data(ticks).join("line").attr("class", "gridline").attr("x1", (t) => Math.round(x(t)) + 0.5).attr("x2", (t) => Math.round(x(t)) + 0.5).attr("y1", 0).attr("y2", ht);
+  ax.selectAll("text").data(ticks).join("text").attr("x", (t) => x(t)).attr("y", ht + 17).attr("text-anchor", "middle").text(pct);
+  for (const e of events) {
+    const yy = y(e.slug), marks = KEYS.map((k) => ({ k, ...e.going_rate[k.id] }));
+    g.append("text").attr("class", "annot").attr("x", -12).attr("y", yy).attr("dy", "0.35em").attr("text-anchor", "end")
+      .style("fill", e.upcoming ? P.ink : null).style("font-weight", e.upcoming ? 600 : null).text(narrow ? e.short : e.name);
+    g.append("line").attr("x1", x(d3.min(marks, (m) => m.share))).attr("x2", x(d3.max(marks, (m) => m.share))).attr("y1", yy).attr("y2", yy).attr("stroke", P.axis).attr("stroke-width", 2);
+    g.append("g").selectAll("circle").data(marks).join("circle").attr("cx", (m) => x(m.share)).attr("cy", yy).attr("r", 6)
+      .attr("fill", (m) => m.k.color).attr("stroke", P.surface).attr("stroke-width", 2).attr("tabindex", 0).style("cursor", "pointer")
+      .attr("aria-label", (m) => `${e.name}, ${m.k.label}: ${pct(m.share)} said going`)
+      .on("pointerenter pointermove focus", function (ev) {
+        tooltip.show(ev.type === "focus" ? focusEvent(this) : ev, {
+          title: `${e.name} · invited directly, said going`,
+          rows: marks.map((m) => ({ label: m.k.label, value: cell(m), color: m.k.color })),
+        });
+      })
+      .on("pointerleave blur", () => tooltip.hide());
+  }
 }
 
 // ---------------------------------------------------------------- Lighthaven and Mox crowd
