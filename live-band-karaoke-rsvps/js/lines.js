@@ -1,7 +1,7 @@
 // One chart used by most cards: a step line per event, the upcoming event drawn on top and labelled,
 // a crosshair that reads every line at the pointer. Built on the shared helpers in charts.js / ui.js.
-import { tooltip } from "./ui.js?v=49739559";
-import { palette, frame, yGrid } from "./charts.js?v=49739559";
+import { tooltip } from "./ui.js?v=440532e6";
+import { palette, frame, yGrid } from "./charts.js?v=440532e6";
 
 /** The last point at or before x on a step line ([[x, y, ...], ...] sorted by x), or null before it starts. */
 export function valueAt(points, x) {
@@ -66,7 +66,7 @@ export function lineChart(el, o) {
   const plot = g.append("g").attr("pointer-events", "none");
   for (const s of [...series.filter((q) => !q.emph), ...series.filter((q) => q.emph)]) {
     plot.append("path").attr("d", line(s.pts)).attr("fill", "none").attr("stroke", s.color)
-      .attr("stroke-opacity", s.emph ? 0.9 : 0.6).attr("stroke-width", s.emph ? 3 : 1.75).attr("stroke-linejoin", "round").attr("stroke-linecap", "round");
+      .attr("stroke-opacity", s.emph ? 1 : 0.6).attr("stroke-width", s.emph ? 3 : 1.75).attr("stroke-linejoin", "round").attr("stroke-linecap", "round");
     const end = s.pts[s.pts.length - 1];
     plot.append("circle").attr("cx", x(end[0])).attr("cy", y(end[1])).attr("r", s.emph ? 4.5 : 3)
       .attr("fill", s.color).attr("stroke", P.surface).attr("stroke-width", s.emph ? 2 : 1.5);
