@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=f58683f2";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=f58683f2";
-import { lineChart, valueAt } from "./lines.js?v=f58683f2";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=b67821fe";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=b67821fe";
+import { lineChart, valueAt } from "./lines.js?v=b67821fe";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -12,7 +12,7 @@ const isNarrow = (el, at = 520) => (el.getBoundingClientRect().width || 900) < a
 
 /** One colour per event, the same in every card; the upcoming event is the page's purple. */
 function eventColours(P) {
-  return { berkeley: P.cat[6], bday: P.cat[0], lighthaven: P.cat[2], valentines: P.cat[4], mox: P.cat[1] };
+  return { berkeley: P.cat[6], bday: P.cat[0], lighthaven: P.cat[2], valentines: P.cat[4], mox: P.cat[3] };
 }
 
 /** Events newest first, each with its colour and curves, plus the upcoming one (or null once it has happened). */
