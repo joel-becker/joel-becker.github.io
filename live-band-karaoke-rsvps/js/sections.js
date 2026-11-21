@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=b67821fe";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=b67821fe";
-import { lineChart, valueAt } from "./lines.js?v=b67821fe";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=50b49746";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=50b49746";
+import { lineChart, valueAt } from "./lines.js?v=50b49746";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -486,4 +486,111 @@ export function about(data) {
     ["Regulars", "People are matched across events by their Partiful account. Saying going is an RSVP: some people say going and don't come, and some come without saying so."],
   ];
   c.body.append(h("dl", { class: "about-list" }, ...items.flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, v)])));
+}
+
+// ---------------------------------------------------------------- who keeps coming (flow)
+
+let flowGroup = "all";
+const FLOW_GROUPS = [{ id: "all", label: "Everyone" }, { id: "invited", label: "Invited directly" }, { id: "link", label: "Found it via a link" }];
+
+export function flow(data) {
+  const el = document.getElementById("flow-card");
+  const S = setup(data), P = S.P, F = data.flow, n = F.slugs.length;
+  const ev = F.slugs.map((slug) => S.events.find((e) => e.slug === slug));
+  const first = (p) => p.indexOf("1");
+  // share of first-timers at each finished event who also went to the one after it
+  const nextShare = (g) => {
+    let from = 0, back = 0;
+    for (const r of F.groups[g]) { const f = first(r.p); if (f < n - 2) { from += r.n; if (r.p[f + 1] === "1") back += r.n; } }
+    return from ? back / from : null;
+  };
+  const G = FLOW_GROUPS.find((x) => x.id === flowGroup), rows = F.groups[G.id];
+
+  // cnt[j][state][cohort]: state 0 = said going to event j, 1 = did not; cohort = the event they first said going to
+  const zero = () => Array.from({ length: n }, () => [Array(n).fill(0), Array(n).fill(0)]);
+  const cnt = zero(), link = Array.from({ length: n }, () => Array.from({ length: n }, () => [[0, 0], [0, 0]]));
+  for (const r of rows) {
+    const f = first(r.p);
+    for (let j = f; j < n; j++) {
+      const st = r.p[j] === "1" ? 0 : 1;
+      cnt[j][st][f] += r.n;
+      if (j < n - 1) link[j][f][st][r.p[j + 1] === "1" ? 0 : 1] += r.n;
+    }
+  }
+  const size = d3.range(n).map((f) => cnt[f][0][f]);
+  const wentAt = (j) => d3.sum(cnt[j][0]), didAt = (j) => d3.sum(cnt[j][1]);
+
+  const all = nextShare("all"), inv = nextShare("invited"), lnk = nextShare("link");
+  const c = card(el, {
+    title: all == null ? "Who keeps coming" : `${pct(all)} of first-timers went to the next event too` +
+      (inv != null && lnk != null ? `: ${pct(inv)} of those invited directly, ${pct(lnk)} of those who found it via a link` : ""),
+    sub: "Each coloured band follows the people who first said going to one event, event by event: up top the ones who said going again, below the ones who did not. " +
+      "People are matched by their Partiful account; saying going is an RSVP, not a check-in. The last column is going so far.",
+  });
+  const tools = h("div", { class: "seg small", role: "group", "aria-label": "How people got in at their first event" });
+  segmented(tools, FLOW_GROUPS, flowGroup, (id) => { flowGroup = id; flow(data); });
+  c.head.after(h("div", { style: { margin: "2px 0 10px" } }, tools));
+  legend(c.legend, ev.map((e) => ({ label: `First came to ${e.name}`, color: e.color })));
+  c.setTable([
+    { label: "First came to", value: (f) => ev[f].name },
+    { label: "People", num: true, value: (f) => int(size[f]) },
+    { label: "Went to the next one", num: true, value: (f) => (f >= n - 1 || !size[f] ? "–" : `${int(link[f][f][0][0])} (${pct(link[f][f][0][0] / size[f])})`) },
+    { label: "Went to any later one", num: true, value: (f) => { const back = d3.sum(rows.filter((r) => first(r.p) === f && r.p.slice(f + 1).includes("1")), (r) => r.n); return f >= n - 1 || !size[f] ? "–" : `${int(back)} (${pct(back / size[f])})`; } },
+  ], d3.range(n));
+
+  const narrow = isNarrow(el, 520);
+  const f0 = frame(c.body, { height: narrow ? 380 : 440, margin: { left: narrow ? 40 : 62, right: 8, top: 44, bottom: 6 } });
+  const { g, w, h: ht } = f0, nw = narrow ? 12 : 18, gap = 28;
+  const wentMax = d3.max(d3.range(n), wentAt), didMax = d3.max(d3.range(n), didAt);
+  const k = (ht - gap) / (wentMax + didMax), didTop = wentMax * k + gap;
+  const xs = d3.range(n).map((j) => (j * (w - nw)) / (n - 1));
+  const colour = (f) => ev[f].color;
+
+  // where each segment sits
+  const seg = zero();
+  for (let j = 0; j < n; j++) for (let st = 0; st < 2; st++) {
+    let acc = st ? didTop : 0;
+    for (let f = 0; f <= j; f++) { seg[j][st][f] = acc; acc += cnt[j][st][f] * k; }
+  }
+  const outOff = zero(), inOff = zero(), ribbons = g.append("g");
+  for (let j = 0; j < n - 1; j++) for (let f = 0; f <= j; f++) for (let a = 0; a < 2; a++) for (let b = 0; b < 2; b++) {
+    const v = link[j][f][a][b];
+    if (!v) continue;
+    const hh = v * k, y0 = seg[j][a][f] + outOff[j][a][f] ; outOff[j][a][f] += hh;
+    const y1 = seg[j + 1][b][f] + inOff[j + 1][b][f]; inOff[j + 1][b][f] += hh;
+    const x0 = xs[j] + nw, x1 = xs[j + 1], mx = (x0 + x1) / 2;
+    const path = ribbons.append("path").attr("d", `M${x0},${y0}C${mx},${y0} ${mx},${y1} ${x1},${y1}L${x1},${y1 + hh}C${mx},${y1 + hh} ${mx},${y0 + hh} ${x0},${y0 + hh}Z`)
+      .attr("fill", colour(f)).attr("fill-opacity", b === 0 ? 0.5 : 0.2).attr("stroke", "none").attr("tabindex", 0);
+    const tip = (ev_, node) => {
+      const from = cnt[j][a][f];
+      tooltip.show(ev_.type === "focus" ? focusEvent(node) : ev_, {
+        title: `First came to ${ev[f].name}`,
+        rows: [{ label: `${a ? "Skipped" : "Went to"} ${ev[j].name}, then ${b ? "skipped" : "went to"} ${ev[j + 1].name}`, value: `${int(v)} (${pct(v / from)} of ${int(from)})`, color: colour(f) }],
+      });
+    };
+    path.on("pointerenter pointermove focus", function (e) { tip(e, this); }).on("pointerleave blur", () => tooltip.hide())
+      .on("pointerenter.hl", function () { d3.select(this).attr("fill-opacity", 0.8); }).on("pointerleave.hl", function () { d3.select(this).attr("fill-opacity", b === 0 ? 0.5 : 0.2); });
+  }
+  // columns, headers and segments
+  for (let j = 0; j < n; j++) {
+    const e = ev[j];
+    g.append("text").attr("x", xs[j] + nw / 2).attr("y", -26).attr("text-anchor", j === 0 ? "start" : j === n - 1 ? "end" : "middle")
+      .attr("transform", `translate(${j === 0 ? -nw / 2 : j === n - 1 ? nw / 2 : 0},0)`)
+      .style("font", "600 12px var(--sans)").style("fill", e.upcoming ? P.ink : null).text(narrow ? (e.upcoming ? e.short : e.when.replace(/ \d\d(\d\d)$/, " ’$1")) : e.short);
+    g.append("text").attr("x", xs[j] + nw / 2).attr("y", -11).attr("text-anchor", j === 0 ? "start" : j === n - 1 ? "end" : "middle")
+      .attr("transform", `translate(${j === 0 ? -nw / 2 : j === n - 1 ? nw / 2 : 0},0)`)
+      .attr("class", "annot").text(`${int(wentAt(j))} ${e.upcoming ? "so far" : "went"}`);
+    for (let st = 0; st < 2; st++) for (let f = 0; f <= j; f++) {
+      const v = cnt[j][st][f];
+      if (!v) continue;
+      const y = seg[j][st][f], hh = Math.max(1, v * k - 1);
+      g.append("rect").attr("x", xs[j]).attr("y", y).attr("width", nw).attr("height", hh).attr("rx", 2)
+        .attr("fill", colour(f)).attr("fill-opacity", st ? 0.4 : 1).attr("tabindex", 0).attr("aria-label", `${ev[f].name} first-timers`)
+        .on("pointerenter pointermove focus", function (e2) {
+          tooltip.show(e2.type === "focus" ? focusEvent(this) : e2, { title: `${e.name}`, rows: [{ label: `First came to ${ev[f].name}: ${st ? "did not go" : "went"}`, value: int(v), color: colour(f) }] });
+        }).on("pointerleave blur", () => tooltip.hide());
+    }
+  }
+  g.append("text").attr("x", -6).attr("y", 10).attr("text-anchor", "end").attr("class", "annot").text("Went");
+  g.append("text").attr("x", -6).attr("y", didTop + 10).attr("text-anchor", "end").attr("class", "annot").text(narrow ? "Not" : "Didn’t go");
 }
