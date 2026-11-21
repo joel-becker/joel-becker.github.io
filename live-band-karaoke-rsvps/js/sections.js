@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=4a6f9b9d";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=4a6f9b9d";
-import { lineChart, valueAt } from "./lines.js?v=4a6f9b9d";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=149c3c39";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=149c3c39";
+import { lineChart, valueAt } from "./lines.js?v=149c3c39";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -104,6 +104,36 @@ export function leadupFinal(data) {
     series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
     yLabel: `People ${M.id === "going" ? "going" : "saying maybe"}, running total`, yFormat: int, yZero: false, nowX: S.up?.now,
     endLabel: (p) => `${int(p[1])} now`, height: isNarrow(el) ? 310 : 400,
+  });
+}
+
+/** Of everyone who has said going or maybe, the share who said going. */
+export function goingShare(data) {
+  const el = document.getElementById("share-card");
+  const S = setup(data);
+  const share = (e) => e.lead.going.map(([x, g]) => {
+    const m = valueAt(e.lead.maybe, x)?.[1] ?? 0;
+    return g + m >= 10 ? [x, g / (g + m)] : null;
+  }).filter(Boolean);
+  const events = S.events.filter((e) => e.lead.going.length && e.lead.maybe.length && share(e).length);
+  const pts = (e) => share(e);
+  let title = "Share of going and maybe replies that are going";
+  if (S.up && events.includes(S.up)) {
+    const now = last(pts(S.up))[1], rivals = events.filter((e) => e !== S.up && !e.approval).map((e) => ({ e, v: valueAt(pts(e), S.up.now)?.[1] }));
+    const top = d3.greatest(rivals.filter((r) => r.v != null), (r) => r.v);
+    title = `${pct(now)} of people saying going or maybe to ${S.up.name} say going` + (top ? `; ${top.e.name} was at ${pct(top.v)} at this stage` : "");
+  }
+  const c = card(el, {
+    title,
+    sub: "Going divided by going plus maybe, counting +1s, by days before each event. A line starts once ten people have said going or maybe. Love Band Karaoke is left out of the comparison: it had no maybes.",
+  });
+  lineLegend(c.legend, events, (e) => pct(last(pts(e))[1]));
+  stageTable(c, { ...S, events }, pts, (p) => pct(p[1]));
+  lineChart(c.body, {
+    ...daysAxis(S.daysDomain), label: "Share of going and maybe replies that are going, by days before each event",
+    series: events.map((e) => ({ label: e.name, color: e.color, points: pts(e), emph: e.upcoming })),
+    yDomain: [0, 1], yLabel: "Going, out of going and maybe", yFormat: pct, nowX: S.up?.now,
+    endLabel: (p) => `${pct(p[1])} now`, height: 320,
   });
 }
 
