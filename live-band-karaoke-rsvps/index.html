@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
   <!-- styles.css, js/ui.js, js/charts.js and vendor/ are copies of the RE-Benchwarmers page's (~/projects/re-benchwarmers/site) -->
-  <link rel="stylesheet" href="styles.css?v=fd134ea9">
+  <link rel="stylesheet" href="styles.css?v=23b59470">
   <style>
     /* the page's own accent: the purple the upcoming event has in every chart */
     :root { --brand: #6250d6; }
@@ -43,6 +43,7 @@
         <a href="#regulars">Regulars</a>
         <a href="#lighthaven">Lighthaven and Mox</a>
         <a href="#women-and-men">Women and men</a>
+        <a href="#venmo">Venmo</a>
         <a href="#replies">Replies</a>
         <a href="#about">About</a>
       </nav>
@@ -115,9 +116,20 @@
       </div>
     </section>
 
+    <section class="block" id="venmo">
+      <div class="section-head">
+        <div><span class="num">05</span><h2>Venmo</h2></div>
+        <p>Who chipped in after the night, and how much. Counts and amounts only.</p>
+      </div>
+      <div class="grid cols-2">
+        <div class="card" id="venmo-share-card"></div>
+        <div class="card" id="venmo-amount-card"></div>
+      </div>
+    </section>
+
     <section class="block" id="replies">
       <div class="section-head">
-        <div><span class="num">05</span><h2>Replies</h2></div>
+        <div><span class="num">06</span><h2>Replies</h2></div>
         <p>How long people take to answer an invite.</p>
       </div>
       <div class="card" id="replies-card"></div>
@@ -125,7 +137,7 @@
 
     <section class="block" id="about">
       <div class="section-head">
-        <div><span class="num">06</span><h2>About</h2></div>
+        <div><span class="num">07</span><h2>About</h2></div>
         <p>Where the numbers come from and what they can and cannot say.</p>
       </div>
       <div class="card" id="about-card"></div>
@@ -139,6 +151,6 @@
 
   <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
   <script src="vendor/d3.min.js"></script>
-  <script type="module" src="js/main.js?v=fd134ea9"></script>
+  <script type="module" src="js/main.js?v=23b59470"></script>
 </body>
 </html>

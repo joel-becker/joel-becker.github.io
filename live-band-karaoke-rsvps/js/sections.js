@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=fd134ea9";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=fd134ea9";
-import { lineChart, valueAt } from "./lines.js?v=fd134ea9";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=23b59470";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=23b59470";
+import { lineChart, valueAt } from "./lines.js?v=23b59470";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -394,6 +394,86 @@ export function mix(data) {
     get: (e) => e.mix, of: "of women", mark: { value: 0.5, label: "half women" }, span: [0.3, 0.6],
     title: `${pct(e0.mix.invited.share)} of the people invited to ${e0.name} are women, against ${pct(e0.mix.link.share)} of those who found the link themselves`,
     sub: "Share of women in four groups at each event: people invited directly, people who came through a shared link without an invite, the whole guest list, and people going.",
+  });
+}
+
+// ---------------------------------------------------------------- Venmo
+
+const dollars = (v) => `$${v >= 100 ? Math.round(v) : v.toFixed(v % 1 ? 2 : 0)}`;
+
+function venmoRows(data) {
+  const S = setup(data);
+  return { S, rows: S.events.filter((e) => data.venmo[e.slug]).map((e) => ({ e, ...data.venmo[e.slug] })) };
+}
+
+export function venmoShare(data) {
+  const el = document.getElementById("venmo-share-card");
+  const { S, rows } = venmoRows(data), P = S.P;
+  if (!rows.length) { el.hidden = true; return; }
+  const top = d3.greatest(rows, (r) => r.share);
+  const c = card(el, {
+    title: `${pct(top.share)} of the people at ${top.e.name} paid on Venmo afterwards`,
+    sub: `People who paid Joel within ${data.venmo_days} days of the night, out of everyone who said going, +1s included. It is a floor: one payment often covers a few people. ` +
+      "Events where nobody paid (the Mox and Lighthaven nights) are left out, and Nov 21 has not happened yet.",
+  });
+  c.setTable([{ label: "Event", value: (r) => r.e.name }, { label: "Paid", num: true, value: (r) => int(r.payers) }, { label: "Said going", num: true, value: (r) => int(r.headcount) },
+    { label: "Share", num: true, value: (r) => pct(r.share) }, { label: "Total paid", num: true, value: (r) => `$${int(r.total)}` },
+    { label: "Per person going", num: true, value: (r) => dollars(r.per_attendee) }], rows);
+  const narrow = isNarrow(el, 440);
+  const f = frame(c.body, { height: rows.length * 52 + 40, margin: { left: narrow ? 82 : 150, right: 48, top: 8, bottom: 26 } });
+  const { g, w, h: ht } = f;
+  const hi = Math.max(0.3, Math.ceil(d3.max(rows, (r) => r.share) * 10) / 10);
+  const x = d3.scaleLinear().domain([0, hi]).range([0, w]);
+  const y = d3.scaleBand().domain(rows.map((r) => r.e.slug)).range([0, rows.length * 52]).paddingInner(0.35);
+  const ticks = d3.range(0, Math.round(hi * 10) + 1, 1).map((t) => t / 10);
+  const ax = g.append("g").attr("class", "axis");
+  ax.selectAll("line").data(ticks).join("line").attr("class", "gridline").attr("x1", (t) => Math.round(x(t)) + 0.5).attr("x2", (t) => Math.round(x(t)) + 0.5).attr("y1", 0).attr("y2", rows.length * 52);
+  ax.selectAll("text").data(ticks).join("text").attr("x", (t) => x(t)).attr("y", rows.length * 52 + 17).attr("text-anchor", "middle").text(pct);
+  for (const r of rows) {
+    const yy = y(r.e.slug);
+    g.append("text").attr("class", "annot").attr("x", -12).attr("y", yy + y.bandwidth() / 2).attr("dy", "0.35em").attr("text-anchor", "end").text(narrow ? r.e.short : r.e.name);
+    g.append("rect").attr("x", 0).attr("y", yy).attr("width", Math.max(2, x(r.share))).attr("height", y.bandwidth()).attr("rx", 3).attr("fill", r.e.color).attr("tabindex", 0)
+      .on("pointerenter pointermove focus", function (ev) {
+        tooltip.show(ev.type === "focus" ? focusEvent(this) : ev, { title: r.e.name, rows: [
+          { label: "Paid on Venmo", value: `${int(r.payers)} of ${int(r.headcount)} (${pct(r.share)})`, color: r.e.color },
+          { label: "Total paid", value: `$${int(r.total)}` }, { label: "Per person going", value: dollars(r.per_attendee) }] });
+      }).on("pointerleave blur", () => tooltip.hide());
+    g.append("text").attr("class", "annot").attr("x", x(r.share) + 6).attr("y", yy + y.bandwidth() / 2).attr("dy", "0.35em").style("font-weight", 600).style("fill", P.ink).text(pct(r.share));
+  }
+}
+
+export function venmoAmounts(data) {
+  const el = document.getElementById("venmo-amount-card");
+  const { S, rows } = venmoRows(data), P = S.P;
+  if (!rows.length) { el.hidden = true; return; }
+  const top = d3.greatest(rows, (r) => r.median);
+  const c = card(el, {
+    title: `The typical person who paid gave ${dollars(top.median)} for ${top.e.name}; the average was ${dollars(top.mean)}`,
+    sub: "What each person who paid gave in total: the line runs from the smallest to the largest payment, the box covers the middle half, the bar is the median and the diamond is the average. The scale is logarithmic because a few people gave far more.",
+  });
+  const cols = [["min", "Smallest"], ["q1", "25th percentile"], ["median", "Median"], ["q3", "75th percentile"], ["max", "Largest"], ["mean", "Average"]];
+  c.setTable([{ label: "Event", value: (r) => r.e.name }, ...cols.map(([k, label]) => ({ label, num: true, value: (r) => dollars(r[k]) }))], rows);
+  const narrow = isNarrow(el, 440), rh = 56;
+  const f = frame(c.body, { height: rows.length * rh + 44, margin: { left: narrow ? 82 : 150, right: 18, top: 8, bottom: 30 } });
+  const { g, w } = f;
+  const lo = 5, hi = Math.max(100, d3.max(rows, (r) => r.max)), x = d3.scaleLog().domain([lo * 0.8, hi * 1.2]).range([0, w]);
+  const ticks = [5, 10, 20, 50, 100, 200, 500, 1000].filter((t) => t >= lo * 0.8 && t <= hi * 1.2);
+  const ax = g.append("g").attr("class", "axis");
+  ax.selectAll("line").data(ticks).join("line").attr("class", "gridline").attr("x1", (t) => Math.round(x(t)) + 0.5).attr("x2", (t) => Math.round(x(t)) + 0.5).attr("y1", 0).attr("y2", rows.length * rh);
+  ax.selectAll("text").data(ticks).join("text").attr("x", (t) => x(t)).attr("y", rows.length * rh + 18).attr("text-anchor", "middle").text((t) => `$${t}`);
+  rows.forEach((r, i) => {
+    const yy = i * rh + rh / 2;
+    g.append("text").attr("class", "annot").attr("x", -12).attr("y", yy).attr("dy", "0.35em").attr("text-anchor", "end").text(narrow ? r.e.short : r.e.name);
+    g.append("line").attr("x1", x(r.min)).attr("x2", x(r.max)).attr("y1", yy).attr("y2", yy).attr("stroke", r.e.color).attr("stroke-width", 2);
+    for (const v of [r.min, r.max]) g.append("line").attr("x1", x(v)).attr("x2", x(v)).attr("y1", yy - 7).attr("y2", yy + 7).attr("stroke", r.e.color).attr("stroke-width", 2);
+    g.append("rect").attr("x", x(r.q1)).attr("y", yy - 12).attr("width", Math.max(2, x(r.q3) - x(r.q1))).attr("height", 24).attr("rx", 3).attr("fill", r.e.color).attr("fill-opacity", 0.35).attr("stroke", r.e.color).attr("stroke-width", 1.5);
+    g.append("line").attr("x1", x(r.median)).attr("x2", x(r.median)).attr("y1", yy - 12).attr("y2", yy + 12).attr("stroke", r.e.color).attr("stroke-width", 3.5);
+    g.append("path").attr("d", d3.symbol(d3.symbolDiamond, 90)()).attr("transform", `translate(${x(r.mean)},${yy})`).attr("fill", P.ink).attr("stroke", P.surface).attr("stroke-width", 1.5);
+    g.append("rect").attr("class", "hit").attr("x", 0).attr("y", yy - rh / 2).attr("width", w).attr("height", rh).attr("tabindex", 0)
+      .on("pointerenter pointermove focus", function (ev) {
+        tooltip.show(ev.type === "focus" ? focusEvent(this) : ev, { title: `${r.e.name} · ${int(r.payers)} people paid`,
+          rows: cols.slice().reverse().map(([k, label]) => ({ label, value: dollars(r[k]) })) });
+      }).on("pointerleave blur", () => tooltip.hide());
   });
 }
 
