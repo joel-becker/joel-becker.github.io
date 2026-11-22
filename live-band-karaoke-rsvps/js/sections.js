@@ -1,8 +1,8 @@
 // Every card on the page. Each takes the data in site/data/rsvps.json (written by dashboard.py)
 // and draws into its own element; titles state the finding with its numbers.
-import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=23b59470";
-import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=23b59470";
-import { lineChart, valueAt } from "./lines.js?v=23b59470";
+import { h, card, legend, tooltip, focusEvent, segmented } from "./ui.js?v=4223548b";
+import { palette, frame, yGrid, barPath, inkOn, css } from "./charts.js?v=4223548b";
+import { lineChart, valueAt } from "./lines.js?v=4223548b";
 
 const int = (n) => d3.format(",")(Math.round(n));
 const pct = (v) => `${Math.round(v * 100)}%`;
@@ -403,14 +403,16 @@ const dollars = (v) => `$${v >= 100 ? Math.round(v) : v.toFixed(v % 1 ? 2 : 0)}`
 
 function venmoRows(data) {
   const S = setup(data);
-  return { S, rows: S.events.filter((e) => data.venmo[e.slug]).map((e) => ({ e, ...data.venmo[e.slug] })) };
+  const rows = S.events.filter((e) => data.venmo[e.slug]).map((e) => ({ e, ...data.venmo[e.slug] }));
+  if (data.venmo.all) rows.push({ e: { slug: "all", name: "All events together", short: "All", color: S.P.ink }, ...data.venmo.all });
+  return { S, rows };
 }
 
 export function venmoShare(data) {
   const el = document.getElementById("venmo-share-card");
   const { S, rows } = venmoRows(data), P = S.P;
   if (!rows.length) { el.hidden = true; return; }
-  const top = d3.greatest(rows, (r) => r.share);
+  const top = d3.greatest(rows.filter((r) => r.e.slug !== "all"), (r) => r.share);
   const c = card(el, {
     title: `${pct(top.share)} of the people at ${top.e.name} paid on Venmo afterwards`,
     sub: `People who paid Joel within ${data.venmo_days} days of the night, out of everyone who said going, +1s included. It is a floor: one payment often covers a few people. ` +
@@ -446,7 +448,7 @@ export function venmoAmounts(data) {
   const el = document.getElementById("venmo-amount-card");
   const { S, rows } = venmoRows(data), P = S.P;
   if (!rows.length) { el.hidden = true; return; }
-  const top = d3.greatest(rows, (r) => r.median);
+  const top = d3.greatest(rows.filter((r) => r.e.slug !== "all"), (r) => r.median);
   const c = card(el, {
     title: `The typical person who paid gave ${dollars(top.median)} for ${top.e.name}; the average was ${dollars(top.mean)}`,
     sub: "What each person who paid gave in total: the line runs from the smallest to the largest payment, the box covers the middle half, the bar is the median and the diamond is the average. The scale is logarithmic because a few people gave far more.",
