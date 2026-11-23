@@ -1,8 +1,8 @@
 // Entry point: load the numbers, draw every card, redraw on a theme change or a resize.
-import { h } from "./ui.js?v=4223548b";
-import * as S from "./sections.js?v=4223548b";
+import { h } from "./ui.js?v=fdbdd6a9";
+import * as S from "./sections.js?v=fdbdd6a9";
 
-const CARDS = [S.overview, S.leadup, S.leadupFinal, S.goingShare, S.launch, S.guestList, S.experience, S.standing, S.flow, S.crowdGoing, S.crowdMix, S.men, S.mix, S.venmoShare, S.venmoAmounts, S.replies, S.about];
+const CARDS = [S.overview, S.leadup, S.goingShare, S.launch, S.guestList, S.experience, S.standing, S.flow, S.crowdGoing, S.crowdMix, S.men, S.mix, S.venmoShare, S.venmoAmounts, S.replies, S.about];
 let data = null;
 
 function renderAll() {
