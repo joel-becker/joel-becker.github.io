@@ -1,5 +1,5 @@
 // Units and number/date formatting. Data is stored in lb and km.
-import { state, toDate } from "./state.js?v=fe5dbb801b";
+import { state, toDate } from "./state.js?v=69bd236a68";
 
 const LB_TO_KG = 0.45359237;
 const KM_TO_MI = 1 / 1.609344;

@@ -1,10 +1,10 @@
 // League results: form guide, running goal difference, scorelines, splits, rolling form,
 // attack against defence, winning margins, streaks,
 // and (only where the data has opponents' names) head-to-head records.
-import { inPeriod, toMonth } from "../state.js?v=fe5dbb801b";
-import { h, card, legend, tooltip, focusEvent, segmented, dataTable } from "../ui.js?v=fe5dbb801b";
-import { palette, frame, yGrid, xTime, inkOn, moreShade, barPath } from "../charts.js?v=fe5dbb801b";
-import * as F from "../format.js?v=fe5dbb801b";
+import { inPeriod, toMonth } from "../state.js?v=69bd236a68";
+import { h, card, legend, tooltip, focusEvent, segmented, dataTable } from "../ui.js?v=69bd236a68";
+import { palette, frame, yGrid, xTime, inkOn, moreShade, barPath } from "../charts.js?v=69bd236a68";
+import * as F from "../format.js?v=69bd236a68";
 
 let splitBy = "kick";
 

@@ -1,10 +1,10 @@
 // League tables: where we finished each season, among every team in that league.
 // The tables carry no team names (other teams are just positions in the table); our own name
 // comes from the league games (`_team`), when the data has names.
-import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=fe5dbb801b";
-import { palette, frame } from "../charts.js?v=fe5dbb801b";
-import * as F from "../format.js?v=fe5dbb801b";
-import { playoffSeasons } from "./playoffs.js?v=fe5dbb801b";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=69bd236a68";
+import { palette, frame } from "../charts.js?v=69bd236a68";
+import * as F from "../format.js?v=69bd236a68";
+import { playoffSeasons } from "./playoffs.js?v=69bd236a68";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;

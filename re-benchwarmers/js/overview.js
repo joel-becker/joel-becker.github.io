@@ -1,8 +1,8 @@
 // The top of the page: the team's name, its record in the chosen period, and six headline numbers.
-import { inPeriod } from "./state.js?v=fe5dbb801b";
-import { h } from "./ui.js?v=fe5dbb801b";
-import * as F from "./format.js?v=fe5dbb801b";
-import { playoffSeasons } from "./sections/playoffs.js?v=fe5dbb801b";
+import { inPeriod } from "./state.js?v=69bd236a68";
+import { h } from "./ui.js?v=69bd236a68";
+import * as F from "./format.js?v=69bd236a68";
+import { playoffSeasons } from "./sections/playoffs.js?v=69bd236a68";
 
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
 const signed = (v, digits = 0) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${F.num(Math.abs(v), digits)}`;

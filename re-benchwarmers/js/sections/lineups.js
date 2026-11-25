@@ -4,10 +4,10 @@
 //
 // Nobody is a special case: everyone who said yes is in `_lineup` and is counted by the same rules. If
 // `data.team.me` is a display name, that person's rows are labelled "Me" in bold, and nothing else differs.
-import { inPeriod } from "../state.js?v=fe5dbb801b";
-import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=fe5dbb801b";
-import { palette, frame, inkOn, hbarPath } from "../charts.js?v=fe5dbb801b";
-import * as F from "../format.js?v=fe5dbb801b";
+import { inPeriod } from "../state.js?v=69bd236a68";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=69bd236a68";
+import { palette, frame, inkOn, hbarPath } from "../charts.js?v=69bd236a68";
+import * as F from "../format.js?v=69bd236a68";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const NAMED_IDS = ["ppg-pair-card", "ppg-diff-card", "gd-pair-card", "gd-diff-card", "reliable-card"];
@@ -179,19 +179,23 @@ const METRICS = [
  * at least six games said yes to and six missed in those seasons (not halved), and the comparison is pooled:
  * every game they said yes to against every game they missed in the seasons they were in.
  */
-function compared({ people, priv, always }, metric) {
-  return people.filter((m) => m.nSeasons >= bar(MIN_SEASONS, m.woman) && m.with.n >= MIN_EACH && metric.get(m.with) != null
-    && m.without.n >= MIN_EACH && metric.get(m.without) != null)
-    .map((m) => ({ ...m, a: metric.get(m.with), b: metric.get(m.without), d: metric.get(m.with) - metric.get(m.without) }))
-    .filter((m) => priv || m.d > 0 || always.has(m.k))
+const eligible = (people, metric) => people.filter((m) => m.nSeasons >= bar(MIN_SEASONS, m.woman) && m.with.n >= MIN_EACH && metric.get(m.with) != null
+  && m.without.n >= MIN_EACH && metric.get(m.without) != null)
+  .map((m) => ({ ...m, a: metric.get(m.with), b: metric.get(m.without), d: metric.get(m.with) - metric.get(m.without) }));
+/**
+ * Who a public page names (Joel's rule, CLAUDE.md): the people one of these charts is kind to (a gap in our favour
+ * on points or on goal difference), plus the few named in `team.always`, who are listed whatever their numbers.
+ * Anyone listed on one measure is listed on both, so the two charts name the same people.
+ * Where names are private (`team.private`) everyone is listed.
+ */
+const named = ({ people, always }) => new Set([...always,
+  ...METRICS.flatMap((metric) => eligible(people, metric).filter((m) => m.d > 0).map((m) => m.k))]);
+function compared(ctx, metric) {
+  const show = ctx.priv ? null : named(ctx);
+  return eligible(ctx.people, metric).filter((m) => !show || show.has(m.k))
     .sort((x, y) => y.d - x.d || y.with.n - x.with.n);
 }
-/**
- * Who a public page names (Joel's rule, CLAUDE.md): on a chart that could read as a mark against someone, only the
- * people it is kind to (a gap in our favour on that chart), plus the few named in `team.always`, who are listed
- * whatever their numbers. Where names are private (`team.private`) everyone is listed.
- */
-const onlyNote = ({ priv, alwaysNames }) => (priv ? "" : `Only people with a gap in our favour are shown${alwaysNames.length ? `, plus ${alwaysNames.join(" and ")}` : ""}. `);
+const onlyNote = ({ priv, alwaysNames }) => (priv ? "" : `Only people with a gap in our favour on points or on goal difference are shown${alwaysNames.length ? `, plus ${alwaysNames.join(" and ")}` : ""}; the same people are on both. `);
 const whoListed = `Everyone in ${MIN_SEASONS} or more of our seasons (${bar(MIN_SEASONS, true)} for women) who said yes to at least ${MIN_EACH} games and missed at least ${MIN_EACH} games of those seasons`;
 const CAVEAT = "Saying yes isn't turning up, the groups are small (the table counts the games on each side), and who is free on which night isn't random: a curiosity, not a rating.";
 const NOBODY = `Nobody in this period has been in ${MIN_SEASONS} of our seasons (${bar(MIN_SEASONS, true)} for women), said yes to ${MIN_EACH} games and missed ${MIN_EACH}`;
