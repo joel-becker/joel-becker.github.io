@@ -3,10 +3,10 @@
 // Every card here needs the per-game lineups (`_lineup`, and `_women` or `_dropins` for those two cards):
 // where the data leaves them out, the card hides itself.
 // An RSVP is not attendance: the words are always "said yes".
-import { inPeriod } from "../state.js";
-import { h, card, legend, tooltip, focusEvent } from "../ui.js";
-import { palette, frame, inkOn, hbarPath } from "../charts.js";
-import * as F from "../format.js";
+import { inPeriod } from "../state.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=e2d29b3696";
+import { palette, frame, inkOn, hbarPath } from "../charts.js?v=e2d29b3696";
+import * as F from "../format.js?v=e2d29b3696";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const MIN_GAMES = 10;   // games with a lineup needed before any card draws

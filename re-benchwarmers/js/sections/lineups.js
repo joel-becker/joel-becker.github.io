@@ -4,13 +4,13 @@
 //
 // Nobody is a special case: everyone who said yes is in `_lineup` and is counted by the same rules. If
 // `data.team.me` is a display name, that person's rows are labelled "Me" in bold, and nothing else differs.
-import { inPeriod } from "../state.js";
-import { h, card, legend, tooltip, focusEvent, dataTable } from "../ui.js";
-import { palette, frame, inkOn, hbarPath } from "../charts.js";
-import * as F from "../format.js";
+import { inPeriod } from "../state.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=e2d29b3696";
+import { palette, frame, inkOn, hbarPath } from "../charts.js?v=e2d29b3696";
+import * as F from "../format.js?v=e2d29b3696";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const NAMED_IDS = ["ppg-pair-card", "ppg-diff-card", "gd-pair-card", "gd-diff-card", "reliable-card", "pairs-card"];
+const NAMED_IDS = ["ppg-pair-card", "ppg-diff-card", "gd-pair-card", "gd-diff-card", "reliable-card"];
 const MIN_SEASONS = 3;  // who is listed: anyone in this many of our seasons
 // Women get half the cut-off (rounded up) wherever a card asks for a minimum number of seasons or games:
 // it is a coed league with far fewer women, so the usual bar would leave most of them out.
@@ -86,9 +86,9 @@ export function render(data, p) {
     m.woman = !!data.soccer._women?.has(m.name.toLowerCase());
     m.rate = m.yes.length + m.no.length ? m.yes.length / (m.yes.length + m.no.length) : 0;
   }
-  const ctx = { P, known, unlisted: games.length - known.length, people: [...people.values()], isMe, women: data.soccer._women, priv, career };
+  const ctx = { P, known, unlisted: games.length - known.length, people: [...people.values()], isMe, women: data.soccer._women, priv };
   const cards = [...METRICS.flatMap((m) => [[`${m.id}-pair-card`, (el, c) => renderPair(el, c, m)], [`${m.id}-diff-card`, (el, c) => renderDiff(el, c, m)]]),
-    ["reliable-card", renderReliable], ["pairs-card", renderPairs]];
+    ["reliable-card", renderReliable]];
   for (const [id, fn] of cards) {
     const el = document.getElementById(id);
     if (!el) continue;
@@ -441,55 +441,4 @@ function renderReliable(el, { P, people, priv }) {
   c.setTable([{ label: "Who", value: nameCell }, { label: "Said yes", num: true, value: (m) => m.yes.length },
     { label: "Out of", num: true, value: (m) => m.yes.length + m.no.length }, { label: "Share", num: true, value: (m) => F.pct(m.rate) }],
   listed.slice().sort((a, b) => b.yes.length - a.yes.length));
-}
-
-// ---------------------------------------------------------------- pairs
-
-const PAIR_GAMES = 12;   // shared games for a pair to be listed; half (6) when either of the two is a woman
-const PAIR_ROWS = 40;
-
-function renderPairs(el, { P, known, women, isMe, priv, career }) {
-  const topic = "Pairs who said yes to the same games";
-  const pairs = new Map();
-  for (const r of known) {
-    const names = r._lineup.slice().sort((a, b) => a.localeCompare(b));
-    for (let i = 0; i < names.length; i++) for (let j = i + 1; j < names.length; j++) {
-      const k = `${key(names[i])}|${key(names[j])}`;
-      if (!pairs.has(k)) pairs.set(k, { a: names[i], b: names[j], games: [] });
-      pairs.get(k).games.push(r);
-    }
-  }
-  const isWoman = (name) => !!women?.has(name.toLowerCase());
-  const who = (name) => (isMe(name) ? { me: true, label: "Me" } : { me: false, label: name });
-  const all = [...pairs.values()].filter((q) => q.games.length >= bar(PAIR_GAMES, isWoman(q.a) || isWoman(q.b)))
-    .map((q) => ({ ...q, ...tally(q.games), pa: who(q.a), pb: who(q.b) })).filter((q) => q.gd != null)
-    // on a public page: pairs we outscore the other team with, plus pairs of two people who have each said yes to more than OPEN_GAMES games
-    .filter((q) => priv || q.gd > 0 || (career.get(key(q.a)) > OPEN_GAMES && career.get(key(q.b)) > OPEN_GAMES))
-    .sort((x, y) => y.gd - x.gd || y.n - x.n);
-  if (!all.length) return empty(el, topic, `No two of us said yes to ${PAIR_GAMES} of the same games in this period`, priv);
-  const rows = all.slice(0, PAIR_ROWS);
-  const best = rows.find((q) => !q.pa.me && !q.pb.me) || rows[0];   // "Me" is a poor headline
-  const c = card(el, {
-    title: `${best.pa.label} and ${best.pb.label} together: ${best.w} W · ${best.t} T · ${best.l} L in ${pl(best.n, "game")}, ${signed(best.gd)} goals a game`,
-    sub: `Every two of us who both said yes to ${PAIR_GAMES} or more of the same games (${bar(PAIR_GAMES, true)} when either is a woman), best goal difference first` +
-      (priv ? "" : `; only pairs we outscored the other team with are shown, plus pairs of two people who have each said yes to more than ${OPEN_GAMES} games`) +
-      `${all.length > rows.length ? `: the first ${F.int(rows.length)} of ${F.int(all.length)} pairs` : ""}. Small samples, and the same games count for many pairs: a curiosity, not a rating.`,
-    table: false,
-  });
-  tagPrivate(c, priv);
-  legend(c.legend, []);
-  const pair = (q) => [nameCell(q.pa), " + ", nameCell(q.pb)];
-  const goals = (q) => `${F.num(q.gf, 1)}–${F.num(q.ga, 1)}`;
-  const narrow = Math.max(280, c.body.getBoundingClientRect().width || 520) < 430;
-  // eight columns don't fit a phone: there the record goes on a second line under the pair's names
-  const columns = narrow ? [
-    { label: "Pair", value: (q) => [...pair(q), h("div", { style: { color: P.muted, fontSize: "12px", marginTop: "2px" } }, `${pl(q.n, "game")}: ${q.w} W · ${q.t} T · ${q.l} L`)] },
-    { label: "Goals", num: true, value: goals }, { label: "Diff.", num: true, value: (q) => signed(q.gd, 2) },
-  ] : [
-    { label: "Pair", value: pair }, { label: "Games", num: true, value: (q) => q.n },
-    { label: "W", num: true, value: (q) => q.w }, { label: "T", num: true, value: (q) => q.t }, { label: "L", num: true, value: (q) => q.l },
-    { label: "Won", num: true, value: (q) => F.pct(q.win) }, { label: "Goals a game", num: true, value: goals },
-    { label: "Diff.", num: true, value: (q) => signed(q.gd, 2) },
-  ];
-  c.body.append(h("div", { class: "table-wrap", style: { maxHeight: "360px", overflowY: "auto" } }, dataTable(columns, rows)));
 }

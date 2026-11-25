@@ -1,17 +1,17 @@
 // Entry point: load the team's data, wire the controls, draw every section.
-import { state, setState, subscribe, restoreState, periods, currentPeriod } from "./state.js";
-import { segmented, h } from "./ui.js";
-import { prepare } from "./data.js";
-import * as F from "./format.js";
-import * as overview from "./overview.js";
-import * as about from "./about.js";
-import * as league from "./sections/league.js";
-import * as snake from "./sections/snake.js";
-import * as standings from "./sections/standings.js";
-import * as playoffs from "./sections/playoffs.js";
-import * as lineups from "./sections/lineups.js";
-import * as nights from "./sections/nights.js";
-import * as squads from "./sections/squads.js";
+import { state, setState, subscribe, restoreState, periods, currentPeriod } from "./state.js?v=e2d29b3696";
+import { segmented, h } from "./ui.js?v=e2d29b3696";
+import { prepare } from "./data.js?v=e2d29b3696";
+import * as F from "./format.js?v=e2d29b3696";
+import * as overview from "./overview.js?v=e2d29b3696";
+import * as about from "./about.js?v=e2d29b3696";
+import * as league from "./sections/league.js?v=e2d29b3696";
+import * as snake from "./sections/snake.js?v=e2d29b3696";
+import * as standings from "./sections/standings.js?v=e2d29b3696";
+import * as playoffs from "./sections/playoffs.js?v=e2d29b3696";
+import * as lineups from "./sections/lineups.js?v=e2d29b3696";
+import * as nights from "./sections/nights.js?v=e2d29b3696";
+import * as squads from "./sections/squads.js?v=e2d29b3696";
 
 const SECTIONS = [overview, league, snake, standings, playoffs, lineups, nights, squads, about];
 
@@ -73,7 +73,7 @@ async function init() {
   state.data = prepare(raw);
   // config.toml [public] player_comparisons = false: the with/without cards are not drawn at all
   if (state.data.team.show.player_comparisons === false) {
-    for (const id of ["ppg-pair-card", "ppg-diff-card", "gd-pair-card", "gd-diff-card", "pairs-card"]) document.getElementById(id)?.remove();
+    for (const id of ["ppg-pair-card", "ppg-diff-card", "gd-pair-card", "gd-diff-card"]) document.getElementById(id)?.remove();
   }
   restoreState();
   if (!periods(state.data).some((p) => p.id === state.period)) state.period = "all";

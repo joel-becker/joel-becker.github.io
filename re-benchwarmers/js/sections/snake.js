@@ -1,9 +1,9 @@
 // Season snake: one running-total line per league season, every one starting from zero before game 1,
 // which shows which season pulled ahead and when. Our own games only (data.soccer.league).
-import { inPeriod, toMonth } from "../state.js";
-import { h, card, legend, tooltip, focusEvent, segmented } from "../ui.js";
-import { palette, frame, yGrid } from "../charts.js";
-import * as F from "../format.js";
+import { inPeriod, toMonth } from "../state.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent, segmented } from "../ui.js?v=e2d29b3696";
+import { palette, frame, yGrid } from "../charts.js?v=e2d29b3696";
+import * as F from "../format.js?v=e2d29b3696";
 
 let measure = "pts";
 

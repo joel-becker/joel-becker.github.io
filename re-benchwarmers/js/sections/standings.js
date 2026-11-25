@@ -1,9 +1,10 @@
 // League tables: where we finished each season, among every team in that league.
 // The tables carry no team names (other teams are just positions in the table); our own name
 // comes from the league games (`_team`), when the data has names.
-import { h, card, legend, tooltip, focusEvent } from "../ui.js";
-import { palette, frame } from "../charts.js";
-import * as F from "../format.js";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=e2d29b3696";
+import { palette, frame } from "../charts.js?v=e2d29b3696";
+import * as F from "../format.js?v=e2d29b3696";
+import { playoffSeasons } from "./playoffs.js?v=e2d29b3696";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
@@ -49,17 +50,29 @@ function draw(el, data, p, all) {
   const topHalf = pool.filter((s) => s.top).length;
   const bottom = pool.filter((s) => s.rank === s.n).length;
   const name = (s) => (s.team ? `${s.team}, ${s.label}` : s.label);
+  // How each season's play-offs went (worked out in playoffs.js). The table's order is by points over the season and
+  // the play-offs together, so a place in it is not the play-off result: we have won the final from 2nd in the table.
+  const playoffs = new Map(playoffSeasons(data).map((q) => [`${q.season}|${q.weekday}`, q]));
+  const PLAYOFF_WORDS = { "won the final": "won the play-offs", "lost the final": "lost the play-off final", "lost the semi-final": "lost the play-off semi-final" };
+  for (const s of seasons) {
+    const q = playoffs.get(`${s.season}|${s.weekday}`);
+    s.playoff = q && !q.live && q.made ? (PLAYOFF_WORDS[q.outcome] || q.outcome) : null;
+    s.wonPlayoffs = !!(q && q.won);
+  }
+  const champs = seasons.filter((s) => s.wonPlayoffs);
   const c = card(el, {
-    title: `Our best finish is ${ordinal(best.rank)} of ${best.n} (${name(best)}); we ended in the top half of the table in ${F.int(topHalf)} of ${F.int(pool.length)} seasons` +
-      (bottom ? ` and last in ${F.int(bottom)}` : ""),
+    title: (champs.length ? `We won the play-offs in ${champs.map((s) => F.fmtMonth(s.start)).reverse().join(" and ")} (${ordinal(champs[0].rank)} of ${champs[0].n} in the table); `
+      : `Our best finish is ${ordinal(best.rank)} of ${best.n} (${name(best)}); `) +
+      `we ended in the top half of the table in ${F.int(topHalf)} of ${F.int(pool.length)} seasons` + (bottom ? ` and last in ${F.int(bottom)}` : ""),
     sub: "One row per season, newest at the top. Each dot is a team in that league, in table order from first place on the left; the filled dot is us. " +
-      "The tables are the league's own and include play-off games." + (seasons.some((s) => s.live) ? " A season still being played is marked “so far”." : ""),
+      "The tables are the league's own and count play-off games too, so the order is by points over the season and the play-offs together, not the play-off result: " +
+      "where we reached the play-offs, how they went is noted beside the row." + (seasons.some((s) => s.live) ? " A season still being played is marked “so far”." : ""),
   });
 
   const maxN = d3.max(seasons, (s) => s.n);
   const bodyW = Math.max(280, c.body.getBoundingClientRect().width || 600);
   const narrow = bodyW < 560;
-  const labelW = narrow ? 0 : 230, textW = narrow ? 86 : 190;
+  const labelW = narrow ? 0 : 230, textW = narrow ? 86 : seasons.some((s) => s.playoff) ? 350 : 190;
   const rowH = narrow ? 44 : 30;
   const f = frame(c.body, { height: seasons.length * rowH + 26, margin: { left: labelW, right: textW, top: 22, bottom: 4 } });
   const { g, w } = f;
@@ -76,7 +89,7 @@ function draw(el, data, p, all) {
     const lab = g.append("text").attr("x", narrow ? 0 : -12).attr("y", narrow ? y0 + 12 : cy).attr("dy", narrow ? 0 : "0.32em").attr("text-anchor", narrow ? "start" : "end");
     if (s.team) lab.append("tspan").attr("class", "annot").style("font-weight", 600).text(`${s.team} `);
     // on a phone "so far" goes up here with the season: beside the place it would run past the edge of the plot
-    lab.append("tspan").attr("class", "annot-muted").text(narrow && s.live ? `${s.label} · so far` : s.label);
+    lab.append("tspan").attr("class", "annot-muted").text(narrow && s.live ? `${s.label} · so far` : narrow && s.playoff ? `${s.label} · ${s.playoff.replace("play-off ", "")}` : s.label);
     // faint track across the places this league has
     g.append("line").attr("x1", cx(0)).attr("x2", cx(s.n - 1)).attr("y1", cy).attr("y2", cy).attr("stroke", P.grid);
     s.teams.forEach((t, i) => {
@@ -97,11 +110,13 @@ function draw(el, data, p, all) {
     const txt = g.append("text").attr("x", w + 12).attr("y", cy).attr("dy", "0.32em");
     txt.append("tspan").attr("class", "annot").style("font-weight", 600).text(`${ordinal(s.rank)} of ${s.n}`);
     if (!narrow) txt.append("tspan").attr("class", "annot-muted").text(`  ${s.ours[0]} W · ${s.ours[1]} T · ${s.ours[2]} L${s.live ? ", so far" : ""}`);
+    if (!narrow && s.playoff) txt.append("tspan").attr("class", "annot").style("font-weight", s.wonPlayoffs ? 600 : 400).text(` · ${s.playoff}`);
   });
   legend(c.legend, [{ label: "Us", color: P.soccer, mark: "dt" }, { label: "Other teams, in table order", color: P.muted, mark: "dt" }]);
   c.setTable([
     { label: "Season", value: (s) => (s.team ? `${s.team}, ${s.label}` : s.label) },
-    { label: "Finished", num: true, value: (s) => `${ordinal(s.rank)}${s.live ? " so far" : ""}` },
+    { label: "Place in the table", num: true, value: (s) => `${ordinal(s.rank)}${s.live ? " so far" : ""}` },
+    { label: "Play-offs", value: (s) => (s.live ? "" : s.playoff || "missed") },
     { label: "Teams", num: true, value: (s) => F.int(s.n) },
     { label: "W", num: true, value: (s) => s.ours[0] }, { label: "T", num: true, value: (s) => s.ours[1] }, { label: "L", num: true, value: (s) => s.ours[2] },
     { label: "Goals", num: true, value: (s) => `${s.ours[3]}–${s.ours[4]}` },
