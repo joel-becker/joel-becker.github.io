@@ -8,11 +8,12 @@ import * as about from "./about.js";
 import * as league from "./sections/league.js";
 import * as snake from "./sections/snake.js";
 import * as standings from "./sections/standings.js";
+import * as playoffs from "./sections/playoffs.js";
 import * as lineups from "./sections/lineups.js";
 import * as nights from "./sections/nights.js";
 import * as squads from "./sections/squads.js";
 
-const SECTIONS = [overview, league, snake, standings, lineups, nights, squads, about];
+const SECTIONS = [overview, league, snake, standings, playoffs, lineups, nights, squads, about];
 
 function renderControls() {
   const ps = periods(state.data);

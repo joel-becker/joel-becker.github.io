@@ -14,7 +14,8 @@ export function render(data) {
     ["Who said yes", `For ${F.int(withLineup)} of the games the league's site records who said they were coming. That is an RSVP, not a register: ` +
       "people say yes and don't turn up, and turn up without saying yes. Every “said yes” figure on this page should be read that way."],
     ["Player comparisons", "The Players section compares the games someone said yes to with the games they missed in the seasons they were in. " +
-      "The groups are small, the other nine people on the pitch change too, and who is free on which night is not random. It is a curiosity, not a rating."],
+      "The groups are small, the other nine people on the pitch change too, and who is free on which night is not random. It is a curiosity, not a rating. " +
+      "Each of those charts lists only the people it is kind to (a gap in our favour), plus anyone who has said yes to more than 30 games; the pairs table works the same way."],
     ["Lower cut-offs for women", "This is a coed league with far fewer women than men on each squad, so wherever a card needs a minimum number of seasons or shared games to list someone, " +
       "women need half as many. The league's own M/F marks decide who that applies to."],
     ["Names", show.names === "hidden" ? "Team-mates appear as Player A, Player B and so on."

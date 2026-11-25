@@ -72,7 +72,11 @@ export function render(data, p) {
     if (!inPeriodSeasons.has(sk)) continue;
     for (const name of s.players) person(name).seasons.add(sk);
   }
+  // games each person has said yes to in all, whatever period is chosen
+  const career = new Map();
+  for (const r of league) for (const name of r._lineup || []) career.set(key(name), (career.get(key(name)) || 0) + 1);
   for (const m of people.values()) {
+    m.career = career.get(m.k) || 0;
     const mine = new Set(m.yes);
     // "without": the games they didn't say yes to in the seasons they were in (on the squad list, or said yes to another of its games)
     m.no = known.filter((r) => !mine.has(r) && m.seasons.has(seasonKey(r)));
@@ -82,7 +86,7 @@ export function render(data, p) {
     m.woman = !!data.soccer._women?.has(m.name.toLowerCase());
     m.rate = m.yes.length + m.no.length ? m.yes.length / (m.yes.length + m.no.length) : 0;
   }
-  const ctx = { P, known, unlisted: games.length - known.length, people: [...people.values()], isMe, women: data.soccer._women, priv };
+  const ctx = { P, known, unlisted: games.length - known.length, people: [...people.values()], isMe, women: data.soccer._women, priv, career };
   const cards = [...METRICS.flatMap((m) => [[`${m.id}-pair-card`, (el, c) => renderPair(el, c, m)], [`${m.id}-diff-card`, (el, c) => renderDiff(el, c, m)]]),
     ["reliable-card", renderReliable], ["pairs-card", renderPairs]];
   for (const [id, fn] of cards) {
@@ -178,12 +182,20 @@ const METRICS = [
  * at least six games said yes to and six missed in those seasons (not halved), and the comparison is pooled:
  * every game they said yes to against every game they missed in the seasons they were in.
  */
-function compared({ people }, metric) {
+function compared({ people, priv }, metric) {
   return people.filter((m) => m.nSeasons >= bar(MIN_SEASONS, m.woman) && m.with.n >= MIN_EACH && metric.get(m.with) != null
     && m.without.n >= MIN_EACH && metric.get(m.without) != null)
     .map((m) => ({ ...m, a: metric.get(m.with), b: metric.get(m.without), d: metric.get(m.with) - metric.get(m.without) }))
+    .filter((m) => priv || m.d > 0 || m.career > OPEN_GAMES)
     .sort((x, y) => y.d - x.d || y.with.n - x.with.n);
 }
+/**
+ * Who a public page names (Joel's rule, CLAUDE.md): on a chart that could read as a mark against someone, only the
+ * people it is kind to (a gap in our favour on that chart), plus anyone who has said yes to more than OPEN_GAMES
+ * games in all, who is listed whatever their numbers. Where names are private (`team.private`) everyone is listed.
+ */
+const OPEN_GAMES = 30;
+const ONLY = `Only people with a gap in our favour are shown, plus anyone who has said yes to more than ${OPEN_GAMES} games in all. `;
 const whoListed = `Everyone in ${MIN_SEASONS} or more of our seasons (${bar(MIN_SEASONS, true)} for women) who said yes to at least ${MIN_EACH} games and missed at least ${MIN_EACH} games of those seasons`;
 const CAVEAT = "Saying yes isn't turning up, the groups are small (the table counts the games on each side), and who is free on which night isn't random: a curiosity, not a rating.";
 const NOBODY = `Nobody in this period has been in ${MIN_SEASONS} of our seasons (${bar(MIN_SEASONS, true)} for women), said yes to ${MIN_EACH} games and missed ${MIN_EACH}`;
@@ -220,7 +232,7 @@ function renderPair(el, ctx, metric) {
       ? `With ${best.label} saying yes ${metric.withText(best)} (${pl(best.with.n, "game")}), against ${metric.withoutText(best)} in the same seasons without them (${F.int(best.without.n)})`
       : topic,
     sub: `Filled dot: the games each person said yes to. Hollow dot: the other games of the seasons they were in the squad. Further right is better; the biggest gain is at the top. ` +
-      `${whoListed}. ` +
+      `${whoListed}. ` + (priv ? "" : ONLY) +
       (ctx.unlisted > 0 ? `${pl(ctx.unlisted, "game")} with no list of who said yes ${ctx.unlisted === 1 ? "is" : "are"} left out. ` : "") + CAVEAT,
   });
   tagPrivate(c, priv);
@@ -272,7 +284,7 @@ function renderDiff(el, ctx, metric) {
   const c = card(el, {
     title: `${metric.lead}: ` + (best ? `${F.num(best.d, metric.id === "ppg" ? 2 : 1)} a game ${metric.word} with ${best.label} than without; ` : "") + above,
     sub: `Each bar is our ${metric.name} per game in the games that person said yes to, minus the same in their seasons' other games. ` +
-      `Right of zero means we did better with them; same order as the with-and-without chart. ${CAVEAT}`,
+      `Right of zero means we did better with them; same people and order as the with-and-without chart. ${priv ? "" : ONLY}${CAVEAT}`,
   });
   tagPrivate(c, priv);
   c.setTable(compareTable(metric), rows);
@@ -326,7 +338,7 @@ function renderGoalGap(el, ctx, metric) {
       ? `With ${best.label} we are ${F.num(best.d, 1)} goals a game better off: we score ${part(best.att, "more", "fewer")} and let in ${part(best.def, "fewer", "more")}`
       : `Goal difference: the gap is above zero for ${F.int(rows.filter((m) => m.d > 0).length)} of ${ppl(rows.length)}`,
     sub: "Each bar is the gap in our goal difference per game (games they said yes to, minus their seasons' other games), split into two parts: how many more goals we score with them, " +
-      "and how many fewer we let in. Right of zero is better; the dot is the two added together. Same order as the with-and-without chart. " + CAVEAT,
+      "and how many fewer we let in. Right of zero is better; the dot is the two added together. Same people and order as the with-and-without chart. " + (priv ? "" : ONLY) + CAVEAT,
   });
   tagPrivate(c, priv);
   c.setTable([
@@ -436,7 +448,7 @@ function renderReliable(el, { P, people, priv }) {
 const PAIR_GAMES = 12;   // shared games for a pair to be listed; half (6) when either of the two is a woman
 const PAIR_ROWS = 40;
 
-function renderPairs(el, { P, known, women, isMe, priv }) {
+function renderPairs(el, { P, known, women, isMe, priv, career }) {
   const topic = "Pairs who said yes to the same games";
   const pairs = new Map();
   for (const r of known) {
@@ -451,6 +463,8 @@ function renderPairs(el, { P, known, women, isMe, priv }) {
   const who = (name) => (isMe(name) ? { me: true, label: "Me" } : { me: false, label: name });
   const all = [...pairs.values()].filter((q) => q.games.length >= bar(PAIR_GAMES, isWoman(q.a) || isWoman(q.b)))
     .map((q) => ({ ...q, ...tally(q.games), pa: who(q.a), pb: who(q.b) })).filter((q) => q.gd != null)
+    // on a public page: pairs we outscore the other team with, plus pairs of two people who have each said yes to more than OPEN_GAMES games
+    .filter((q) => priv || q.gd > 0 || (career.get(key(q.a)) > OPEN_GAMES && career.get(key(q.b)) > OPEN_GAMES))
     .sort((x, y) => y.gd - x.gd || y.n - x.n);
   if (!all.length) return empty(el, topic, `No two of us said yes to ${PAIR_GAMES} of the same games in this period`, priv);
   const rows = all.slice(0, PAIR_ROWS);
@@ -458,6 +472,7 @@ function renderPairs(el, { P, known, women, isMe, priv }) {
   const c = card(el, {
     title: `${best.pa.label} and ${best.pb.label} together: ${best.w} W · ${best.t} T · ${best.l} L in ${pl(best.n, "game")}, ${signed(best.gd)} goals a game`,
     sub: `Every two of us who both said yes to ${PAIR_GAMES} or more of the same games (${bar(PAIR_GAMES, true)} when either is a woman), best goal difference first` +
+      (priv ? "" : `; only pairs we outscored the other team with are shown, plus pairs of two people who have each said yes to more than ${OPEN_GAMES} games`) +
       `${all.length > rows.length ? `: the first ${F.int(rows.length)} of ${F.int(all.length)} pairs` : ""}. Small samples, and the same games count for many pairs: a curiosity, not a rating.`,
     table: false,
   });

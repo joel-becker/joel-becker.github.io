@@ -2,6 +2,7 @@
 import { inPeriod } from "./state.js";
 import { h } from "./ui.js";
 import * as F from "./format.js";
+import { playoffSeasons } from "./sections/playoffs.js";
 
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
 const signed = (v, digits = 0) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${F.num(Math.abs(v), digits)}`;
@@ -36,6 +37,8 @@ export function render(data, p) {
     return d3.timeDay.count(last, data._asOf) > 14;
   });
   const best = done.slice().sort((a, b) => a.rank / a.teams.length - b.rank / b.teams.length || b.teams.length - a.teams.length)[0];
+  // finished seasons that touch the period: did we reach the play-offs, and did we win them
+  const po = playoffSeasons(data).filter((s) => !s.live && s.last >= p.start && s.start <= p.end), won = po.filter((s) => s.won);
   const people = new Set(games.flatMap((r) => r._lineup || []).map((n) => n.toLowerCase()));
   const last5 = games.slice(-5);
   const kpis = [
@@ -43,7 +46,9 @@ export function render(data, p) {
     { label: "Points a game", value: games.length ? F.num((3 * w + tied) / games.length, 2) : "–", sub: "3 for a win, 1 for a tie" },
     { label: "Goals", value: scored.length ? `${F.int(gf)}–${F.int(ga)}` : "–", sub: scored.length ? `${F.num(gf / scored.length, 1)} scored, ${F.num(ga / scored.length, 1)} let in a game` : "" },
     { label: "Goal difference", value: scored.length ? signed(gf - ga) : "–", sub: scored.length ? `${signed((gf - ga) / scored.length, 2)} a game` : "" },
-    { label: "Best finish", value: best ? `${ordinal(best.rank)}` : "–", sub: best ? `of ${best.teams.length} teams, ${F.fmtMonth(d3.timeParse("%Y-%m")(best.season))}` : "no finished season" },
+    po.length ? { label: "Play-offs reached", value: `${F.int(po.filter((s) => s.made).length)} of ${F.int(po.length)}`,
+      sub: won.length ? `seasons; won ${won.map((s) => F.fmtMonth(s.start)).join(", ")}` : "finished seasons" }
+      : { label: "Best finish", value: best ? `${ordinal(best.rank)}` : "–", sub: best ? `of ${best.teams.length} teams, ${F.fmtMonth(d3.timeParse("%Y-%m")(best.season))}` : "no finished season" },
     people.size ? { label: "People who said yes", value: F.int(people.size), sub: "to at least one game" }
       : { label: "Last five", value: last5.map((r) => r.result).join(" ") || "–", sub: "oldest first" },
   ];
