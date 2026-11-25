@@ -9,9 +9,9 @@
 // others it is known for the teams that went out at the first step; for the two finalists only one of two
 // splits is possible, and a split is ruled out when it would put a play-off team below a team that missed.
 // What is left is one number in most seasons and a three-point band in a few.
-import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=1469dbaaae";
-import { palette, frame } from "../charts.js?v=1469dbaaae";
-import * as F from "../format.js?v=1469dbaaae";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=fe5dbb801b";
+import { palette, frame } from "../charts.js?v=fe5dbb801b";
+import * as F from "../format.js?v=fe5dbb801b";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const POINTS = { W: 3, T: 1, L: 0 };

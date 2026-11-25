@@ -1,17 +1,17 @@
 // Entry point: load the team's data, wire the controls, draw every section.
-import { state, setState, subscribe, restoreState, periods, currentPeriod } from "./state.js?v=1469dbaaae";
-import { segmented, h } from "./ui.js?v=1469dbaaae";
-import { prepare } from "./data.js?v=1469dbaaae";
-import * as F from "./format.js?v=1469dbaaae";
-import * as overview from "./overview.js?v=1469dbaaae";
-import * as about from "./about.js?v=1469dbaaae";
-import * as league from "./sections/league.js?v=1469dbaaae";
-import * as snake from "./sections/snake.js?v=1469dbaaae";
-import * as standings from "./sections/standings.js?v=1469dbaaae";
-import * as playoffs from "./sections/playoffs.js?v=1469dbaaae";
-import * as lineups from "./sections/lineups.js?v=1469dbaaae";
-import * as nights from "./sections/nights.js?v=1469dbaaae";
-import * as squads from "./sections/squads.js?v=1469dbaaae";
+import { state, setState, subscribe, restoreState, periods, currentPeriod } from "./state.js?v=fe5dbb801b";
+import { segmented, h } from "./ui.js?v=fe5dbb801b";
+import { prepare } from "./data.js?v=fe5dbb801b";
+import * as F from "./format.js?v=fe5dbb801b";
+import * as overview from "./overview.js?v=fe5dbb801b";
+import * as about from "./about.js?v=fe5dbb801b";
+import * as league from "./sections/league.js?v=fe5dbb801b";
+import * as snake from "./sections/snake.js?v=fe5dbb801b";
+import * as standings from "./sections/standings.js?v=fe5dbb801b";
+import * as playoffs from "./sections/playoffs.js?v=fe5dbb801b";
+import * as lineups from "./sections/lineups.js?v=fe5dbb801b";
+import * as nights from "./sections/nights.js?v=fe5dbb801b";
+import * as squads from "./sections/squads.js?v=fe5dbb801b";
 
 const SECTIONS = [overview, league, snake, standings, playoffs, lineups, nights, squads, about];
 

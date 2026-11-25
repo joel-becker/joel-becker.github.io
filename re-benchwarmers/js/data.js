@@ -3,7 +3,7 @@
 // The sections in js/sections/ are shared with the training log (~/projects/health-dashboard), so the shape is a
 // contract (see CLAUDE.md, "The data the sections read"). Fields that start with an underscore may be missing:
 // config.toml [public] can leave names out of team.json, and every card has to cope (it hides, or drops the name).
-import { toDate } from "./state.js?v=1469dbaaae";
+import { toDate } from "./state.js?v=fe5dbb801b";
 
 export function prepare(raw) {
   const league = (raw.league || []).map((g) => {
@@ -21,7 +21,7 @@ export function prepare(raw) {
   return {
     meta: raw.meta,
     // `me` is a display name to label "Me" on the player cards; nobody is singled out on the team's own page
-    team: { name: raw.meta.team, names: raw.meta.team_names || [], me: null, private: false, show: raw.meta.public || {} },
+    team: { name: raw.meta.team, names: raw.meta.team_names || [], me: null, private: false, always: raw.meta.always_listed || [], show: raw.meta.public || {} },
     _asOf: toDate(raw.meta.as_of),
     soccer: {
       league,
