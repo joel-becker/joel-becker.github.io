@@ -1,6 +1,6 @@
 // About: where the numbers come from and how to read them.
-import { h, card } from "./ui.js?v=e2d29b3696";
-import * as F from "./format.js?v=e2d29b3696";
+import { h, card } from "./ui.js?v=1469dbaaae";
+import * as F from "./format.js?v=1469dbaaae";
 
 export function render(data) {
   const el = document.getElementById("about-card");

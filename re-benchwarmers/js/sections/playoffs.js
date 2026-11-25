@@ -9,13 +9,12 @@
 // others it is known for the teams that went out at the first step; for the two finalists only one of two
 // splits is possible, and a split is ruled out when it would put a play-off team below a team that missed.
 // What is left is one number in most seasons and a three-point band in a few.
-import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=e2d29b3696";
-import { palette, frame } from "../charts.js?v=e2d29b3696";
-import * as F from "../format.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=1469dbaaae";
+import { palette, frame } from "../charts.js?v=1469dbaaae";
+import * as F from "../format.js?v=1469dbaaae";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const POINTS = { W: 3, T: 1, L: 0 };
-const SPOTS = 4;   // play-off places assumed for a season still being played (every finished season since Jan 2025 had four)
 const pts = (t) => 3 * t[0] + t[1], played = (t) => t[0] + t[1] + t[2];
 const pl = (n, word) => `${F.int(n)} ${word}${n === 1 ? "" : "s"}`;
 const privateTag = () => h("span", { class: "private-tag", style: { marginLeft: "8px" } }, "Private");
@@ -24,7 +23,7 @@ const privateTag = () => h("span", { class: "private-tag", style: { marginLeft: 
 const product = (lists) => lists.reduce((acc, list) => acc.flatMap((a) => list.map((v) => [...a, v])), [[]]);
 
 /**
- * One entry per season with a league table: how long the regular season was, how many teams went through,
+ * One entry per finished season with a league table: how long the regular season was, how many teams went through,
  * our regular-season points, the bar (barLo..barHi, equal when it is known exactly) and how we got on.
  * Exported so the page's headline numbers can use it.
  */
@@ -36,11 +35,9 @@ export function playoffSeasons(data) {
     const T = s.teams, us = T[s.rank - 1];
     const base = { season: s.season, weekday: s.weekday, n: T.length, start, last, team: games.find((r) => r._team)?._team || null,
       label: `${F.fmtMonth(start)} · ${s.weekday.slice(0, 3)}` };
-    // still being played: its latest game is within two weeks of the newest data, so there are no play-offs to read yet
-    if (games.length > 0 && d3.timeDay.count(last, data._asOf) <= 14) {
-      const line = T.map(pts).sort(d3.descending)[Math.min(SPOTS, T.length) - 1];
-      return { ...base, live: true, length: played(us), spots: Math.min(SPOTS, T.length), ours: pts(us), barLo: line, barHi: line, made: null, outcome: "still being played" };
-    }
+    // A season still being played (its latest game is within two weeks of the newest data) has no bar yet: nobody
+    // has qualified, and a table after three games says little about where the line will end up. Left out (Joel's call).
+    if (games.length > 0 && d3.timeDay.count(last, data._asOf) <= 14) return null;
     const length = d3.min(T, played);
     const through = T.filter((t) => played(t) > length), out = T.filter((t) => played(t) === length);
     if (!through.length || !out.length) return null;   // no sign of play-offs in the table
@@ -66,7 +63,7 @@ export function playoffSeasons(data) {
     const outcome = !made ? "missed the play-offs"
       : !bracket ? `in the play-offs (${pl(extraUs, "game")})`
         : extraUs === 1 ? "lost the semi-final" : weWon ? "won the final" : "lost the final";
-    return { ...base, live: false, length, spots: through.length, ours, barLo: d3.min(bars), barHi: d3.max(bars), bestOut: d3.max(out.filter((t) => t !== us), pts) ?? null,
+    return { ...base, length, spots: through.length, ours, barLo: d3.min(bars), barHi: d3.max(bars), bestOut: d3.max(out.filter((t) => t !== us), pts) ?? null,
       made, won: weWon, outcome };
   }).filter(Boolean);
 }
@@ -76,11 +73,10 @@ const barText = (s) => (s.barLo === s.barHi ? F.int(s.barLo) : `${F.int(s.barLo)
 function gapText(s) {
   if (s.made) return s.ours > s.barHi ? `${F.int(s.ours - s.barHi)} clear of the bar` : "level with the bar";
   const lo = s.barLo - s.ours, hi = s.barHi - s.ours;
-  if (hi <= 0) return s.live ? "level with 4th" : "level on points, out on the tie-break";
+  if (hi <= 0) return "level on points, out on the tie-break";
   const short = lo === hi || lo <= 0 ? `${F.int(hi)}` : `${F.int(lo)}–${F.int(hi)}`;
-  return s.live ? `${short} behind ${ordinal(s.spots)}` : `${lo <= 0 ? "up to " : ""}${short} short`;
+  return `${lo <= 0 ? "up to " : ""}${short} short`;
 }
-const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
 
 export function render(data, p) {
   const el = document.getElementById("playoffs-card");
@@ -96,19 +92,17 @@ function draw(el, data, p, all) {
   const seasons = all.filter((s) => s.last >= p.start && s.start <= p.end).sort((a, b) => b.start - a.start || a.weekday.localeCompare(b.weekday));
   if (!seasons.length) {
     const c = card(el, { title: "The play-off bar, season by season" });
-    c.body.append(h("div", { class: "empty-state" }, "No league tables for this period"));
+    c.body.append(h("div", { class: "empty-state" }, "No finished season in this period"));
     legend(c.legend, []);
     c.setTable([], []);
     return;
   }
-  const done = seasons.filter((s) => !s.live), made = done.filter((s) => s.made), missed = done.filter((s) => !s.made);
-  const live = seasons.find((s) => s.live);
+  const done = seasons, made = done.filter((s) => s.made), missed = done.filter((s) => !s.made);
   const range = (v, lo, hi) => { const a = d3.min(v, lo), b = d3.max(v, hi); return a === b ? F.int(a) : `${F.int(a)} to ${F.int(b)}`; };
   const smallest = d3.min(done, (s) => s.n);
   const allSmall = made.length > 1 && made.every((s) => s.n === smallest) && missed.some((s) => s.n > smallest);
   let title;
-  if (!done.length) title = `This season we have ${pl(live.ours, "point")} from ${pl(live.length, "game")}; ${ordinal(live.spots)} place is on ${F.int(live.barHi)}`;
-  else if (!made.length) title = `We have not made the play-offs in these ${pl(done.length, "season")}: the bar was ${range(done, (s) => s.barLo, (s) => s.barHi)} points and our best was ${F.int(d3.max(done, (s) => s.ours))}`;
+  if (!made.length) title = `We have not made the play-offs in these ${pl(done.length, "season")}: the bar was ${range(done, (s) => s.barLo, (s) => s.barHi)} points and our best was ${F.int(d3.max(done, (s) => s.ours))}`;
   else {
     title = `We made the play-offs in ${F.int(made.length)} of ${pl(done.length, "finished season")}` +
       (allSmall ? `, every time in a ${F.int(smallest)}-team league, where it took ${range(made, (s) => s.barLo, (s) => s.barHi)} points` : "") +
@@ -117,11 +111,11 @@ function draw(el, data, p, all) {
   const spotsText = [...new Set(done.map((s) => s.spots))].sort(d3.ascending);
   const c = card(el, {
     title,
-    sub: "One row per season, newest at the top. The dot is our points from the regular season (3 for a win, 1 for a tie). The upright mark is the play-off bar: " +
+    sub: "One row per finished season, newest at the top. The dot is our points from the regular season (3 for a win, 1 for a tie). The upright mark is the play-off bar: " +
       "the fewest regular-season points that got a team into the play-offs that season" +
       (spotsText.length ? ` (${spotsText.map((n) => F.int(n)).join(" or ")} teams went through)` : "") + ". " +
-      "The league's tables count play-off games too, so the bar is worked back from them; where that leaves two possible answers it is drawn as a band." +
-      (live ? ` The season still being played shows the points of the team now in ${ordinal(live.spots)} place.` : ""),
+      "The league's tables count play-off games too, so the bar is worked back from them; where that leaves two possible answers it is drawn as a band. " +
+      "A season still being played has no bar yet and is left out.",
   });
   if (data.team?.private && seasons.some((s) => s.team)) c.head.querySelector("h3")?.append(privateTag());   // only the team names are private here
 
@@ -140,7 +134,7 @@ function draw(el, data, p, all) {
   g.append("g").selectAll("text").data(ticks).join("text").attr("class", "annot-muted").attr("x", (d) => x(d)).attr("y", -9).attr("text-anchor", "middle").text((d) => d);
   if (!narrow) g.append("text").attr("class", "annot-muted").attr("x", -labelW - 6).attr("y", -9).text("Regular-season points");
 
-  const colorOf = (s) => (s.live ? P.tie : s.made ? P.win : P.loss);
+  const colorOf = (s) => (s.made ? P.win : P.loss);
   seasons.forEach((s, k) => {
     const y0 = k * rowH, cy = y0 + (narrow ? 34 : rowH / 2), fill = colorOf(s);
     // on a phone each season is three lines (name, marks, figures): a rule keeps one season's figures apart from the next one's name
@@ -157,7 +151,7 @@ function draw(el, data, p, all) {
     for (const xv of xb > xa ? [xa, xb] : [xa]) g.append("line").attr("x1", xv).attr("x2", xv).attr("y1", cy - 10).attr("y2", cy + 10).attr("stroke", P.ink).attr("stroke-width", 2.5).attr("stroke-linecap", "round");
     g.append("circle").attr("cx", xo).attr("cy", cy).attr("r", 6).attr("fill", fill).attr("stroke", P.surface).attr("stroke-width", 2);
     const text = `${pl(s.ours, "pt")}, bar ${barText(s)}`;
-    const tail = s.live ? `${gapText(s)}, after ${pl(s.length, "game")}` : s.made ? s.outcome : gapText(s);
+    const tail = s.made ? s.outcome : gapText(s);
     const txt = g.append("text").attr("x", narrow ? 0 : w + 14).attr("y", narrow ? y0 + 57 : cy).attr("dy", narrow ? 0 : "0.32em");
     txt.append("tspan").attr("class", "annot").style("font-weight", 600).text(text);
     txt.append("tspan").attr("class", "annot-muted").text(` · ${tail}`);
@@ -168,29 +162,28 @@ function draw(el, data, p, all) {
           title: `${s.team ? `${s.team}, ` : ""}${s.label}`,
           rows: [
             { label: "Our points", value: `${F.int(s.ours)} from ${pl(s.length, "game")}`, color: fill, mark: "dot" },
-            { label: s.live ? `${ordinal(s.spots)} place now` : "Play-off bar", value: `${barText(s)} points`, color: P.ink },
-            ...(s.live ? [] : [{ label: "Went through", value: `${F.int(s.spots)} of ${F.int(s.n)} teams` }]),
-            ...(!s.live && s.bestOut != null ? [{ label: s.made ? "Best team that missed" : "Best other team that missed", value: `${F.int(s.bestOut)} points` }] : []),
-            { label: "How it ended", value: s.live ? `still being played (${gapText(s)})` : s.made ? s.outcome : `${s.outcome} (${gapText(s)})` },
+            { label: "Play-off bar", value: `${barText(s)} points`, color: P.ink },
+            { label: "Went through", value: `${F.int(s.spots)} of ${F.int(s.n)} teams` },
+            ...(s.bestOut != null ? [{ label: s.made ? "Best team that missed" : "Best other team that missed", value: `${F.int(s.bestOut)} points` }] : []),
+            { label: "How it ended", value: s.made ? s.outcome : `${s.outcome} (${gapText(s)})` },
           ],
-          note: s.live ? "A season still in progress: the bar will move." : s.barLo !== s.barHi ? "The table can't say which of the two finalists won, so the bar is one of two numbers." : null,
+          note: s.barLo !== s.barHi ? "The table can't say which of the two finalists won, so the bar is one of two numbers." : null,
         });
       })
       .on("pointerleave blur", () => tooltip.hide());
   });
   legend(c.legend, [
     { label: "Our points: made the play-offs", color: P.win, mark: "dt" }, { label: "Missed", color: P.loss, mark: "dt" },
-    ...(live ? [{ label: "Season still being played", color: P.tie, mark: "dt" }] : []),
     { label: "Play-off bar", color: P.ink },
   ]);
   c.setTable([
     { label: "Season", value: (s) => (s.team ? `${s.team}, ${s.label}` : s.label) },
     { label: "Teams", num: true, value: (s) => F.int(s.n) },
-    { label: "Went through", num: true, value: (s) => (s.live ? "–" : F.int(s.spots)) },
+    { label: "Went through", num: true, value: (s) => F.int(s.spots) },
     { label: "Games", num: true, value: (s) => F.int(s.length) },
     { label: "Our points", num: true, value: (s) => F.int(s.ours) },
     { label: "Bar", num: true, value: (s) => barText(s) },
-    { label: "Best that missed", num: true, value: (s) => (s.live || s.bestOut == null ? "–" : F.int(s.bestOut)) },
-    { label: "How it ended", value: (s) => (s.live ? `still being played: ${gapText(s)}` : s.made ? s.outcome : `missed: ${gapText(s)}`) },
+    { label: "Best that missed", num: true, value: (s) => (s.bestOut == null ? "–" : F.int(s.bestOut)) },
+    { label: "How it ended", value: (s) => (s.made ? s.outcome : `missed: ${gapText(s)}`) },
   ], seasons);
 }

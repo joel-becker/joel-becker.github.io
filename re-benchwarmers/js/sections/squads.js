@@ -3,9 +3,9 @@
 //
 // Nobody is a special case: the lists hold everyone, counted by the same rules. If `data.team.me` is a display
 // name, that person's row is labelled "Me" in bold, and nothing else differs.
-import { h, card, legend, tooltip, focusEvent, dataTable } from "../ui.js?v=e2d29b3696";
-import { palette, frame, yGrid, xTime } from "../charts.js?v=e2d29b3696";
-import * as F from "../format.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent, dataTable } from "../ui.js?v=1469dbaaae";
+import { palette, frame, yGrid, xTime } from "../charts.js?v=1469dbaaae";
+import * as F from "../format.js?v=1469dbaaae";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const IDS = ["squadsize-card", "squadrecord-card"];

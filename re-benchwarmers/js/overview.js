@@ -1,8 +1,8 @@
 // The top of the page: the team's name, its record in the chosen period, and six headline numbers.
-import { inPeriod } from "./state.js?v=e2d29b3696";
-import { h } from "./ui.js?v=e2d29b3696";
-import * as F from "./format.js?v=e2d29b3696";
-import { playoffSeasons } from "./sections/playoffs.js?v=e2d29b3696";
+import { inPeriod } from "./state.js?v=1469dbaaae";
+import { h } from "./ui.js?v=1469dbaaae";
+import * as F from "./format.js?v=1469dbaaae";
+import { playoffSeasons } from "./sections/playoffs.js?v=1469dbaaae";
 
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
 const signed = (v, digits = 0) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${F.num(Math.abs(v), digits)}`;
@@ -38,7 +38,7 @@ export function render(data, p) {
   });
   const best = done.slice().sort((a, b) => a.rank / a.teams.length - b.rank / b.teams.length || b.teams.length - a.teams.length)[0];
   // finished seasons that touch the period: did we reach the play-offs, and did we win them
-  const po = playoffSeasons(data).filter((s) => !s.live && s.last >= p.start && s.start <= p.end), won = po.filter((s) => s.won);
+  const po = playoffSeasons(data).filter((s) => s.last >= p.start && s.start <= p.end), won = po.filter((s) => s.won);
   const people = new Set(games.flatMap((r) => r._lineup || []).map((n) => n.toLowerCase()));
   const last5 = games.slice(-5);
   const kpis = [

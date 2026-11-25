@@ -1,10 +1,10 @@
 // League tables: where we finished each season, among every team in that league.
 // The tables carry no team names (other teams are just positions in the table); our own name
 // comes from the league games (`_team`), when the data has names.
-import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=e2d29b3696";
-import { palette, frame } from "../charts.js?v=e2d29b3696";
-import * as F from "../format.js?v=e2d29b3696";
-import { playoffSeasons } from "./playoffs.js?v=e2d29b3696";
+import { h, card, legend, tooltip, focusEvent } from "../ui.js?v=1469dbaaae";
+import { palette, frame } from "../charts.js?v=1469dbaaae";
+import * as F from "../format.js?v=1469dbaaae";
+import { playoffSeasons } from "./playoffs.js?v=1469dbaaae";
 
 const WEEKDAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const ordinal = (n) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`;
@@ -56,7 +56,7 @@ function draw(el, data, p, all) {
   const PLAYOFF_WORDS = { "won the final": "won the play-offs", "lost the final": "lost the play-off final", "lost the semi-final": "lost the play-off semi-final" };
   for (const s of seasons) {
     const q = playoffs.get(`${s.season}|${s.weekday}`);
-    s.playoff = q && !q.live && q.made ? (PLAYOFF_WORDS[q.outcome] || q.outcome) : null;
+    s.playoff = q && q.made ? (PLAYOFF_WORDS[q.outcome] || q.outcome) : null;
     s.wonPlayoffs = !!(q && q.won);
   }
   const champs = seasons.filter((s) => s.wonPlayoffs);
